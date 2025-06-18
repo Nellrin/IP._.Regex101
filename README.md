@@ -4,20 +4,31 @@ Este documento tem como propósito orientar quem não tenha muita experiência c
 
 1. **Basic**
     > **`^_`** ==> Início da linha
+
     > **`_$`** ==> Fim da linha
+    
     > **`.`** ==> Wildcard (pode ser qualquer char)
+    
     > **`_|_`** ==> Usado neste contexto **`a|b`**, serve como disjunção da captura **(`a|bc|d` ⊃ `{'bc','d','a'}`)**
+    
     > **`\_`** ==> Torna as "palavras reservadas" de regex em strings normais  **(`\[` == `"["`)**
+    
     > **strings** ==> Qualquer string recebida que não faça parte das "palavras reservadas" 
     
         Neste documento, todas as ocorrências do char _ deverão ser substituídas por strings ou expressões de strings, e.g. 'a?', '(?:b|c)', '[c{3,7},(\d),d{6}]', 'boas'
 
 2. **Quantifiers** 
+    
     > **`_*`** ==> 0 ou mais ocorrências de uma string **(`a*` ⊃ `{'','a','aaaaaaaa'}`)**
+    
     > **`_+`** ==> 1 ou mais ocorrências de uma string **(`a*b+` ⊃ `{'b','bbb','ab','aab','aaabb'}`)**
+    
     > **`_?`** ==> 0 ou 1 ocorrência de uma string **(`c?` ⊃ `{'','c'}`)**
+    
     > **`_{...}`** ==> Quantia específica de ocorrências de uma string **(`d{4}` = `'dddd'`)**
+    
     > **`_{...,}`** ==> Quantia mínima de ocorrências de uma string **(`d{4,}` ⊃ `{'dddd', 'ddddddd'}`)**
+    
     > **`_{..., ...}`** ==> Intervalo da quantia de ocorrências de uma string **(`d{2,4}` ⊃ `{'dd','ddd','dddd'}`)**
 
     Tanto o `*` como o `+` tendem a consumir mais chars do que desejado, dependendo do contexto dado (basta experimentar usar a Expressão Regular `(?:").*(?:")` num texto com mais do que 2 chars `"` para perceber que o resultado obtido difere do esperado (isto acontece pelo `*` consumir o 2º `"` em vez de parar aí 🤓))
@@ -25,8 +36,11 @@ Este documento tem como propósito orientar quem não tenha muita experiência c
     Para evitar isto, é normal acompanhar ambos com um `?` (e.g. `.*?`)
 
 3. **Classes**
+    
     > **`\s`** ==> Qualquer string que seja um whitespace **(`\s` ⊃ `{' ', '\t', '\n'}`)**
+    
     > **`\S`** ==> Qualquer string que não seja um whitespace **(`\S` ⊅ `{' ', '\t', '\n'}`)**
+    
     > **`\w`** ==> Qualquer string alfanumérica 
 
           \w = [A-Za-z0-9_]
@@ -48,10 +62,13 @@ Este documento tem como propósito orientar quem não tenha muita experiência c
           \D ⊅ {'0', '2', '5', '9'}
 
 4. **Special Chars**
+    
     > **`\n`** ==> Mudança de linha (clica no Enter para escrever um `'\n'` na tela)
+    
     > **`\t`** ==> Tab (clica no Tab para escrever um `'\t'` na tela)
     
 5. **Capture groups**
+    
     > **`(_)`** ==> O grupo de captura está dentro dos parêntesis, tudo o que estiver fora não é colocado neste grupo. 
 
     ```py
@@ -121,6 +138,7 @@ Este documento tem como propósito orientar quem não tenha muita experiência c
 
 
 6. **Lookaheads**
+    
     > **`(?=_)`** ==> Lookahead positivo, verifica se uma string aparece, globalmente, após uma dada posição na string a ser analisada pelo regex, sem a adicionar ao grupo de captura
 
     ```py
