@@ -139,7 +139,7 @@ Este documento tem como propósito orientar quem não tenha muita experiência c
 
 6. **Lookaheads**
     
-    > **`(?=_)`** ==> Lookahead positivo, verifica se uma string aparece, globalmente, após uma dada posição na string a ser analisada pelo regex, sem a adicionar ao grupo de captura
+    > **`(?=_)`** ==> Lookahead positivo, verifica se uma string aparece, imediatamente, após uma dada posição na string a ser analisada pelo regex, sem a adicionar ao grupo de captura
 
     ```py
       import re
@@ -172,7 +172,7 @@ Este documento tem como propósito orientar quem não tenha muita experiência c
 
 
 
-    > **`(?!_)`** ==> Lookahead negativo, verifica se uma string não aparece, globalmente, após uma dada posição na string a ser analisada pelo regex, sem a adicionar ao grupo de captura
+    > **`(?!_)`** ==> Lookahead negativo, verifica se uma string não aparece, imediatamente, após uma dada posição na string a ser analisada pelo regex, sem a adicionar ao grupo de captura
 
       ```py
       import re
@@ -186,6 +186,50 @@ Este documento tem como propósito orientar quem não tenha muita experiência c
       # result = ['a','a']
     ```
 
+7. Lookbehinds
+
+    > **`(?<=_)`** ==> Lookbehind positivo, verifica se uma string aparece, imediatamente, antes de uma dada posição na string a ser analisada pelo regex, sem a adicionar ao grupo de captura
+
+      ```py
+      import re
+
+      pat1 = '(?<=k)a'
+      pat2 = '(?<=X)stringY'
+      pat3 = '(?<=b)c'
+      pat4 = '(?<=a).'
+
+      text1 = 'kakbkc'
+      text2 = 'este texto de input está muito XstringY bem feito'
+      text3 = 'abcdecfgc'
+      text4 = 'aacaeafac'
+
+      result1 = re.findall(pat1, text1)
+      result2 = re.findall(pat2, text2)
+      result3 = re.findall(pat3, text3)
+      result4 = re.findall(pat4, text4)
+
+      # result1 = ['a']
+      # result2 = ['stringY']
+      # result3 = ['c']
+      # result4 = ['c','e','f','c']
+    ```
+
+    > **`(?<!_)`** ==> Lookbehind negativo, verifica se uma string não aparece, imediatamente, antes de uma dada posição na string a ser analisada pelo regex, sem a adicionar ao grupo de captura
+
+      ```py
+      import re
+
+      pat = '(?<!a)c'
+      text = 'aaca'
+
+      result = re.findall(pat, text)    
+
+      # aaca   ==>  aac[a]
+      # result = ['c']
+    ```
+
+
+
 Estas são algumas das operações e tokens que podem ser usados em Expressões Regulares, há mais algumas, mas para um contexto didático estes servem.
 
 Agora, com tudo isto mencionado, só falta indicar que é possível criar Expreessões Regulares por composição, e.g.: 
@@ -195,4 +239,4 @@ Agora, com tudo isto mencionado, só falta indicar que é possível criar Expree
 3. `b[a-e]*t`
 4. `(foo|bar)(?!baz)`
 5. `^\w{3,8}$`
-6. `(?<=")[^"]*(?=")` ou `(?:").*?(?:")`
+6. `(?<=")[^"]*(?=")`
