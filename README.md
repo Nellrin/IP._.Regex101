@@ -193,12 +193,12 @@ Este documento tem como propósito orientar quem não tenha muita experiência c
       ```py
       import re
 
-      pat1 = '(?<=k)a'
+      pat1 = '(?<=k)[\da]'
       pat2 = '(?<=X)stringY'
       pat3 = '(?<=b)c'
       pat4 = '(?<=a).'
 
-      text1 = 'kakbkc'
+      text1 = 'kakbk1kc'
       text2 = 'este texto de input está muito XstringY bem feito'
       text3 = 'abcdecfgc'
       text4 = 'aacaeafac'
@@ -208,10 +208,10 @@ Este documento tem como propósito orientar quem não tenha muita experiência c
       result3 = re.findall(pat3, text3)
       result4 = re.findall(pat4, text4)
 
-      # result1 = ['a']
+      # result1 = ['a','1']
       # result2 = ['stringY']
       # result3 = ['c']
-      # result4 = ['c','e','f','c']
+      # result4 = ['a','c','e','f','c']
     ```
 
     > **`(?<!_)`** ==> Lookbehind negativo, verifica se uma string não aparece, imediatamente, antes de uma dada posição na string a ser analisada pelo regex, sem a adicionar ao grupo de captura
@@ -220,7 +220,7 @@ Este documento tem como propósito orientar quem não tenha muita experiência c
       import re
 
       pat = '(?<!a)c'
-      text = 'aaca'
+      text = 'bcaaca'
 
       result = re.findall(pat, text)    
 
