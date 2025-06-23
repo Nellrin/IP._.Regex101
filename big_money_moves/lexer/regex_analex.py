@@ -1,14 +1,12 @@
 import ply.lex as lex
 
-# Tokens
 tokens = (
     'EXCEPTOPTS', 'EXCEPTCAPTURE', 'EXCEPTLOOKAHEADPOS', 'EXCEPTLOOKAHEADNEG', 'EXCEPTLOOKBEHINDPOS', 'EXCEPTLOOKBEHINDNEG', 'START', 'END', 
     'WILDCARD', 'OR', 'LPARENTHESIS', 'RPARENTHESIS', 'LBRACKET', 'RBRACKET', 'LCURLY', 'RCURLY', 'NULORMANY', 'ONEORMANY', 
     'NULORONE', 'COMMA', 'COLON', 'MINUS', 'EQUALS', 'BARSS', 'BARLS', 'BARSW', 'BARLW', 'BARSD', 'BARLD', 
-    'BART', 'BARN', 'SPACE', 'LITERALBAR', 'CHAR',
+    'BART', 'BARN', 'SPACE', 'LITERALBAR', 'CHAR','OPTIONAL','EXCEPTION',
 )
 
-# Regras de tokenização
 def t_EXCEPTOPTS(t):
     r'\[\^'
     return t
@@ -28,7 +26,6 @@ def t_EXCEPTLOOKAHEADNEG(t):
 def t_EXCEPTLOOKBEHINDPOS(t):
     r'\?<='
     return t
-
 
 def t_EXCEPTLOOKBEHINDNEG(t):
     r'\?<!'
@@ -61,6 +58,16 @@ def t_RPARENTHESIS(t):
 def t_LBRACKET(t):
     r'\['
     return t
+
+def t_OPTIONAL(t):
+    r'(?<=\[).*(?=\])'
+    return t
+
+
+def t_EXCEPTION(t):
+    r'(?<=\[\^).*(?=\])'
+    return t
+
 
 def t_RBRACKET(t):
     r'\]'
@@ -147,17 +154,16 @@ def t_CHAR(t):
     return t
 
 
-# Tratamento de erro
 def t_error(t):
     print(f"Illegal character '{t.value[0]}' at position {t.lexpos}")
     t.lexer.skip(1)
 
-# Criar o lexer
+
+
 lexer = lex.lex()
 
-# Teste
-input_code = "(?<!\")[^\"]*(?=\")"
-lexer.input(input_code)
+#input_code = "S[^l(mk)+]a"
+#lexer.input(input_code)
 
-for tok in lexer:
-    print(f"Value: {tok.value}, Token: {tok.type}, Position: {tok.lexpos}")
+#for tok in lexer:
+#    print(f"Value: {tok.value}, Token: {tok.type}, Position: {tok.lexpos}")
