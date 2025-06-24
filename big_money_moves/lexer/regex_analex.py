@@ -1,10 +1,16 @@
 import ply.lex as lex
 
 tokens = (
-    'EXCEPTOPTS', 'EXCEPTCAPTURE', 'EXCEPTLOOKAHEADPOS', 'EXCEPTLOOKAHEADNEG', 'EXCEPTLOOKBEHINDPOS', 'EXCEPTLOOKBEHINDNEG', 'START', 'END', 
+    'EXCEPTOPTS', 
+    'EXCEPTCAPTURE', 'EXCEPTLOOKAHEADPOS', 'EXCEPTLOOKAHEADNEG', 'EXCEPTLOOKBEHINDPOS', 'EXCEPTLOOKBEHINDNEG', 'START', 'END', 
     'WILDCARD', 'OR', 'LPARENTHESIS', 'RPARENTHESIS', 'LBRACKET', 'RBRACKET', 'LCURLY', 'RCURLY', 'NULORMANY', 'ONEORMANY', 
-    'NULORONE', 'COMMA', 'COLON', 'MINUS', 'EQUALS', 'BARSS', 'BARLS', 'BARSW', 'BARLW', 'BARSD', 'BARLD', 
-    'BART', 'BARN', 'SPACE', 'LITERALBAR', 'CHAR','OPTIONAL','EXCEPTION',
+    'NULORONE', 'COMMA', 'COLON', 
+    'MINUS', 
+    #'EQUALS', 
+    'BARSS', 'BARLS', 'BARSW', 'BARLW', 'BARSD', 'BARLD', 
+    'BART', 'BARN', 'SPACE', 'LITERALBAR', 'CHAR',
+    #'OPTIONAL',
+    #'EXCEPTION',
 )
 
 def t_EXCEPTOPTS(t):
@@ -59,14 +65,13 @@ def t_LBRACKET(t):
     r'\['
     return t
 
-def t_OPTIONAL(t):
-    r'(?<=\[).*(?=\])'
-    return t
+#def t_OPTIONAL(t):
+#    r'(?<=\[).*?(?=\])'
+#    return t
 
-
-def t_EXCEPTION(t):
-    r'(?<=\[\^).*(?=\])'
-    return t
+#def t_EXCEPTION(t):
+#    r'(?<=\[\^).*(?=\])'
+#    return t
 
 
 def t_RBRACKET(t):
@@ -90,7 +95,7 @@ def t_ONEORMANY(t):
     return t
 
 def t_NULORONE(t):
-    r'\?'
+    r'(?<!\|)\?(?![\+\*\{])'
     return t
 
 def t_COMMA(t):
@@ -105,9 +110,9 @@ def t_MINUS(t):
     r'-'
     return t
 
-def t_EQUALS(t):
-    r'='
-    return t
+#def t_EQUALS(t):
+#    r'='
+#    return t
 
 def t_BARSS(t):
     r'\\s'

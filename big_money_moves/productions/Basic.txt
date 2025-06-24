@@ -1,0 +1,61 @@
+WHOLE : START Expr END  
+
+END : $  
+    |
+
+START : ^
+      | 
+
+Expr : Expr Alternative MiniExpr ExprOpt
+     | 
+
+Alternative : '|'
+            | 
+
+ExprOpt : ?
+        |
+
+MiniExpr : MiniExpr WtfAmIGoingToPutHere Quantifier
+         |
+
+Quantifier : +
+           | *
+           | {\d}
+           | {\d,}
+           | {\d,\d}
+           | {,\d}
+           |
+
+WtfAmIGoingToPutHere : Phrase STATE
+                     | CaptureGroup
+
+Phrase : Phrase STATE
+       |
+
+CaptureGroup : ( Expr )
+             | (?: Expr )  
+             | (?= Expr ) 
+             | (?! Expr ) 
+             | (?<= Expr )
+             | (?<! Expr )
+
+MINISTATE : Exception
+          | Optional   (if len(Optional)%3 == 0 && Optional[1] == '-' && ... && Optional[N-2] == '-', Optional == range)
+
+STATE : .
+      | \s
+      | \S
+      | \w
+      | \W
+      | \d
+      | \D
+      | \n
+      | \t
+      | ' '
+      | '\''$'
+      | '\''^'
+      | '\''\'
+      | '\''*'
+      | '\''+'
+      | ...
+      | MINISTATE

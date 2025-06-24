@@ -1,0 +1,3278 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> whole
+Rule 1     charlist -> charlist CHAR
+Rule 2     charlist -> charlist CHAR MINUS CHAR
+Rule 3     charlist -> <empty>
+Rule 4     phrase -> phrase state
+Rule 5     phrase -> <empty>
+Rule 6     whole -> start expr end
+Rule 7     start -> START
+Rule 8     start -> <empty>
+Rule 9     quantifier -> ONEORMANY
+Rule 10    quantifier -> NULORMANY
+Rule 11    quantifier -> LCURLY BARSD RCURLY
+Rule 12    quantifier -> LCURLY BARSD COMMA RCURLY
+Rule 13    quantifier -> LCURLY COMMA BARSD RCURLY
+Rule 14    quantifier -> LCURLY BARSD COMMA BARSD RCURLY
+Rule 15    quantifier -> <empty>
+Rule 16    charclass -> LBRACKET charlist CHAR RBRACKET
+Rule 17    end -> END
+Rule 18    end -> <empty>
+Rule 19    charclass -> EXCEPTOPTS charlist CHAR RBRACKET
+Rule 20    state -> WILDCARD
+Rule 21    state -> BARSS
+Rule 22    state -> BARLS
+Rule 23    state -> BARSW
+Rule 24    state -> BARLW
+Rule 25    state -> BARSD
+Rule 26    state -> BARLD
+Rule 27    state -> BARN
+Rule 28    state -> BART
+Rule 29    state -> SPACE
+Rule 30    state -> CHAR
+Rule 31    state -> charclass
+Rule 32    state -> LITERALBAR END
+Rule 33    state -> LITERALBAR START
+Rule 34    state -> LITERALBAR LITERALBAR
+Rule 35    state -> LITERALBAR ONEORMANY
+Rule 36    state -> LITERALBAR NULORMANY
+Rule 37    state -> LITERALBAR OR
+Rule 38    state -> LITERALBAR LBRACKET
+Rule 39    state -> LITERALBAR RBRACKET
+Rule 40    state -> MINUS
+Rule 41    state -> LITERALBAR LCURLY
+Rule 42    state -> LITERALBAR RCURLY
+Rule 43    state -> LITERALBAR NULORONE
+Rule 44    state -> LITERALBAR COLON
+Rule 45    state -> LITERALBAR LPARENTHESIS
+Rule 46    state -> LITERALBAR RPARENTHESIS
+Rule 47    expropt -> NULORONE
+Rule 48    expropt -> <empty>
+Rule 49    expr -> expr alternative miniexpr expropt
+Rule 50    expr -> expr alternative miniexpr
+Rule 51    expr -> expr miniexpr expropt
+Rule 52    expr -> expr miniexpr
+Rule 53    expr -> <empty>
+Rule 54    capture_group -> LPARENTHESIS expr RPARENTHESIS
+Rule 55    capture_group -> LPARENTHESIS EXCEPTCAPTURE expr RPARENTHESIS
+Rule 56    capture_group -> LPARENTHESIS EXCEPTLOOKAHEADPOS expr RPARENTHESIS
+Rule 57    capture_group -> LPARENTHESIS EXCEPTLOOKAHEADNEG expr RPARENTHESIS
+Rule 58    capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDPOS expr RPARENTHESIS
+Rule 59    capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDNEG expr RPARENTHESIS
+Rule 60    alternative -> OR
+Rule 61    alternative -> <empty>
+Rule 62    wtfamidoinghere -> phrase state
+Rule 63    wtfamidoinghere -> capture_group
+Rule 64    wtfamidoinghere -> <empty>
+Rule 65    miniexpr -> miniexpr wtfamidoinghere quantifier
+Rule 66    miniexpr -> <empty>
+
+Terminals, with rules where they appear
+
+BARLD                : 26
+BARLS                : 22
+BARLW                : 24
+BARN                 : 27
+BARSD                : 11 12 13 14 14 25
+BARSS                : 21
+BARSW                : 23
+BART                 : 28
+CHAR                 : 1 2 2 16 19 30
+COLON                : 44
+COMMA                : 12 13 14
+END                  : 17 32
+EXCEPTCAPTURE        : 55
+EXCEPTLOOKAHEADNEG   : 57
+EXCEPTLOOKAHEADPOS   : 56
+EXCEPTLOOKBEHINDNEG  : 59
+EXCEPTLOOKBEHINDPOS  : 58
+EXCEPTOPTS           : 19
+LBRACKET             : 16 38
+LCURLY               : 11 12 13 14 41
+LITERALBAR           : 32 33 34 34 35 36 37 38 39 41 42 43 44 45 46
+LPARENTHESIS         : 45 54 55 56 57 58 59
+MINUS                : 2 40
+NULORMANY            : 10 36
+NULORONE             : 43 47
+ONEORMANY            : 9 35
+OR                   : 37 60
+RBRACKET             : 16 19 39
+RCURLY               : 11 12 13 14 42
+RPARENTHESIS         : 46 54 55 56 57 58 59
+SPACE                : 29
+START                : 7 33
+WILDCARD             : 20
+error                : 
+
+Nonterminals, with rules where they appear
+
+alternative          : 49 50
+capture_group        : 63
+charclass            : 31
+charlist             : 1 2 16 19
+end                  : 6
+expr                 : 6 49 50 51 52 54 55 56 57 58 59
+expropt              : 49 51
+miniexpr             : 49 50 51 52 65
+phrase               : 4 62
+quantifier           : 65
+start                : 6
+state                : 4 62
+whole                : 0
+wtfamidoinghere      : 65
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . whole
+    (6) whole -> . start expr end
+    (7) start -> . START
+    (8) start -> .
+
+    START           shift and go to state 3
+    END             reduce using rule 8 (start -> .)
+    OR              reduce using rule 8 (start -> .)
+    NULORONE        reduce using rule 8 (start -> .)
+    LPARENTHESIS    reduce using rule 8 (start -> .)
+    ONEORMANY       reduce using rule 8 (start -> .)
+    NULORMANY       reduce using rule 8 (start -> .)
+    LCURLY          reduce using rule 8 (start -> .)
+    WILDCARD        reduce using rule 8 (start -> .)
+    BARSS           reduce using rule 8 (start -> .)
+    BARLS           reduce using rule 8 (start -> .)
+    BARSW           reduce using rule 8 (start -> .)
+    BARLW           reduce using rule 8 (start -> .)
+    BARSD           reduce using rule 8 (start -> .)
+    BARLD           reduce using rule 8 (start -> .)
+    BARN            reduce using rule 8 (start -> .)
+    BART            reduce using rule 8 (start -> .)
+    SPACE           reduce using rule 8 (start -> .)
+    CHAR            reduce using rule 8 (start -> .)
+    LITERALBAR      reduce using rule 8 (start -> .)
+    MINUS           reduce using rule 8 (start -> .)
+    LBRACKET        reduce using rule 8 (start -> .)
+    EXCEPTOPTS      reduce using rule 8 (start -> .)
+    $end            reduce using rule 8 (start -> .)
+
+    whole                          shift and go to state 1
+    start                          shift and go to state 2
+
+state 1
+
+    (0) S' -> whole .
+
+
+
+state 2
+
+    (6) whole -> start . expr end
+    (49) expr -> . expr alternative miniexpr expropt
+    (50) expr -> . expr alternative miniexpr
+    (51) expr -> . expr miniexpr expropt
+    (52) expr -> . expr miniexpr
+    (53) expr -> .
+
+    END             reduce using rule 53 (expr -> .)
+    OR              reduce using rule 53 (expr -> .)
+    NULORONE        reduce using rule 53 (expr -> .)
+    LPARENTHESIS    reduce using rule 53 (expr -> .)
+    ONEORMANY       reduce using rule 53 (expr -> .)
+    NULORMANY       reduce using rule 53 (expr -> .)
+    LCURLY          reduce using rule 53 (expr -> .)
+    WILDCARD        reduce using rule 53 (expr -> .)
+    BARSS           reduce using rule 53 (expr -> .)
+    BARLS           reduce using rule 53 (expr -> .)
+    BARSW           reduce using rule 53 (expr -> .)
+    BARLW           reduce using rule 53 (expr -> .)
+    BARSD           reduce using rule 53 (expr -> .)
+    BARLD           reduce using rule 53 (expr -> .)
+    BARN            reduce using rule 53 (expr -> .)
+    BART            reduce using rule 53 (expr -> .)
+    SPACE           reduce using rule 53 (expr -> .)
+    CHAR            reduce using rule 53 (expr -> .)
+    LITERALBAR      reduce using rule 53 (expr -> .)
+    MINUS           reduce using rule 53 (expr -> .)
+    LBRACKET        reduce using rule 53 (expr -> .)
+    EXCEPTOPTS      reduce using rule 53 (expr -> .)
+    $end            reduce using rule 53 (expr -> .)
+
+    expr                           shift and go to state 4
+
+state 3
+
+    (7) start -> START .
+
+    END             reduce using rule 7 (start -> START .)
+    OR              reduce using rule 7 (start -> START .)
+    NULORONE        reduce using rule 7 (start -> START .)
+    LPARENTHESIS    reduce using rule 7 (start -> START .)
+    ONEORMANY       reduce using rule 7 (start -> START .)
+    NULORMANY       reduce using rule 7 (start -> START .)
+    LCURLY          reduce using rule 7 (start -> START .)
+    WILDCARD        reduce using rule 7 (start -> START .)
+    BARSS           reduce using rule 7 (start -> START .)
+    BARLS           reduce using rule 7 (start -> START .)
+    BARSW           reduce using rule 7 (start -> START .)
+    BARLW           reduce using rule 7 (start -> START .)
+    BARSD           reduce using rule 7 (start -> START .)
+    BARLD           reduce using rule 7 (start -> START .)
+    BARN            reduce using rule 7 (start -> START .)
+    BART            reduce using rule 7 (start -> START .)
+    SPACE           reduce using rule 7 (start -> START .)
+    CHAR            reduce using rule 7 (start -> START .)
+    LITERALBAR      reduce using rule 7 (start -> START .)
+    MINUS           reduce using rule 7 (start -> START .)
+    LBRACKET        reduce using rule 7 (start -> START .)
+    EXCEPTOPTS      reduce using rule 7 (start -> START .)
+    $end            reduce using rule 7 (start -> START .)
+
+
+state 4
+
+    (6) whole -> start expr . end
+    (49) expr -> expr . alternative miniexpr expropt
+    (50) expr -> expr . alternative miniexpr
+    (51) expr -> expr . miniexpr expropt
+    (52) expr -> expr . miniexpr
+    (17) end -> . END
+    (18) end -> .
+    (60) alternative -> . OR
+    (61) alternative -> .
+    (65) miniexpr -> . miniexpr wtfamidoinghere quantifier
+    (66) miniexpr -> .
+
+  ! shift/reduce conflict for END resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! reduce/reduce conflict for $end resolved using rule 18 (end -> .)
+  ! reduce/reduce conflict for NULORONE resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for LPARENTHESIS resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for ONEORMANY resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for NULORMANY resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for LCURLY resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for WILDCARD resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARSS resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARLS resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARSW resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARLW resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARSD resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARLD resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARN resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BART resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for SPACE resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for CHAR resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for LITERALBAR resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for MINUS resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for LBRACKET resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for EXCEPTOPTS resolved using rule 61 (alternative -> .)
+  ! shift/reduce conflict for END resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! reduce/reduce conflict for $end resolved using rule 18 (end -> .)
+    END             shift and go to state 8
+    $end            reduce using rule 18 (end -> .)
+    OR              shift and go to state 9
+    NULORONE        reduce using rule 61 (alternative -> .)
+    LPARENTHESIS    reduce using rule 61 (alternative -> .)
+    ONEORMANY       reduce using rule 61 (alternative -> .)
+    NULORMANY       reduce using rule 61 (alternative -> .)
+    LCURLY          reduce using rule 61 (alternative -> .)
+    WILDCARD        reduce using rule 61 (alternative -> .)
+    BARSS           reduce using rule 61 (alternative -> .)
+    BARLS           reduce using rule 61 (alternative -> .)
+    BARSW           reduce using rule 61 (alternative -> .)
+    BARLW           reduce using rule 61 (alternative -> .)
+    BARSD           reduce using rule 61 (alternative -> .)
+    BARLD           reduce using rule 61 (alternative -> .)
+    BARN            reduce using rule 61 (alternative -> .)
+    BART            reduce using rule 61 (alternative -> .)
+    SPACE           reduce using rule 61 (alternative -> .)
+    CHAR            reduce using rule 61 (alternative -> .)
+    LITERALBAR      reduce using rule 61 (alternative -> .)
+    MINUS           reduce using rule 61 (alternative -> .)
+    LBRACKET        reduce using rule 61 (alternative -> .)
+    EXCEPTOPTS      reduce using rule 61 (alternative -> .)
+
+  ! END             [ reduce using rule 61 (alternative -> .) ]
+  ! OR              [ reduce using rule 61 (alternative -> .) ]
+  ! $end            [ reduce using rule 61 (alternative -> .) ]
+  ! NULORONE        [ reduce using rule 66 (miniexpr -> .) ]
+  ! LPARENTHESIS    [ reduce using rule 66 (miniexpr -> .) ]
+  ! ONEORMANY       [ reduce using rule 66 (miniexpr -> .) ]
+  ! NULORMANY       [ reduce using rule 66 (miniexpr -> .) ]
+  ! LCURLY          [ reduce using rule 66 (miniexpr -> .) ]
+  ! WILDCARD        [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARSS           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARLS           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARSW           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARLW           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARSD           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARLD           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARN            [ reduce using rule 66 (miniexpr -> .) ]
+  ! BART            [ reduce using rule 66 (miniexpr -> .) ]
+  ! SPACE           [ reduce using rule 66 (miniexpr -> .) ]
+  ! CHAR            [ reduce using rule 66 (miniexpr -> .) ]
+  ! LITERALBAR      [ reduce using rule 66 (miniexpr -> .) ]
+  ! MINUS           [ reduce using rule 66 (miniexpr -> .) ]
+  ! LBRACKET        [ reduce using rule 66 (miniexpr -> .) ]
+  ! EXCEPTOPTS      [ reduce using rule 66 (miniexpr -> .) ]
+  ! END             [ reduce using rule 66 (miniexpr -> .) ]
+  ! OR              [ reduce using rule 66 (miniexpr -> .) ]
+  ! $end            [ reduce using rule 66 (miniexpr -> .) ]
+
+    end                            shift and go to state 5
+    alternative                    shift and go to state 6
+    miniexpr                       shift and go to state 7
+
+state 5
+
+    (6) whole -> start expr end .
+
+    $end            reduce using rule 6 (whole -> start expr end .)
+
+
+state 6
+
+    (49) expr -> expr alternative . miniexpr expropt
+    (50) expr -> expr alternative . miniexpr
+    (65) miniexpr -> . miniexpr wtfamidoinghere quantifier
+    (66) miniexpr -> .
+
+    NULORONE        reduce using rule 66 (miniexpr -> .)
+    LPARENTHESIS    reduce using rule 66 (miniexpr -> .)
+    ONEORMANY       reduce using rule 66 (miniexpr -> .)
+    NULORMANY       reduce using rule 66 (miniexpr -> .)
+    LCURLY          reduce using rule 66 (miniexpr -> .)
+    WILDCARD        reduce using rule 66 (miniexpr -> .)
+    BARSS           reduce using rule 66 (miniexpr -> .)
+    BARLS           reduce using rule 66 (miniexpr -> .)
+    BARSW           reduce using rule 66 (miniexpr -> .)
+    BARLW           reduce using rule 66 (miniexpr -> .)
+    BARSD           reduce using rule 66 (miniexpr -> .)
+    BARLD           reduce using rule 66 (miniexpr -> .)
+    BARN            reduce using rule 66 (miniexpr -> .)
+    BART            reduce using rule 66 (miniexpr -> .)
+    SPACE           reduce using rule 66 (miniexpr -> .)
+    CHAR            reduce using rule 66 (miniexpr -> .)
+    LITERALBAR      reduce using rule 66 (miniexpr -> .)
+    MINUS           reduce using rule 66 (miniexpr -> .)
+    LBRACKET        reduce using rule 66 (miniexpr -> .)
+    EXCEPTOPTS      reduce using rule 66 (miniexpr -> .)
+    END             reduce using rule 66 (miniexpr -> .)
+    OR              reduce using rule 66 (miniexpr -> .)
+    $end            reduce using rule 66 (miniexpr -> .)
+    RPARENTHESIS    reduce using rule 66 (miniexpr -> .)
+
+    miniexpr                       shift and go to state 10
+
+state 7
+
+    (51) expr -> expr miniexpr . expropt
+    (52) expr -> expr miniexpr .
+    (65) miniexpr -> miniexpr . wtfamidoinghere quantifier
+    (47) expropt -> . NULORONE
+    (48) expropt -> .
+    (62) wtfamidoinghere -> . phrase state
+    (63) wtfamidoinghere -> . capture_group
+    (64) wtfamidoinghere -> .
+    (4) phrase -> . phrase state
+    (5) phrase -> .
+    (54) capture_group -> . LPARENTHESIS expr RPARENTHESIS
+    (55) capture_group -> . LPARENTHESIS EXCEPTCAPTURE expr RPARENTHESIS
+    (56) capture_group -> . LPARENTHESIS EXCEPTLOOKAHEADPOS expr RPARENTHESIS
+    (57) capture_group -> . LPARENTHESIS EXCEPTLOOKAHEADNEG expr RPARENTHESIS
+    (58) capture_group -> . LPARENTHESIS EXCEPTLOOKBEHINDPOS expr RPARENTHESIS
+    (59) capture_group -> . LPARENTHESIS EXCEPTLOOKBEHINDNEG expr RPARENTHESIS
+
+  ! shift/reduce conflict for NULORONE resolved as shift
+  ! reduce/reduce conflict for END resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for OR resolved using rule 48 (expropt -> .)
+  ! shift/reduce conflict for NULORONE resolved as shift
+  ! reduce/reduce conflict for LPARENTHESIS resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for ONEORMANY resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for NULORMANY resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for LCURLY resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for WILDCARD resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for BARSS resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for BARLS resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for BARSW resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for BARLW resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for BARSD resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for BARLD resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for BARN resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for BART resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for SPACE resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for CHAR resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for LITERALBAR resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for MINUS resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for LBRACKET resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for EXCEPTOPTS resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for $end resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for RPARENTHESIS resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for ONEORMANY resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for NULORMANY resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for LCURLY resolved using rule 48 (expropt -> .)
+  ! shift/reduce conflict for NULORONE resolved as shift
+  ! reduce/reduce conflict for LPARENTHESIS resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for WILDCARD resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for BARSS resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for BARLS resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for BARSW resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for BARLW resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for BARSD resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for BARLD resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for BARN resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for BART resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for SPACE resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for CHAR resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for LITERALBAR resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for MINUS resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for LBRACKET resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for EXCEPTOPTS resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for END resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for OR resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for $end resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for RPARENTHESIS resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for WILDCARD resolved using rule 5 (phrase -> .)
+  ! reduce/reduce conflict for BARSS resolved using rule 5 (phrase -> .)
+  ! reduce/reduce conflict for BARLS resolved using rule 5 (phrase -> .)
+  ! reduce/reduce conflict for BARSW resolved using rule 5 (phrase -> .)
+  ! reduce/reduce conflict for BARLW resolved using rule 5 (phrase -> .)
+  ! reduce/reduce conflict for BARSD resolved using rule 5 (phrase -> .)
+  ! reduce/reduce conflict for BARLD resolved using rule 5 (phrase -> .)
+  ! reduce/reduce conflict for BARN resolved using rule 5 (phrase -> .)
+  ! reduce/reduce conflict for BART resolved using rule 5 (phrase -> .)
+  ! reduce/reduce conflict for SPACE resolved using rule 5 (phrase -> .)
+  ! reduce/reduce conflict for CHAR resolved using rule 5 (phrase -> .)
+  ! reduce/reduce conflict for LITERALBAR resolved using rule 5 (phrase -> .)
+  ! reduce/reduce conflict for MINUS resolved using rule 5 (phrase -> .)
+  ! reduce/reduce conflict for LBRACKET resolved using rule 5 (phrase -> .)
+  ! reduce/reduce conflict for EXCEPTOPTS resolved using rule 5 (phrase -> .)
+  ! shift/reduce conflict for LPARENTHESIS resolved as shift
+    NULORONE        shift and go to state 13
+    END             reduce using rule 48 (expropt -> .)
+    OR              reduce using rule 48 (expropt -> .)
+    ONEORMANY       reduce using rule 48 (expropt -> .)
+    NULORMANY       reduce using rule 48 (expropt -> .)
+    LCURLY          reduce using rule 48 (expropt -> .)
+    $end            reduce using rule 48 (expropt -> .)
+    RPARENTHESIS    reduce using rule 48 (expropt -> .)
+    WILDCARD        reduce using rule 5 (phrase -> .)
+    BARSS           reduce using rule 5 (phrase -> .)
+    BARLS           reduce using rule 5 (phrase -> .)
+    BARSW           reduce using rule 5 (phrase -> .)
+    BARLW           reduce using rule 5 (phrase -> .)
+    BARSD           reduce using rule 5 (phrase -> .)
+    BARLD           reduce using rule 5 (phrase -> .)
+    BARN            reduce using rule 5 (phrase -> .)
+    BART            reduce using rule 5 (phrase -> .)
+    SPACE           reduce using rule 5 (phrase -> .)
+    CHAR            reduce using rule 5 (phrase -> .)
+    LITERALBAR      reduce using rule 5 (phrase -> .)
+    MINUS           reduce using rule 5 (phrase -> .)
+    LBRACKET        reduce using rule 5 (phrase -> .)
+    EXCEPTOPTS      reduce using rule 5 (phrase -> .)
+    LPARENTHESIS    shift and go to state 16
+
+  ! END             [ reduce using rule 52 (expr -> expr miniexpr .) ]
+  ! OR              [ reduce using rule 52 (expr -> expr miniexpr .) ]
+  ! NULORONE        [ reduce using rule 52 (expr -> expr miniexpr .) ]
+  ! LPARENTHESIS    [ reduce using rule 52 (expr -> expr miniexpr .) ]
+  ! ONEORMANY       [ reduce using rule 52 (expr -> expr miniexpr .) ]
+  ! NULORMANY       [ reduce using rule 52 (expr -> expr miniexpr .) ]
+  ! LCURLY          [ reduce using rule 52 (expr -> expr miniexpr .) ]
+  ! WILDCARD        [ reduce using rule 52 (expr -> expr miniexpr .) ]
+  ! BARSS           [ reduce using rule 52 (expr -> expr miniexpr .) ]
+  ! BARLS           [ reduce using rule 52 (expr -> expr miniexpr .) ]
+  ! BARSW           [ reduce using rule 52 (expr -> expr miniexpr .) ]
+  ! BARLW           [ reduce using rule 52 (expr -> expr miniexpr .) ]
+  ! BARSD           [ reduce using rule 52 (expr -> expr miniexpr .) ]
+  ! BARLD           [ reduce using rule 52 (expr -> expr miniexpr .) ]
+  ! BARN            [ reduce using rule 52 (expr -> expr miniexpr .) ]
+  ! BART            [ reduce using rule 52 (expr -> expr miniexpr .) ]
+  ! SPACE           [ reduce using rule 52 (expr -> expr miniexpr .) ]
+  ! CHAR            [ reduce using rule 52 (expr -> expr miniexpr .) ]
+  ! LITERALBAR      [ reduce using rule 52 (expr -> expr miniexpr .) ]
+  ! MINUS           [ reduce using rule 52 (expr -> expr miniexpr .) ]
+  ! LBRACKET        [ reduce using rule 52 (expr -> expr miniexpr .) ]
+  ! EXCEPTOPTS      [ reduce using rule 52 (expr -> expr miniexpr .) ]
+  ! $end            [ reduce using rule 52 (expr -> expr miniexpr .) ]
+  ! RPARENTHESIS    [ reduce using rule 52 (expr -> expr miniexpr .) ]
+  ! NULORONE        [ reduce using rule 48 (expropt -> .) ]
+  ! LPARENTHESIS    [ reduce using rule 48 (expropt -> .) ]
+  ! WILDCARD        [ reduce using rule 48 (expropt -> .) ]
+  ! BARSS           [ reduce using rule 48 (expropt -> .) ]
+  ! BARLS           [ reduce using rule 48 (expropt -> .) ]
+  ! BARSW           [ reduce using rule 48 (expropt -> .) ]
+  ! BARLW           [ reduce using rule 48 (expropt -> .) ]
+  ! BARSD           [ reduce using rule 48 (expropt -> .) ]
+  ! BARLD           [ reduce using rule 48 (expropt -> .) ]
+  ! BARN            [ reduce using rule 48 (expropt -> .) ]
+  ! BART            [ reduce using rule 48 (expropt -> .) ]
+  ! SPACE           [ reduce using rule 48 (expropt -> .) ]
+  ! CHAR            [ reduce using rule 48 (expropt -> .) ]
+  ! LITERALBAR      [ reduce using rule 48 (expropt -> .) ]
+  ! MINUS           [ reduce using rule 48 (expropt -> .) ]
+  ! LBRACKET        [ reduce using rule 48 (expropt -> .) ]
+  ! EXCEPTOPTS      [ reduce using rule 48 (expropt -> .) ]
+  ! ONEORMANY       [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! NULORMANY       [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! LCURLY          [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! NULORONE        [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! LPARENTHESIS    [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! WILDCARD        [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! BARSS           [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! BARLS           [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! BARSW           [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! BARLW           [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! BARSD           [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! BARLD           [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! BARN            [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! BART            [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! SPACE           [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! CHAR            [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! LITERALBAR      [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! MINUS           [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! LBRACKET        [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! EXCEPTOPTS      [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! END             [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! OR              [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! $end            [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! RPARENTHESIS    [ reduce using rule 64 (wtfamidoinghere -> .) ]
+
+    expropt                        shift and go to state 11
+    wtfamidoinghere                shift and go to state 12
+    phrase                         shift and go to state 14
+    capture_group                  shift and go to state 15
+
+state 8
+
+    (17) end -> END .
+
+    $end            reduce using rule 17 (end -> END .)
+
+
+state 9
+
+    (60) alternative -> OR .
+
+    NULORONE        reduce using rule 60 (alternative -> OR .)
+    LPARENTHESIS    reduce using rule 60 (alternative -> OR .)
+    ONEORMANY       reduce using rule 60 (alternative -> OR .)
+    NULORMANY       reduce using rule 60 (alternative -> OR .)
+    LCURLY          reduce using rule 60 (alternative -> OR .)
+    WILDCARD        reduce using rule 60 (alternative -> OR .)
+    BARSS           reduce using rule 60 (alternative -> OR .)
+    BARLS           reduce using rule 60 (alternative -> OR .)
+    BARSW           reduce using rule 60 (alternative -> OR .)
+    BARLW           reduce using rule 60 (alternative -> OR .)
+    BARSD           reduce using rule 60 (alternative -> OR .)
+    BARLD           reduce using rule 60 (alternative -> OR .)
+    BARN            reduce using rule 60 (alternative -> OR .)
+    BART            reduce using rule 60 (alternative -> OR .)
+    SPACE           reduce using rule 60 (alternative -> OR .)
+    CHAR            reduce using rule 60 (alternative -> OR .)
+    LITERALBAR      reduce using rule 60 (alternative -> OR .)
+    MINUS           reduce using rule 60 (alternative -> OR .)
+    LBRACKET        reduce using rule 60 (alternative -> OR .)
+    EXCEPTOPTS      reduce using rule 60 (alternative -> OR .)
+    END             reduce using rule 60 (alternative -> OR .)
+    OR              reduce using rule 60 (alternative -> OR .)
+    $end            reduce using rule 60 (alternative -> OR .)
+    RPARENTHESIS    reduce using rule 60 (alternative -> OR .)
+
+
+state 10
+
+    (49) expr -> expr alternative miniexpr . expropt
+    (50) expr -> expr alternative miniexpr .
+    (65) miniexpr -> miniexpr . wtfamidoinghere quantifier
+    (47) expropt -> . NULORONE
+    (48) expropt -> .
+    (62) wtfamidoinghere -> . phrase state
+    (63) wtfamidoinghere -> . capture_group
+    (64) wtfamidoinghere -> .
+    (4) phrase -> . phrase state
+    (5) phrase -> .
+    (54) capture_group -> . LPARENTHESIS expr RPARENTHESIS
+    (55) capture_group -> . LPARENTHESIS EXCEPTCAPTURE expr RPARENTHESIS
+    (56) capture_group -> . LPARENTHESIS EXCEPTLOOKAHEADPOS expr RPARENTHESIS
+    (57) capture_group -> . LPARENTHESIS EXCEPTLOOKAHEADNEG expr RPARENTHESIS
+    (58) capture_group -> . LPARENTHESIS EXCEPTLOOKBEHINDPOS expr RPARENTHESIS
+    (59) capture_group -> . LPARENTHESIS EXCEPTLOOKBEHINDNEG expr RPARENTHESIS
+
+  ! shift/reduce conflict for NULORONE resolved as shift
+  ! reduce/reduce conflict for END resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for OR resolved using rule 48 (expropt -> .)
+  ! shift/reduce conflict for NULORONE resolved as shift
+  ! reduce/reduce conflict for LPARENTHESIS resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for ONEORMANY resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for NULORMANY resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for LCURLY resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for WILDCARD resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for BARSS resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for BARLS resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for BARSW resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for BARLW resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for BARSD resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for BARLD resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for BARN resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for BART resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for SPACE resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for CHAR resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for LITERALBAR resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for MINUS resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for LBRACKET resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for EXCEPTOPTS resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for $end resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for RPARENTHESIS resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for ONEORMANY resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for NULORMANY resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for LCURLY resolved using rule 48 (expropt -> .)
+  ! shift/reduce conflict for NULORONE resolved as shift
+  ! reduce/reduce conflict for LPARENTHESIS resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for WILDCARD resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for BARSS resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for BARLS resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for BARSW resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for BARLW resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for BARSD resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for BARLD resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for BARN resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for BART resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for SPACE resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for CHAR resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for LITERALBAR resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for MINUS resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for LBRACKET resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for EXCEPTOPTS resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for END resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for OR resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for $end resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for RPARENTHESIS resolved using rule 48 (expropt -> .)
+  ! reduce/reduce conflict for WILDCARD resolved using rule 5 (phrase -> .)
+  ! reduce/reduce conflict for BARSS resolved using rule 5 (phrase -> .)
+  ! reduce/reduce conflict for BARLS resolved using rule 5 (phrase -> .)
+  ! reduce/reduce conflict for BARSW resolved using rule 5 (phrase -> .)
+  ! reduce/reduce conflict for BARLW resolved using rule 5 (phrase -> .)
+  ! reduce/reduce conflict for BARSD resolved using rule 5 (phrase -> .)
+  ! reduce/reduce conflict for BARLD resolved using rule 5 (phrase -> .)
+  ! reduce/reduce conflict for BARN resolved using rule 5 (phrase -> .)
+  ! reduce/reduce conflict for BART resolved using rule 5 (phrase -> .)
+  ! reduce/reduce conflict for SPACE resolved using rule 5 (phrase -> .)
+  ! reduce/reduce conflict for CHAR resolved using rule 5 (phrase -> .)
+  ! reduce/reduce conflict for LITERALBAR resolved using rule 5 (phrase -> .)
+  ! reduce/reduce conflict for MINUS resolved using rule 5 (phrase -> .)
+  ! reduce/reduce conflict for LBRACKET resolved using rule 5 (phrase -> .)
+  ! reduce/reduce conflict for EXCEPTOPTS resolved using rule 5 (phrase -> .)
+  ! shift/reduce conflict for LPARENTHESIS resolved as shift
+    NULORONE        shift and go to state 13
+    END             reduce using rule 48 (expropt -> .)
+    OR              reduce using rule 48 (expropt -> .)
+    ONEORMANY       reduce using rule 48 (expropt -> .)
+    NULORMANY       reduce using rule 48 (expropt -> .)
+    LCURLY          reduce using rule 48 (expropt -> .)
+    $end            reduce using rule 48 (expropt -> .)
+    RPARENTHESIS    reduce using rule 48 (expropt -> .)
+    WILDCARD        reduce using rule 5 (phrase -> .)
+    BARSS           reduce using rule 5 (phrase -> .)
+    BARLS           reduce using rule 5 (phrase -> .)
+    BARSW           reduce using rule 5 (phrase -> .)
+    BARLW           reduce using rule 5 (phrase -> .)
+    BARSD           reduce using rule 5 (phrase -> .)
+    BARLD           reduce using rule 5 (phrase -> .)
+    BARN            reduce using rule 5 (phrase -> .)
+    BART            reduce using rule 5 (phrase -> .)
+    SPACE           reduce using rule 5 (phrase -> .)
+    CHAR            reduce using rule 5 (phrase -> .)
+    LITERALBAR      reduce using rule 5 (phrase -> .)
+    MINUS           reduce using rule 5 (phrase -> .)
+    LBRACKET        reduce using rule 5 (phrase -> .)
+    EXCEPTOPTS      reduce using rule 5 (phrase -> .)
+    LPARENTHESIS    shift and go to state 16
+
+  ! END             [ reduce using rule 50 (expr -> expr alternative miniexpr .) ]
+  ! OR              [ reduce using rule 50 (expr -> expr alternative miniexpr .) ]
+  ! NULORONE        [ reduce using rule 50 (expr -> expr alternative miniexpr .) ]
+  ! LPARENTHESIS    [ reduce using rule 50 (expr -> expr alternative miniexpr .) ]
+  ! ONEORMANY       [ reduce using rule 50 (expr -> expr alternative miniexpr .) ]
+  ! NULORMANY       [ reduce using rule 50 (expr -> expr alternative miniexpr .) ]
+  ! LCURLY          [ reduce using rule 50 (expr -> expr alternative miniexpr .) ]
+  ! WILDCARD        [ reduce using rule 50 (expr -> expr alternative miniexpr .) ]
+  ! BARSS           [ reduce using rule 50 (expr -> expr alternative miniexpr .) ]
+  ! BARLS           [ reduce using rule 50 (expr -> expr alternative miniexpr .) ]
+  ! BARSW           [ reduce using rule 50 (expr -> expr alternative miniexpr .) ]
+  ! BARLW           [ reduce using rule 50 (expr -> expr alternative miniexpr .) ]
+  ! BARSD           [ reduce using rule 50 (expr -> expr alternative miniexpr .) ]
+  ! BARLD           [ reduce using rule 50 (expr -> expr alternative miniexpr .) ]
+  ! BARN            [ reduce using rule 50 (expr -> expr alternative miniexpr .) ]
+  ! BART            [ reduce using rule 50 (expr -> expr alternative miniexpr .) ]
+  ! SPACE           [ reduce using rule 50 (expr -> expr alternative miniexpr .) ]
+  ! CHAR            [ reduce using rule 50 (expr -> expr alternative miniexpr .) ]
+  ! LITERALBAR      [ reduce using rule 50 (expr -> expr alternative miniexpr .) ]
+  ! MINUS           [ reduce using rule 50 (expr -> expr alternative miniexpr .) ]
+  ! LBRACKET        [ reduce using rule 50 (expr -> expr alternative miniexpr .) ]
+  ! EXCEPTOPTS      [ reduce using rule 50 (expr -> expr alternative miniexpr .) ]
+  ! $end            [ reduce using rule 50 (expr -> expr alternative miniexpr .) ]
+  ! RPARENTHESIS    [ reduce using rule 50 (expr -> expr alternative miniexpr .) ]
+  ! NULORONE        [ reduce using rule 48 (expropt -> .) ]
+  ! LPARENTHESIS    [ reduce using rule 48 (expropt -> .) ]
+  ! WILDCARD        [ reduce using rule 48 (expropt -> .) ]
+  ! BARSS           [ reduce using rule 48 (expropt -> .) ]
+  ! BARLS           [ reduce using rule 48 (expropt -> .) ]
+  ! BARSW           [ reduce using rule 48 (expropt -> .) ]
+  ! BARLW           [ reduce using rule 48 (expropt -> .) ]
+  ! BARSD           [ reduce using rule 48 (expropt -> .) ]
+  ! BARLD           [ reduce using rule 48 (expropt -> .) ]
+  ! BARN            [ reduce using rule 48 (expropt -> .) ]
+  ! BART            [ reduce using rule 48 (expropt -> .) ]
+  ! SPACE           [ reduce using rule 48 (expropt -> .) ]
+  ! CHAR            [ reduce using rule 48 (expropt -> .) ]
+  ! LITERALBAR      [ reduce using rule 48 (expropt -> .) ]
+  ! MINUS           [ reduce using rule 48 (expropt -> .) ]
+  ! LBRACKET        [ reduce using rule 48 (expropt -> .) ]
+  ! EXCEPTOPTS      [ reduce using rule 48 (expropt -> .) ]
+  ! ONEORMANY       [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! NULORMANY       [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! LCURLY          [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! NULORONE        [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! LPARENTHESIS    [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! WILDCARD        [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! BARSS           [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! BARLS           [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! BARSW           [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! BARLW           [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! BARSD           [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! BARLD           [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! BARN            [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! BART            [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! SPACE           [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! CHAR            [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! LITERALBAR      [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! MINUS           [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! LBRACKET        [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! EXCEPTOPTS      [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! END             [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! OR              [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! $end            [ reduce using rule 64 (wtfamidoinghere -> .) ]
+  ! RPARENTHESIS    [ reduce using rule 64 (wtfamidoinghere -> .) ]
+
+    expropt                        shift and go to state 17
+    wtfamidoinghere                shift and go to state 12
+    phrase                         shift and go to state 14
+    capture_group                  shift and go to state 15
+
+state 11
+
+    (51) expr -> expr miniexpr expropt .
+
+    END             reduce using rule 51 (expr -> expr miniexpr expropt .)
+    OR              reduce using rule 51 (expr -> expr miniexpr expropt .)
+    NULORONE        reduce using rule 51 (expr -> expr miniexpr expropt .)
+    LPARENTHESIS    reduce using rule 51 (expr -> expr miniexpr expropt .)
+    ONEORMANY       reduce using rule 51 (expr -> expr miniexpr expropt .)
+    NULORMANY       reduce using rule 51 (expr -> expr miniexpr expropt .)
+    LCURLY          reduce using rule 51 (expr -> expr miniexpr expropt .)
+    WILDCARD        reduce using rule 51 (expr -> expr miniexpr expropt .)
+    BARSS           reduce using rule 51 (expr -> expr miniexpr expropt .)
+    BARLS           reduce using rule 51 (expr -> expr miniexpr expropt .)
+    BARSW           reduce using rule 51 (expr -> expr miniexpr expropt .)
+    BARLW           reduce using rule 51 (expr -> expr miniexpr expropt .)
+    BARSD           reduce using rule 51 (expr -> expr miniexpr expropt .)
+    BARLD           reduce using rule 51 (expr -> expr miniexpr expropt .)
+    BARN            reduce using rule 51 (expr -> expr miniexpr expropt .)
+    BART            reduce using rule 51 (expr -> expr miniexpr expropt .)
+    SPACE           reduce using rule 51 (expr -> expr miniexpr expropt .)
+    CHAR            reduce using rule 51 (expr -> expr miniexpr expropt .)
+    LITERALBAR      reduce using rule 51 (expr -> expr miniexpr expropt .)
+    MINUS           reduce using rule 51 (expr -> expr miniexpr expropt .)
+    LBRACKET        reduce using rule 51 (expr -> expr miniexpr expropt .)
+    EXCEPTOPTS      reduce using rule 51 (expr -> expr miniexpr expropt .)
+    $end            reduce using rule 51 (expr -> expr miniexpr expropt .)
+    RPARENTHESIS    reduce using rule 51 (expr -> expr miniexpr expropt .)
+
+
+state 12
+
+    (65) miniexpr -> miniexpr wtfamidoinghere . quantifier
+    (9) quantifier -> . ONEORMANY
+    (10) quantifier -> . NULORMANY
+    (11) quantifier -> . LCURLY BARSD RCURLY
+    (12) quantifier -> . LCURLY BARSD COMMA RCURLY
+    (13) quantifier -> . LCURLY COMMA BARSD RCURLY
+    (14) quantifier -> . LCURLY BARSD COMMA BARSD RCURLY
+    (15) quantifier -> .
+
+  ! shift/reduce conflict for ONEORMANY resolved as shift
+  ! shift/reduce conflict for NULORMANY resolved as shift
+  ! shift/reduce conflict for LCURLY resolved as shift
+    ONEORMANY       shift and go to state 19
+    NULORMANY       shift and go to state 20
+    LCURLY          shift and go to state 21
+    NULORONE        reduce using rule 15 (quantifier -> .)
+    LPARENTHESIS    reduce using rule 15 (quantifier -> .)
+    WILDCARD        reduce using rule 15 (quantifier -> .)
+    BARSS           reduce using rule 15 (quantifier -> .)
+    BARLS           reduce using rule 15 (quantifier -> .)
+    BARSW           reduce using rule 15 (quantifier -> .)
+    BARLW           reduce using rule 15 (quantifier -> .)
+    BARSD           reduce using rule 15 (quantifier -> .)
+    BARLD           reduce using rule 15 (quantifier -> .)
+    BARN            reduce using rule 15 (quantifier -> .)
+    BART            reduce using rule 15 (quantifier -> .)
+    SPACE           reduce using rule 15 (quantifier -> .)
+    CHAR            reduce using rule 15 (quantifier -> .)
+    LITERALBAR      reduce using rule 15 (quantifier -> .)
+    MINUS           reduce using rule 15 (quantifier -> .)
+    LBRACKET        reduce using rule 15 (quantifier -> .)
+    EXCEPTOPTS      reduce using rule 15 (quantifier -> .)
+    END             reduce using rule 15 (quantifier -> .)
+    OR              reduce using rule 15 (quantifier -> .)
+    $end            reduce using rule 15 (quantifier -> .)
+    RPARENTHESIS    reduce using rule 15 (quantifier -> .)
+
+  ! ONEORMANY       [ reduce using rule 15 (quantifier -> .) ]
+  ! NULORMANY       [ reduce using rule 15 (quantifier -> .) ]
+  ! LCURLY          [ reduce using rule 15 (quantifier -> .) ]
+
+    quantifier                     shift and go to state 18
+
+state 13
+
+    (47) expropt -> NULORONE .
+
+    END             reduce using rule 47 (expropt -> NULORONE .)
+    OR              reduce using rule 47 (expropt -> NULORONE .)
+    NULORONE        reduce using rule 47 (expropt -> NULORONE .)
+    LPARENTHESIS    reduce using rule 47 (expropt -> NULORONE .)
+    ONEORMANY       reduce using rule 47 (expropt -> NULORONE .)
+    NULORMANY       reduce using rule 47 (expropt -> NULORONE .)
+    LCURLY          reduce using rule 47 (expropt -> NULORONE .)
+    WILDCARD        reduce using rule 47 (expropt -> NULORONE .)
+    BARSS           reduce using rule 47 (expropt -> NULORONE .)
+    BARLS           reduce using rule 47 (expropt -> NULORONE .)
+    BARSW           reduce using rule 47 (expropt -> NULORONE .)
+    BARLW           reduce using rule 47 (expropt -> NULORONE .)
+    BARSD           reduce using rule 47 (expropt -> NULORONE .)
+    BARLD           reduce using rule 47 (expropt -> NULORONE .)
+    BARN            reduce using rule 47 (expropt -> NULORONE .)
+    BART            reduce using rule 47 (expropt -> NULORONE .)
+    SPACE           reduce using rule 47 (expropt -> NULORONE .)
+    CHAR            reduce using rule 47 (expropt -> NULORONE .)
+    LITERALBAR      reduce using rule 47 (expropt -> NULORONE .)
+    MINUS           reduce using rule 47 (expropt -> NULORONE .)
+    LBRACKET        reduce using rule 47 (expropt -> NULORONE .)
+    EXCEPTOPTS      reduce using rule 47 (expropt -> NULORONE .)
+    $end            reduce using rule 47 (expropt -> NULORONE .)
+    RPARENTHESIS    reduce using rule 47 (expropt -> NULORONE .)
+
+
+state 14
+
+    (62) wtfamidoinghere -> phrase . state
+    (4) phrase -> phrase . state
+    (20) state -> . WILDCARD
+    (21) state -> . BARSS
+    (22) state -> . BARLS
+    (23) state -> . BARSW
+    (24) state -> . BARLW
+    (25) state -> . BARSD
+    (26) state -> . BARLD
+    (27) state -> . BARN
+    (28) state -> . BART
+    (29) state -> . SPACE
+    (30) state -> . CHAR
+    (31) state -> . charclass
+    (32) state -> . LITERALBAR END
+    (33) state -> . LITERALBAR START
+    (34) state -> . LITERALBAR LITERALBAR
+    (35) state -> . LITERALBAR ONEORMANY
+    (36) state -> . LITERALBAR NULORMANY
+    (37) state -> . LITERALBAR OR
+    (38) state -> . LITERALBAR LBRACKET
+    (39) state -> . LITERALBAR RBRACKET
+    (40) state -> . MINUS
+    (41) state -> . LITERALBAR LCURLY
+    (42) state -> . LITERALBAR RCURLY
+    (43) state -> . LITERALBAR NULORONE
+    (44) state -> . LITERALBAR COLON
+    (45) state -> . LITERALBAR LPARENTHESIS
+    (46) state -> . LITERALBAR RPARENTHESIS
+    (16) charclass -> . LBRACKET charlist CHAR RBRACKET
+    (19) charclass -> . EXCEPTOPTS charlist CHAR RBRACKET
+
+    WILDCARD        shift and go to state 23
+    BARSS           shift and go to state 24
+    BARLS           shift and go to state 25
+    BARSW           shift and go to state 26
+    BARLW           shift and go to state 27
+    BARSD           shift and go to state 28
+    BARLD           shift and go to state 29
+    BARN            shift and go to state 30
+    BART            shift and go to state 31
+    SPACE           shift and go to state 32
+    CHAR            shift and go to state 33
+    LITERALBAR      shift and go to state 35
+    MINUS           shift and go to state 37
+    LBRACKET        shift and go to state 36
+    EXCEPTOPTS      shift and go to state 38
+
+    state                          shift and go to state 22
+    charclass                      shift and go to state 34
+
+state 15
+
+    (63) wtfamidoinghere -> capture_group .
+
+    ONEORMANY       reduce using rule 63 (wtfamidoinghere -> capture_group .)
+    NULORMANY       reduce using rule 63 (wtfamidoinghere -> capture_group .)
+    LCURLY          reduce using rule 63 (wtfamidoinghere -> capture_group .)
+    NULORONE        reduce using rule 63 (wtfamidoinghere -> capture_group .)
+    LPARENTHESIS    reduce using rule 63 (wtfamidoinghere -> capture_group .)
+    WILDCARD        reduce using rule 63 (wtfamidoinghere -> capture_group .)
+    BARSS           reduce using rule 63 (wtfamidoinghere -> capture_group .)
+    BARLS           reduce using rule 63 (wtfamidoinghere -> capture_group .)
+    BARSW           reduce using rule 63 (wtfamidoinghere -> capture_group .)
+    BARLW           reduce using rule 63 (wtfamidoinghere -> capture_group .)
+    BARSD           reduce using rule 63 (wtfamidoinghere -> capture_group .)
+    BARLD           reduce using rule 63 (wtfamidoinghere -> capture_group .)
+    BARN            reduce using rule 63 (wtfamidoinghere -> capture_group .)
+    BART            reduce using rule 63 (wtfamidoinghere -> capture_group .)
+    SPACE           reduce using rule 63 (wtfamidoinghere -> capture_group .)
+    CHAR            reduce using rule 63 (wtfamidoinghere -> capture_group .)
+    LITERALBAR      reduce using rule 63 (wtfamidoinghere -> capture_group .)
+    MINUS           reduce using rule 63 (wtfamidoinghere -> capture_group .)
+    LBRACKET        reduce using rule 63 (wtfamidoinghere -> capture_group .)
+    EXCEPTOPTS      reduce using rule 63 (wtfamidoinghere -> capture_group .)
+    END             reduce using rule 63 (wtfamidoinghere -> capture_group .)
+    OR              reduce using rule 63 (wtfamidoinghere -> capture_group .)
+    $end            reduce using rule 63 (wtfamidoinghere -> capture_group .)
+    RPARENTHESIS    reduce using rule 63 (wtfamidoinghere -> capture_group .)
+
+
+state 16
+
+    (54) capture_group -> LPARENTHESIS . expr RPARENTHESIS
+    (55) capture_group -> LPARENTHESIS . EXCEPTCAPTURE expr RPARENTHESIS
+    (56) capture_group -> LPARENTHESIS . EXCEPTLOOKAHEADPOS expr RPARENTHESIS
+    (57) capture_group -> LPARENTHESIS . EXCEPTLOOKAHEADNEG expr RPARENTHESIS
+    (58) capture_group -> LPARENTHESIS . EXCEPTLOOKBEHINDPOS expr RPARENTHESIS
+    (59) capture_group -> LPARENTHESIS . EXCEPTLOOKBEHINDNEG expr RPARENTHESIS
+    (49) expr -> . expr alternative miniexpr expropt
+    (50) expr -> . expr alternative miniexpr
+    (51) expr -> . expr miniexpr expropt
+    (52) expr -> . expr miniexpr
+    (53) expr -> .
+
+    EXCEPTCAPTURE   shift and go to state 40
+    EXCEPTLOOKAHEADPOS shift and go to state 41
+    EXCEPTLOOKAHEADNEG shift and go to state 42
+    EXCEPTLOOKBEHINDPOS shift and go to state 43
+    EXCEPTLOOKBEHINDNEG shift and go to state 44
+    RPARENTHESIS    reduce using rule 53 (expr -> .)
+    OR              reduce using rule 53 (expr -> .)
+    NULORONE        reduce using rule 53 (expr -> .)
+    LPARENTHESIS    reduce using rule 53 (expr -> .)
+    ONEORMANY       reduce using rule 53 (expr -> .)
+    NULORMANY       reduce using rule 53 (expr -> .)
+    LCURLY          reduce using rule 53 (expr -> .)
+    WILDCARD        reduce using rule 53 (expr -> .)
+    BARSS           reduce using rule 53 (expr -> .)
+    BARLS           reduce using rule 53 (expr -> .)
+    BARSW           reduce using rule 53 (expr -> .)
+    BARLW           reduce using rule 53 (expr -> .)
+    BARSD           reduce using rule 53 (expr -> .)
+    BARLD           reduce using rule 53 (expr -> .)
+    BARN            reduce using rule 53 (expr -> .)
+    BART            reduce using rule 53 (expr -> .)
+    SPACE           reduce using rule 53 (expr -> .)
+    CHAR            reduce using rule 53 (expr -> .)
+    LITERALBAR      reduce using rule 53 (expr -> .)
+    MINUS           reduce using rule 53 (expr -> .)
+    LBRACKET        reduce using rule 53 (expr -> .)
+    EXCEPTOPTS      reduce using rule 53 (expr -> .)
+
+    expr                           shift and go to state 39
+
+state 17
+
+    (49) expr -> expr alternative miniexpr expropt .
+
+    END             reduce using rule 49 (expr -> expr alternative miniexpr expropt .)
+    OR              reduce using rule 49 (expr -> expr alternative miniexpr expropt .)
+    NULORONE        reduce using rule 49 (expr -> expr alternative miniexpr expropt .)
+    LPARENTHESIS    reduce using rule 49 (expr -> expr alternative miniexpr expropt .)
+    ONEORMANY       reduce using rule 49 (expr -> expr alternative miniexpr expropt .)
+    NULORMANY       reduce using rule 49 (expr -> expr alternative miniexpr expropt .)
+    LCURLY          reduce using rule 49 (expr -> expr alternative miniexpr expropt .)
+    WILDCARD        reduce using rule 49 (expr -> expr alternative miniexpr expropt .)
+    BARSS           reduce using rule 49 (expr -> expr alternative miniexpr expropt .)
+    BARLS           reduce using rule 49 (expr -> expr alternative miniexpr expropt .)
+    BARSW           reduce using rule 49 (expr -> expr alternative miniexpr expropt .)
+    BARLW           reduce using rule 49 (expr -> expr alternative miniexpr expropt .)
+    BARSD           reduce using rule 49 (expr -> expr alternative miniexpr expropt .)
+    BARLD           reduce using rule 49 (expr -> expr alternative miniexpr expropt .)
+    BARN            reduce using rule 49 (expr -> expr alternative miniexpr expropt .)
+    BART            reduce using rule 49 (expr -> expr alternative miniexpr expropt .)
+    SPACE           reduce using rule 49 (expr -> expr alternative miniexpr expropt .)
+    CHAR            reduce using rule 49 (expr -> expr alternative miniexpr expropt .)
+    LITERALBAR      reduce using rule 49 (expr -> expr alternative miniexpr expropt .)
+    MINUS           reduce using rule 49 (expr -> expr alternative miniexpr expropt .)
+    LBRACKET        reduce using rule 49 (expr -> expr alternative miniexpr expropt .)
+    EXCEPTOPTS      reduce using rule 49 (expr -> expr alternative miniexpr expropt .)
+    $end            reduce using rule 49 (expr -> expr alternative miniexpr expropt .)
+    RPARENTHESIS    reduce using rule 49 (expr -> expr alternative miniexpr expropt .)
+
+
+state 18
+
+    (65) miniexpr -> miniexpr wtfamidoinghere quantifier .
+
+    NULORONE        reduce using rule 65 (miniexpr -> miniexpr wtfamidoinghere quantifier .)
+    LPARENTHESIS    reduce using rule 65 (miniexpr -> miniexpr wtfamidoinghere quantifier .)
+    ONEORMANY       reduce using rule 65 (miniexpr -> miniexpr wtfamidoinghere quantifier .)
+    NULORMANY       reduce using rule 65 (miniexpr -> miniexpr wtfamidoinghere quantifier .)
+    LCURLY          reduce using rule 65 (miniexpr -> miniexpr wtfamidoinghere quantifier .)
+    WILDCARD        reduce using rule 65 (miniexpr -> miniexpr wtfamidoinghere quantifier .)
+    BARSS           reduce using rule 65 (miniexpr -> miniexpr wtfamidoinghere quantifier .)
+    BARLS           reduce using rule 65 (miniexpr -> miniexpr wtfamidoinghere quantifier .)
+    BARSW           reduce using rule 65 (miniexpr -> miniexpr wtfamidoinghere quantifier .)
+    BARLW           reduce using rule 65 (miniexpr -> miniexpr wtfamidoinghere quantifier .)
+    BARSD           reduce using rule 65 (miniexpr -> miniexpr wtfamidoinghere quantifier .)
+    BARLD           reduce using rule 65 (miniexpr -> miniexpr wtfamidoinghere quantifier .)
+    BARN            reduce using rule 65 (miniexpr -> miniexpr wtfamidoinghere quantifier .)
+    BART            reduce using rule 65 (miniexpr -> miniexpr wtfamidoinghere quantifier .)
+    SPACE           reduce using rule 65 (miniexpr -> miniexpr wtfamidoinghere quantifier .)
+    CHAR            reduce using rule 65 (miniexpr -> miniexpr wtfamidoinghere quantifier .)
+    LITERALBAR      reduce using rule 65 (miniexpr -> miniexpr wtfamidoinghere quantifier .)
+    MINUS           reduce using rule 65 (miniexpr -> miniexpr wtfamidoinghere quantifier .)
+    LBRACKET        reduce using rule 65 (miniexpr -> miniexpr wtfamidoinghere quantifier .)
+    EXCEPTOPTS      reduce using rule 65 (miniexpr -> miniexpr wtfamidoinghere quantifier .)
+    END             reduce using rule 65 (miniexpr -> miniexpr wtfamidoinghere quantifier .)
+    OR              reduce using rule 65 (miniexpr -> miniexpr wtfamidoinghere quantifier .)
+    $end            reduce using rule 65 (miniexpr -> miniexpr wtfamidoinghere quantifier .)
+    RPARENTHESIS    reduce using rule 65 (miniexpr -> miniexpr wtfamidoinghere quantifier .)
+
+
+state 19
+
+    (9) quantifier -> ONEORMANY .
+
+    NULORONE        reduce using rule 9 (quantifier -> ONEORMANY .)
+    LPARENTHESIS    reduce using rule 9 (quantifier -> ONEORMANY .)
+    ONEORMANY       reduce using rule 9 (quantifier -> ONEORMANY .)
+    NULORMANY       reduce using rule 9 (quantifier -> ONEORMANY .)
+    LCURLY          reduce using rule 9 (quantifier -> ONEORMANY .)
+    WILDCARD        reduce using rule 9 (quantifier -> ONEORMANY .)
+    BARSS           reduce using rule 9 (quantifier -> ONEORMANY .)
+    BARLS           reduce using rule 9 (quantifier -> ONEORMANY .)
+    BARSW           reduce using rule 9 (quantifier -> ONEORMANY .)
+    BARLW           reduce using rule 9 (quantifier -> ONEORMANY .)
+    BARSD           reduce using rule 9 (quantifier -> ONEORMANY .)
+    BARLD           reduce using rule 9 (quantifier -> ONEORMANY .)
+    BARN            reduce using rule 9 (quantifier -> ONEORMANY .)
+    BART            reduce using rule 9 (quantifier -> ONEORMANY .)
+    SPACE           reduce using rule 9 (quantifier -> ONEORMANY .)
+    CHAR            reduce using rule 9 (quantifier -> ONEORMANY .)
+    LITERALBAR      reduce using rule 9 (quantifier -> ONEORMANY .)
+    MINUS           reduce using rule 9 (quantifier -> ONEORMANY .)
+    LBRACKET        reduce using rule 9 (quantifier -> ONEORMANY .)
+    EXCEPTOPTS      reduce using rule 9 (quantifier -> ONEORMANY .)
+    END             reduce using rule 9 (quantifier -> ONEORMANY .)
+    OR              reduce using rule 9 (quantifier -> ONEORMANY .)
+    $end            reduce using rule 9 (quantifier -> ONEORMANY .)
+    RPARENTHESIS    reduce using rule 9 (quantifier -> ONEORMANY .)
+
+
+state 20
+
+    (10) quantifier -> NULORMANY .
+
+    NULORONE        reduce using rule 10 (quantifier -> NULORMANY .)
+    LPARENTHESIS    reduce using rule 10 (quantifier -> NULORMANY .)
+    ONEORMANY       reduce using rule 10 (quantifier -> NULORMANY .)
+    NULORMANY       reduce using rule 10 (quantifier -> NULORMANY .)
+    LCURLY          reduce using rule 10 (quantifier -> NULORMANY .)
+    WILDCARD        reduce using rule 10 (quantifier -> NULORMANY .)
+    BARSS           reduce using rule 10 (quantifier -> NULORMANY .)
+    BARLS           reduce using rule 10 (quantifier -> NULORMANY .)
+    BARSW           reduce using rule 10 (quantifier -> NULORMANY .)
+    BARLW           reduce using rule 10 (quantifier -> NULORMANY .)
+    BARSD           reduce using rule 10 (quantifier -> NULORMANY .)
+    BARLD           reduce using rule 10 (quantifier -> NULORMANY .)
+    BARN            reduce using rule 10 (quantifier -> NULORMANY .)
+    BART            reduce using rule 10 (quantifier -> NULORMANY .)
+    SPACE           reduce using rule 10 (quantifier -> NULORMANY .)
+    CHAR            reduce using rule 10 (quantifier -> NULORMANY .)
+    LITERALBAR      reduce using rule 10 (quantifier -> NULORMANY .)
+    MINUS           reduce using rule 10 (quantifier -> NULORMANY .)
+    LBRACKET        reduce using rule 10 (quantifier -> NULORMANY .)
+    EXCEPTOPTS      reduce using rule 10 (quantifier -> NULORMANY .)
+    END             reduce using rule 10 (quantifier -> NULORMANY .)
+    OR              reduce using rule 10 (quantifier -> NULORMANY .)
+    $end            reduce using rule 10 (quantifier -> NULORMANY .)
+    RPARENTHESIS    reduce using rule 10 (quantifier -> NULORMANY .)
+
+
+state 21
+
+    (11) quantifier -> LCURLY . BARSD RCURLY
+    (12) quantifier -> LCURLY . BARSD COMMA RCURLY
+    (13) quantifier -> LCURLY . COMMA BARSD RCURLY
+    (14) quantifier -> LCURLY . BARSD COMMA BARSD RCURLY
+
+    BARSD           shift and go to state 45
+    COMMA           shift and go to state 46
+
+
+state 22
+
+    (62) wtfamidoinghere -> phrase state .
+    (4) phrase -> phrase state .
+
+  ! reduce/reduce conflict for WILDCARD resolved using rule 4 (phrase -> phrase state .)
+  ! reduce/reduce conflict for BARSS resolved using rule 4 (phrase -> phrase state .)
+  ! reduce/reduce conflict for BARLS resolved using rule 4 (phrase -> phrase state .)
+  ! reduce/reduce conflict for BARSW resolved using rule 4 (phrase -> phrase state .)
+  ! reduce/reduce conflict for BARLW resolved using rule 4 (phrase -> phrase state .)
+  ! reduce/reduce conflict for BARSD resolved using rule 4 (phrase -> phrase state .)
+  ! reduce/reduce conflict for BARLD resolved using rule 4 (phrase -> phrase state .)
+  ! reduce/reduce conflict for BARN resolved using rule 4 (phrase -> phrase state .)
+  ! reduce/reduce conflict for BART resolved using rule 4 (phrase -> phrase state .)
+  ! reduce/reduce conflict for SPACE resolved using rule 4 (phrase -> phrase state .)
+  ! reduce/reduce conflict for CHAR resolved using rule 4 (phrase -> phrase state .)
+  ! reduce/reduce conflict for LITERALBAR resolved using rule 4 (phrase -> phrase state .)
+  ! reduce/reduce conflict for MINUS resolved using rule 4 (phrase -> phrase state .)
+  ! reduce/reduce conflict for LBRACKET resolved using rule 4 (phrase -> phrase state .)
+  ! reduce/reduce conflict for EXCEPTOPTS resolved using rule 4 (phrase -> phrase state .)
+    ONEORMANY       reduce using rule 62 (wtfamidoinghere -> phrase state .)
+    NULORMANY       reduce using rule 62 (wtfamidoinghere -> phrase state .)
+    LCURLY          reduce using rule 62 (wtfamidoinghere -> phrase state .)
+    NULORONE        reduce using rule 62 (wtfamidoinghere -> phrase state .)
+    LPARENTHESIS    reduce using rule 62 (wtfamidoinghere -> phrase state .)
+    END             reduce using rule 62 (wtfamidoinghere -> phrase state .)
+    OR              reduce using rule 62 (wtfamidoinghere -> phrase state .)
+    $end            reduce using rule 62 (wtfamidoinghere -> phrase state .)
+    RPARENTHESIS    reduce using rule 62 (wtfamidoinghere -> phrase state .)
+    WILDCARD        reduce using rule 4 (phrase -> phrase state .)
+    BARSS           reduce using rule 4 (phrase -> phrase state .)
+    BARLS           reduce using rule 4 (phrase -> phrase state .)
+    BARSW           reduce using rule 4 (phrase -> phrase state .)
+    BARLW           reduce using rule 4 (phrase -> phrase state .)
+    BARSD           reduce using rule 4 (phrase -> phrase state .)
+    BARLD           reduce using rule 4 (phrase -> phrase state .)
+    BARN            reduce using rule 4 (phrase -> phrase state .)
+    BART            reduce using rule 4 (phrase -> phrase state .)
+    SPACE           reduce using rule 4 (phrase -> phrase state .)
+    CHAR            reduce using rule 4 (phrase -> phrase state .)
+    LITERALBAR      reduce using rule 4 (phrase -> phrase state .)
+    MINUS           reduce using rule 4 (phrase -> phrase state .)
+    LBRACKET        reduce using rule 4 (phrase -> phrase state .)
+    EXCEPTOPTS      reduce using rule 4 (phrase -> phrase state .)
+
+  ! WILDCARD        [ reduce using rule 62 (wtfamidoinghere -> phrase state .) ]
+  ! BARSS           [ reduce using rule 62 (wtfamidoinghere -> phrase state .) ]
+  ! BARLS           [ reduce using rule 62 (wtfamidoinghere -> phrase state .) ]
+  ! BARSW           [ reduce using rule 62 (wtfamidoinghere -> phrase state .) ]
+  ! BARLW           [ reduce using rule 62 (wtfamidoinghere -> phrase state .) ]
+  ! BARSD           [ reduce using rule 62 (wtfamidoinghere -> phrase state .) ]
+  ! BARLD           [ reduce using rule 62 (wtfamidoinghere -> phrase state .) ]
+  ! BARN            [ reduce using rule 62 (wtfamidoinghere -> phrase state .) ]
+  ! BART            [ reduce using rule 62 (wtfamidoinghere -> phrase state .) ]
+  ! SPACE           [ reduce using rule 62 (wtfamidoinghere -> phrase state .) ]
+  ! CHAR            [ reduce using rule 62 (wtfamidoinghere -> phrase state .) ]
+  ! LITERALBAR      [ reduce using rule 62 (wtfamidoinghere -> phrase state .) ]
+  ! MINUS           [ reduce using rule 62 (wtfamidoinghere -> phrase state .) ]
+  ! LBRACKET        [ reduce using rule 62 (wtfamidoinghere -> phrase state .) ]
+  ! EXCEPTOPTS      [ reduce using rule 62 (wtfamidoinghere -> phrase state .) ]
+
+
+state 23
+
+    (20) state -> WILDCARD .
+
+    ONEORMANY       reduce using rule 20 (state -> WILDCARD .)
+    NULORMANY       reduce using rule 20 (state -> WILDCARD .)
+    LCURLY          reduce using rule 20 (state -> WILDCARD .)
+    NULORONE        reduce using rule 20 (state -> WILDCARD .)
+    LPARENTHESIS    reduce using rule 20 (state -> WILDCARD .)
+    WILDCARD        reduce using rule 20 (state -> WILDCARD .)
+    BARSS           reduce using rule 20 (state -> WILDCARD .)
+    BARLS           reduce using rule 20 (state -> WILDCARD .)
+    BARSW           reduce using rule 20 (state -> WILDCARD .)
+    BARLW           reduce using rule 20 (state -> WILDCARD .)
+    BARSD           reduce using rule 20 (state -> WILDCARD .)
+    BARLD           reduce using rule 20 (state -> WILDCARD .)
+    BARN            reduce using rule 20 (state -> WILDCARD .)
+    BART            reduce using rule 20 (state -> WILDCARD .)
+    SPACE           reduce using rule 20 (state -> WILDCARD .)
+    CHAR            reduce using rule 20 (state -> WILDCARD .)
+    LITERALBAR      reduce using rule 20 (state -> WILDCARD .)
+    MINUS           reduce using rule 20 (state -> WILDCARD .)
+    LBRACKET        reduce using rule 20 (state -> WILDCARD .)
+    EXCEPTOPTS      reduce using rule 20 (state -> WILDCARD .)
+    END             reduce using rule 20 (state -> WILDCARD .)
+    OR              reduce using rule 20 (state -> WILDCARD .)
+    $end            reduce using rule 20 (state -> WILDCARD .)
+    RPARENTHESIS    reduce using rule 20 (state -> WILDCARD .)
+
+
+state 24
+
+    (21) state -> BARSS .
+
+    ONEORMANY       reduce using rule 21 (state -> BARSS .)
+    NULORMANY       reduce using rule 21 (state -> BARSS .)
+    LCURLY          reduce using rule 21 (state -> BARSS .)
+    NULORONE        reduce using rule 21 (state -> BARSS .)
+    LPARENTHESIS    reduce using rule 21 (state -> BARSS .)
+    WILDCARD        reduce using rule 21 (state -> BARSS .)
+    BARSS           reduce using rule 21 (state -> BARSS .)
+    BARLS           reduce using rule 21 (state -> BARSS .)
+    BARSW           reduce using rule 21 (state -> BARSS .)
+    BARLW           reduce using rule 21 (state -> BARSS .)
+    BARSD           reduce using rule 21 (state -> BARSS .)
+    BARLD           reduce using rule 21 (state -> BARSS .)
+    BARN            reduce using rule 21 (state -> BARSS .)
+    BART            reduce using rule 21 (state -> BARSS .)
+    SPACE           reduce using rule 21 (state -> BARSS .)
+    CHAR            reduce using rule 21 (state -> BARSS .)
+    LITERALBAR      reduce using rule 21 (state -> BARSS .)
+    MINUS           reduce using rule 21 (state -> BARSS .)
+    LBRACKET        reduce using rule 21 (state -> BARSS .)
+    EXCEPTOPTS      reduce using rule 21 (state -> BARSS .)
+    END             reduce using rule 21 (state -> BARSS .)
+    OR              reduce using rule 21 (state -> BARSS .)
+    $end            reduce using rule 21 (state -> BARSS .)
+    RPARENTHESIS    reduce using rule 21 (state -> BARSS .)
+
+
+state 25
+
+    (22) state -> BARLS .
+
+    ONEORMANY       reduce using rule 22 (state -> BARLS .)
+    NULORMANY       reduce using rule 22 (state -> BARLS .)
+    LCURLY          reduce using rule 22 (state -> BARLS .)
+    NULORONE        reduce using rule 22 (state -> BARLS .)
+    LPARENTHESIS    reduce using rule 22 (state -> BARLS .)
+    WILDCARD        reduce using rule 22 (state -> BARLS .)
+    BARSS           reduce using rule 22 (state -> BARLS .)
+    BARLS           reduce using rule 22 (state -> BARLS .)
+    BARSW           reduce using rule 22 (state -> BARLS .)
+    BARLW           reduce using rule 22 (state -> BARLS .)
+    BARSD           reduce using rule 22 (state -> BARLS .)
+    BARLD           reduce using rule 22 (state -> BARLS .)
+    BARN            reduce using rule 22 (state -> BARLS .)
+    BART            reduce using rule 22 (state -> BARLS .)
+    SPACE           reduce using rule 22 (state -> BARLS .)
+    CHAR            reduce using rule 22 (state -> BARLS .)
+    LITERALBAR      reduce using rule 22 (state -> BARLS .)
+    MINUS           reduce using rule 22 (state -> BARLS .)
+    LBRACKET        reduce using rule 22 (state -> BARLS .)
+    EXCEPTOPTS      reduce using rule 22 (state -> BARLS .)
+    END             reduce using rule 22 (state -> BARLS .)
+    OR              reduce using rule 22 (state -> BARLS .)
+    $end            reduce using rule 22 (state -> BARLS .)
+    RPARENTHESIS    reduce using rule 22 (state -> BARLS .)
+
+
+state 26
+
+    (23) state -> BARSW .
+
+    ONEORMANY       reduce using rule 23 (state -> BARSW .)
+    NULORMANY       reduce using rule 23 (state -> BARSW .)
+    LCURLY          reduce using rule 23 (state -> BARSW .)
+    NULORONE        reduce using rule 23 (state -> BARSW .)
+    LPARENTHESIS    reduce using rule 23 (state -> BARSW .)
+    WILDCARD        reduce using rule 23 (state -> BARSW .)
+    BARSS           reduce using rule 23 (state -> BARSW .)
+    BARLS           reduce using rule 23 (state -> BARSW .)
+    BARSW           reduce using rule 23 (state -> BARSW .)
+    BARLW           reduce using rule 23 (state -> BARSW .)
+    BARSD           reduce using rule 23 (state -> BARSW .)
+    BARLD           reduce using rule 23 (state -> BARSW .)
+    BARN            reduce using rule 23 (state -> BARSW .)
+    BART            reduce using rule 23 (state -> BARSW .)
+    SPACE           reduce using rule 23 (state -> BARSW .)
+    CHAR            reduce using rule 23 (state -> BARSW .)
+    LITERALBAR      reduce using rule 23 (state -> BARSW .)
+    MINUS           reduce using rule 23 (state -> BARSW .)
+    LBRACKET        reduce using rule 23 (state -> BARSW .)
+    EXCEPTOPTS      reduce using rule 23 (state -> BARSW .)
+    END             reduce using rule 23 (state -> BARSW .)
+    OR              reduce using rule 23 (state -> BARSW .)
+    $end            reduce using rule 23 (state -> BARSW .)
+    RPARENTHESIS    reduce using rule 23 (state -> BARSW .)
+
+
+state 27
+
+    (24) state -> BARLW .
+
+    ONEORMANY       reduce using rule 24 (state -> BARLW .)
+    NULORMANY       reduce using rule 24 (state -> BARLW .)
+    LCURLY          reduce using rule 24 (state -> BARLW .)
+    NULORONE        reduce using rule 24 (state -> BARLW .)
+    LPARENTHESIS    reduce using rule 24 (state -> BARLW .)
+    WILDCARD        reduce using rule 24 (state -> BARLW .)
+    BARSS           reduce using rule 24 (state -> BARLW .)
+    BARLS           reduce using rule 24 (state -> BARLW .)
+    BARSW           reduce using rule 24 (state -> BARLW .)
+    BARLW           reduce using rule 24 (state -> BARLW .)
+    BARSD           reduce using rule 24 (state -> BARLW .)
+    BARLD           reduce using rule 24 (state -> BARLW .)
+    BARN            reduce using rule 24 (state -> BARLW .)
+    BART            reduce using rule 24 (state -> BARLW .)
+    SPACE           reduce using rule 24 (state -> BARLW .)
+    CHAR            reduce using rule 24 (state -> BARLW .)
+    LITERALBAR      reduce using rule 24 (state -> BARLW .)
+    MINUS           reduce using rule 24 (state -> BARLW .)
+    LBRACKET        reduce using rule 24 (state -> BARLW .)
+    EXCEPTOPTS      reduce using rule 24 (state -> BARLW .)
+    END             reduce using rule 24 (state -> BARLW .)
+    OR              reduce using rule 24 (state -> BARLW .)
+    $end            reduce using rule 24 (state -> BARLW .)
+    RPARENTHESIS    reduce using rule 24 (state -> BARLW .)
+
+
+state 28
+
+    (25) state -> BARSD .
+
+    ONEORMANY       reduce using rule 25 (state -> BARSD .)
+    NULORMANY       reduce using rule 25 (state -> BARSD .)
+    LCURLY          reduce using rule 25 (state -> BARSD .)
+    NULORONE        reduce using rule 25 (state -> BARSD .)
+    LPARENTHESIS    reduce using rule 25 (state -> BARSD .)
+    WILDCARD        reduce using rule 25 (state -> BARSD .)
+    BARSS           reduce using rule 25 (state -> BARSD .)
+    BARLS           reduce using rule 25 (state -> BARSD .)
+    BARSW           reduce using rule 25 (state -> BARSD .)
+    BARLW           reduce using rule 25 (state -> BARSD .)
+    BARSD           reduce using rule 25 (state -> BARSD .)
+    BARLD           reduce using rule 25 (state -> BARSD .)
+    BARN            reduce using rule 25 (state -> BARSD .)
+    BART            reduce using rule 25 (state -> BARSD .)
+    SPACE           reduce using rule 25 (state -> BARSD .)
+    CHAR            reduce using rule 25 (state -> BARSD .)
+    LITERALBAR      reduce using rule 25 (state -> BARSD .)
+    MINUS           reduce using rule 25 (state -> BARSD .)
+    LBRACKET        reduce using rule 25 (state -> BARSD .)
+    EXCEPTOPTS      reduce using rule 25 (state -> BARSD .)
+    END             reduce using rule 25 (state -> BARSD .)
+    OR              reduce using rule 25 (state -> BARSD .)
+    $end            reduce using rule 25 (state -> BARSD .)
+    RPARENTHESIS    reduce using rule 25 (state -> BARSD .)
+
+
+state 29
+
+    (26) state -> BARLD .
+
+    ONEORMANY       reduce using rule 26 (state -> BARLD .)
+    NULORMANY       reduce using rule 26 (state -> BARLD .)
+    LCURLY          reduce using rule 26 (state -> BARLD .)
+    NULORONE        reduce using rule 26 (state -> BARLD .)
+    LPARENTHESIS    reduce using rule 26 (state -> BARLD .)
+    WILDCARD        reduce using rule 26 (state -> BARLD .)
+    BARSS           reduce using rule 26 (state -> BARLD .)
+    BARLS           reduce using rule 26 (state -> BARLD .)
+    BARSW           reduce using rule 26 (state -> BARLD .)
+    BARLW           reduce using rule 26 (state -> BARLD .)
+    BARSD           reduce using rule 26 (state -> BARLD .)
+    BARLD           reduce using rule 26 (state -> BARLD .)
+    BARN            reduce using rule 26 (state -> BARLD .)
+    BART            reduce using rule 26 (state -> BARLD .)
+    SPACE           reduce using rule 26 (state -> BARLD .)
+    CHAR            reduce using rule 26 (state -> BARLD .)
+    LITERALBAR      reduce using rule 26 (state -> BARLD .)
+    MINUS           reduce using rule 26 (state -> BARLD .)
+    LBRACKET        reduce using rule 26 (state -> BARLD .)
+    EXCEPTOPTS      reduce using rule 26 (state -> BARLD .)
+    END             reduce using rule 26 (state -> BARLD .)
+    OR              reduce using rule 26 (state -> BARLD .)
+    $end            reduce using rule 26 (state -> BARLD .)
+    RPARENTHESIS    reduce using rule 26 (state -> BARLD .)
+
+
+state 30
+
+    (27) state -> BARN .
+
+    ONEORMANY       reduce using rule 27 (state -> BARN .)
+    NULORMANY       reduce using rule 27 (state -> BARN .)
+    LCURLY          reduce using rule 27 (state -> BARN .)
+    NULORONE        reduce using rule 27 (state -> BARN .)
+    LPARENTHESIS    reduce using rule 27 (state -> BARN .)
+    WILDCARD        reduce using rule 27 (state -> BARN .)
+    BARSS           reduce using rule 27 (state -> BARN .)
+    BARLS           reduce using rule 27 (state -> BARN .)
+    BARSW           reduce using rule 27 (state -> BARN .)
+    BARLW           reduce using rule 27 (state -> BARN .)
+    BARSD           reduce using rule 27 (state -> BARN .)
+    BARLD           reduce using rule 27 (state -> BARN .)
+    BARN            reduce using rule 27 (state -> BARN .)
+    BART            reduce using rule 27 (state -> BARN .)
+    SPACE           reduce using rule 27 (state -> BARN .)
+    CHAR            reduce using rule 27 (state -> BARN .)
+    LITERALBAR      reduce using rule 27 (state -> BARN .)
+    MINUS           reduce using rule 27 (state -> BARN .)
+    LBRACKET        reduce using rule 27 (state -> BARN .)
+    EXCEPTOPTS      reduce using rule 27 (state -> BARN .)
+    END             reduce using rule 27 (state -> BARN .)
+    OR              reduce using rule 27 (state -> BARN .)
+    $end            reduce using rule 27 (state -> BARN .)
+    RPARENTHESIS    reduce using rule 27 (state -> BARN .)
+
+
+state 31
+
+    (28) state -> BART .
+
+    ONEORMANY       reduce using rule 28 (state -> BART .)
+    NULORMANY       reduce using rule 28 (state -> BART .)
+    LCURLY          reduce using rule 28 (state -> BART .)
+    NULORONE        reduce using rule 28 (state -> BART .)
+    LPARENTHESIS    reduce using rule 28 (state -> BART .)
+    WILDCARD        reduce using rule 28 (state -> BART .)
+    BARSS           reduce using rule 28 (state -> BART .)
+    BARLS           reduce using rule 28 (state -> BART .)
+    BARSW           reduce using rule 28 (state -> BART .)
+    BARLW           reduce using rule 28 (state -> BART .)
+    BARSD           reduce using rule 28 (state -> BART .)
+    BARLD           reduce using rule 28 (state -> BART .)
+    BARN            reduce using rule 28 (state -> BART .)
+    BART            reduce using rule 28 (state -> BART .)
+    SPACE           reduce using rule 28 (state -> BART .)
+    CHAR            reduce using rule 28 (state -> BART .)
+    LITERALBAR      reduce using rule 28 (state -> BART .)
+    MINUS           reduce using rule 28 (state -> BART .)
+    LBRACKET        reduce using rule 28 (state -> BART .)
+    EXCEPTOPTS      reduce using rule 28 (state -> BART .)
+    END             reduce using rule 28 (state -> BART .)
+    OR              reduce using rule 28 (state -> BART .)
+    $end            reduce using rule 28 (state -> BART .)
+    RPARENTHESIS    reduce using rule 28 (state -> BART .)
+
+
+state 32
+
+    (29) state -> SPACE .
+
+    ONEORMANY       reduce using rule 29 (state -> SPACE .)
+    NULORMANY       reduce using rule 29 (state -> SPACE .)
+    LCURLY          reduce using rule 29 (state -> SPACE .)
+    NULORONE        reduce using rule 29 (state -> SPACE .)
+    LPARENTHESIS    reduce using rule 29 (state -> SPACE .)
+    WILDCARD        reduce using rule 29 (state -> SPACE .)
+    BARSS           reduce using rule 29 (state -> SPACE .)
+    BARLS           reduce using rule 29 (state -> SPACE .)
+    BARSW           reduce using rule 29 (state -> SPACE .)
+    BARLW           reduce using rule 29 (state -> SPACE .)
+    BARSD           reduce using rule 29 (state -> SPACE .)
+    BARLD           reduce using rule 29 (state -> SPACE .)
+    BARN            reduce using rule 29 (state -> SPACE .)
+    BART            reduce using rule 29 (state -> SPACE .)
+    SPACE           reduce using rule 29 (state -> SPACE .)
+    CHAR            reduce using rule 29 (state -> SPACE .)
+    LITERALBAR      reduce using rule 29 (state -> SPACE .)
+    MINUS           reduce using rule 29 (state -> SPACE .)
+    LBRACKET        reduce using rule 29 (state -> SPACE .)
+    EXCEPTOPTS      reduce using rule 29 (state -> SPACE .)
+    END             reduce using rule 29 (state -> SPACE .)
+    OR              reduce using rule 29 (state -> SPACE .)
+    $end            reduce using rule 29 (state -> SPACE .)
+    RPARENTHESIS    reduce using rule 29 (state -> SPACE .)
+
+
+state 33
+
+    (30) state -> CHAR .
+
+    ONEORMANY       reduce using rule 30 (state -> CHAR .)
+    NULORMANY       reduce using rule 30 (state -> CHAR .)
+    LCURLY          reduce using rule 30 (state -> CHAR .)
+    NULORONE        reduce using rule 30 (state -> CHAR .)
+    LPARENTHESIS    reduce using rule 30 (state -> CHAR .)
+    WILDCARD        reduce using rule 30 (state -> CHAR .)
+    BARSS           reduce using rule 30 (state -> CHAR .)
+    BARLS           reduce using rule 30 (state -> CHAR .)
+    BARSW           reduce using rule 30 (state -> CHAR .)
+    BARLW           reduce using rule 30 (state -> CHAR .)
+    BARSD           reduce using rule 30 (state -> CHAR .)
+    BARLD           reduce using rule 30 (state -> CHAR .)
+    BARN            reduce using rule 30 (state -> CHAR .)
+    BART            reduce using rule 30 (state -> CHAR .)
+    SPACE           reduce using rule 30 (state -> CHAR .)
+    CHAR            reduce using rule 30 (state -> CHAR .)
+    LITERALBAR      reduce using rule 30 (state -> CHAR .)
+    MINUS           reduce using rule 30 (state -> CHAR .)
+    LBRACKET        reduce using rule 30 (state -> CHAR .)
+    EXCEPTOPTS      reduce using rule 30 (state -> CHAR .)
+    END             reduce using rule 30 (state -> CHAR .)
+    OR              reduce using rule 30 (state -> CHAR .)
+    $end            reduce using rule 30 (state -> CHAR .)
+    RPARENTHESIS    reduce using rule 30 (state -> CHAR .)
+
+
+state 34
+
+    (31) state -> charclass .
+
+    ONEORMANY       reduce using rule 31 (state -> charclass .)
+    NULORMANY       reduce using rule 31 (state -> charclass .)
+    LCURLY          reduce using rule 31 (state -> charclass .)
+    NULORONE        reduce using rule 31 (state -> charclass .)
+    LPARENTHESIS    reduce using rule 31 (state -> charclass .)
+    WILDCARD        reduce using rule 31 (state -> charclass .)
+    BARSS           reduce using rule 31 (state -> charclass .)
+    BARLS           reduce using rule 31 (state -> charclass .)
+    BARSW           reduce using rule 31 (state -> charclass .)
+    BARLW           reduce using rule 31 (state -> charclass .)
+    BARSD           reduce using rule 31 (state -> charclass .)
+    BARLD           reduce using rule 31 (state -> charclass .)
+    BARN            reduce using rule 31 (state -> charclass .)
+    BART            reduce using rule 31 (state -> charclass .)
+    SPACE           reduce using rule 31 (state -> charclass .)
+    CHAR            reduce using rule 31 (state -> charclass .)
+    LITERALBAR      reduce using rule 31 (state -> charclass .)
+    MINUS           reduce using rule 31 (state -> charclass .)
+    LBRACKET        reduce using rule 31 (state -> charclass .)
+    EXCEPTOPTS      reduce using rule 31 (state -> charclass .)
+    END             reduce using rule 31 (state -> charclass .)
+    OR              reduce using rule 31 (state -> charclass .)
+    $end            reduce using rule 31 (state -> charclass .)
+    RPARENTHESIS    reduce using rule 31 (state -> charclass .)
+
+
+state 35
+
+    (32) state -> LITERALBAR . END
+    (33) state -> LITERALBAR . START
+    (34) state -> LITERALBAR . LITERALBAR
+    (35) state -> LITERALBAR . ONEORMANY
+    (36) state -> LITERALBAR . NULORMANY
+    (37) state -> LITERALBAR . OR
+    (38) state -> LITERALBAR . LBRACKET
+    (39) state -> LITERALBAR . RBRACKET
+    (41) state -> LITERALBAR . LCURLY
+    (42) state -> LITERALBAR . RCURLY
+    (43) state -> LITERALBAR . NULORONE
+    (44) state -> LITERALBAR . COLON
+    (45) state -> LITERALBAR . LPARENTHESIS
+    (46) state -> LITERALBAR . RPARENTHESIS
+
+    END             shift and go to state 48
+    START           shift and go to state 49
+    LITERALBAR      shift and go to state 47
+    ONEORMANY       shift and go to state 50
+    NULORMANY       shift and go to state 51
+    OR              shift and go to state 52
+    LBRACKET        shift and go to state 53
+    RBRACKET        shift and go to state 54
+    LCURLY          shift and go to state 55
+    RCURLY          shift and go to state 56
+    NULORONE        shift and go to state 57
+    COLON           shift and go to state 58
+    LPARENTHESIS    shift and go to state 59
+    RPARENTHESIS    shift and go to state 60
+
+
+state 36
+
+    (16) charclass -> LBRACKET . charlist CHAR RBRACKET
+    (1) charlist -> . charlist CHAR
+    (2) charlist -> . charlist CHAR MINUS CHAR
+    (3) charlist -> .
+
+    CHAR            reduce using rule 3 (charlist -> .)
+
+    charlist                       shift and go to state 61
+
+state 37
+
+    (40) state -> MINUS .
+
+    ONEORMANY       reduce using rule 40 (state -> MINUS .)
+    NULORMANY       reduce using rule 40 (state -> MINUS .)
+    LCURLY          reduce using rule 40 (state -> MINUS .)
+    NULORONE        reduce using rule 40 (state -> MINUS .)
+    LPARENTHESIS    reduce using rule 40 (state -> MINUS .)
+    WILDCARD        reduce using rule 40 (state -> MINUS .)
+    BARSS           reduce using rule 40 (state -> MINUS .)
+    BARLS           reduce using rule 40 (state -> MINUS .)
+    BARSW           reduce using rule 40 (state -> MINUS .)
+    BARLW           reduce using rule 40 (state -> MINUS .)
+    BARSD           reduce using rule 40 (state -> MINUS .)
+    BARLD           reduce using rule 40 (state -> MINUS .)
+    BARN            reduce using rule 40 (state -> MINUS .)
+    BART            reduce using rule 40 (state -> MINUS .)
+    SPACE           reduce using rule 40 (state -> MINUS .)
+    CHAR            reduce using rule 40 (state -> MINUS .)
+    LITERALBAR      reduce using rule 40 (state -> MINUS .)
+    MINUS           reduce using rule 40 (state -> MINUS .)
+    LBRACKET        reduce using rule 40 (state -> MINUS .)
+    EXCEPTOPTS      reduce using rule 40 (state -> MINUS .)
+    END             reduce using rule 40 (state -> MINUS .)
+    OR              reduce using rule 40 (state -> MINUS .)
+    $end            reduce using rule 40 (state -> MINUS .)
+    RPARENTHESIS    reduce using rule 40 (state -> MINUS .)
+
+
+state 38
+
+    (19) charclass -> EXCEPTOPTS . charlist CHAR RBRACKET
+    (1) charlist -> . charlist CHAR
+    (2) charlist -> . charlist CHAR MINUS CHAR
+    (3) charlist -> .
+
+    CHAR            reduce using rule 3 (charlist -> .)
+
+    charlist                       shift and go to state 62
+
+state 39
+
+    (54) capture_group -> LPARENTHESIS expr . RPARENTHESIS
+    (49) expr -> expr . alternative miniexpr expropt
+    (50) expr -> expr . alternative miniexpr
+    (51) expr -> expr . miniexpr expropt
+    (52) expr -> expr . miniexpr
+    (60) alternative -> . OR
+    (61) alternative -> .
+    (65) miniexpr -> . miniexpr wtfamidoinghere quantifier
+    (66) miniexpr -> .
+
+  ! shift/reduce conflict for RPARENTHESIS resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! reduce/reduce conflict for NULORONE resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for LPARENTHESIS resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for ONEORMANY resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for NULORMANY resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for LCURLY resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for WILDCARD resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARSS resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARLS resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARSW resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARLW resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARSD resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARLD resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARN resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BART resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for SPACE resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for CHAR resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for LITERALBAR resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for MINUS resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for LBRACKET resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for EXCEPTOPTS resolved using rule 61 (alternative -> .)
+  ! shift/reduce conflict for RPARENTHESIS resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    RPARENTHESIS    shift and go to state 63
+    OR              shift and go to state 9
+    NULORONE        reduce using rule 61 (alternative -> .)
+    LPARENTHESIS    reduce using rule 61 (alternative -> .)
+    ONEORMANY       reduce using rule 61 (alternative -> .)
+    NULORMANY       reduce using rule 61 (alternative -> .)
+    LCURLY          reduce using rule 61 (alternative -> .)
+    WILDCARD        reduce using rule 61 (alternative -> .)
+    BARSS           reduce using rule 61 (alternative -> .)
+    BARLS           reduce using rule 61 (alternative -> .)
+    BARSW           reduce using rule 61 (alternative -> .)
+    BARLW           reduce using rule 61 (alternative -> .)
+    BARSD           reduce using rule 61 (alternative -> .)
+    BARLD           reduce using rule 61 (alternative -> .)
+    BARN            reduce using rule 61 (alternative -> .)
+    BART            reduce using rule 61 (alternative -> .)
+    SPACE           reduce using rule 61 (alternative -> .)
+    CHAR            reduce using rule 61 (alternative -> .)
+    LITERALBAR      reduce using rule 61 (alternative -> .)
+    MINUS           reduce using rule 61 (alternative -> .)
+    LBRACKET        reduce using rule 61 (alternative -> .)
+    EXCEPTOPTS      reduce using rule 61 (alternative -> .)
+
+  ! RPARENTHESIS    [ reduce using rule 61 (alternative -> .) ]
+  ! OR              [ reduce using rule 61 (alternative -> .) ]
+  ! NULORONE        [ reduce using rule 66 (miniexpr -> .) ]
+  ! LPARENTHESIS    [ reduce using rule 66 (miniexpr -> .) ]
+  ! ONEORMANY       [ reduce using rule 66 (miniexpr -> .) ]
+  ! NULORMANY       [ reduce using rule 66 (miniexpr -> .) ]
+  ! LCURLY          [ reduce using rule 66 (miniexpr -> .) ]
+  ! WILDCARD        [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARSS           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARLS           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARSW           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARLW           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARSD           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARLD           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARN            [ reduce using rule 66 (miniexpr -> .) ]
+  ! BART            [ reduce using rule 66 (miniexpr -> .) ]
+  ! SPACE           [ reduce using rule 66 (miniexpr -> .) ]
+  ! CHAR            [ reduce using rule 66 (miniexpr -> .) ]
+  ! LITERALBAR      [ reduce using rule 66 (miniexpr -> .) ]
+  ! MINUS           [ reduce using rule 66 (miniexpr -> .) ]
+  ! LBRACKET        [ reduce using rule 66 (miniexpr -> .) ]
+  ! EXCEPTOPTS      [ reduce using rule 66 (miniexpr -> .) ]
+  ! RPARENTHESIS    [ reduce using rule 66 (miniexpr -> .) ]
+  ! OR              [ reduce using rule 66 (miniexpr -> .) ]
+
+    alternative                    shift and go to state 6
+    miniexpr                       shift and go to state 7
+
+state 40
+
+    (55) capture_group -> LPARENTHESIS EXCEPTCAPTURE . expr RPARENTHESIS
+    (49) expr -> . expr alternative miniexpr expropt
+    (50) expr -> . expr alternative miniexpr
+    (51) expr -> . expr miniexpr expropt
+    (52) expr -> . expr miniexpr
+    (53) expr -> .
+
+    RPARENTHESIS    reduce using rule 53 (expr -> .)
+    OR              reduce using rule 53 (expr -> .)
+    NULORONE        reduce using rule 53 (expr -> .)
+    LPARENTHESIS    reduce using rule 53 (expr -> .)
+    ONEORMANY       reduce using rule 53 (expr -> .)
+    NULORMANY       reduce using rule 53 (expr -> .)
+    LCURLY          reduce using rule 53 (expr -> .)
+    WILDCARD        reduce using rule 53 (expr -> .)
+    BARSS           reduce using rule 53 (expr -> .)
+    BARLS           reduce using rule 53 (expr -> .)
+    BARSW           reduce using rule 53 (expr -> .)
+    BARLW           reduce using rule 53 (expr -> .)
+    BARSD           reduce using rule 53 (expr -> .)
+    BARLD           reduce using rule 53 (expr -> .)
+    BARN            reduce using rule 53 (expr -> .)
+    BART            reduce using rule 53 (expr -> .)
+    SPACE           reduce using rule 53 (expr -> .)
+    CHAR            reduce using rule 53 (expr -> .)
+    LITERALBAR      reduce using rule 53 (expr -> .)
+    MINUS           reduce using rule 53 (expr -> .)
+    LBRACKET        reduce using rule 53 (expr -> .)
+    EXCEPTOPTS      reduce using rule 53 (expr -> .)
+
+    expr                           shift and go to state 64
+
+state 41
+
+    (56) capture_group -> LPARENTHESIS EXCEPTLOOKAHEADPOS . expr RPARENTHESIS
+    (49) expr -> . expr alternative miniexpr expropt
+    (50) expr -> . expr alternative miniexpr
+    (51) expr -> . expr miniexpr expropt
+    (52) expr -> . expr miniexpr
+    (53) expr -> .
+
+    RPARENTHESIS    reduce using rule 53 (expr -> .)
+    OR              reduce using rule 53 (expr -> .)
+    NULORONE        reduce using rule 53 (expr -> .)
+    LPARENTHESIS    reduce using rule 53 (expr -> .)
+    ONEORMANY       reduce using rule 53 (expr -> .)
+    NULORMANY       reduce using rule 53 (expr -> .)
+    LCURLY          reduce using rule 53 (expr -> .)
+    WILDCARD        reduce using rule 53 (expr -> .)
+    BARSS           reduce using rule 53 (expr -> .)
+    BARLS           reduce using rule 53 (expr -> .)
+    BARSW           reduce using rule 53 (expr -> .)
+    BARLW           reduce using rule 53 (expr -> .)
+    BARSD           reduce using rule 53 (expr -> .)
+    BARLD           reduce using rule 53 (expr -> .)
+    BARN            reduce using rule 53 (expr -> .)
+    BART            reduce using rule 53 (expr -> .)
+    SPACE           reduce using rule 53 (expr -> .)
+    CHAR            reduce using rule 53 (expr -> .)
+    LITERALBAR      reduce using rule 53 (expr -> .)
+    MINUS           reduce using rule 53 (expr -> .)
+    LBRACKET        reduce using rule 53 (expr -> .)
+    EXCEPTOPTS      reduce using rule 53 (expr -> .)
+
+    expr                           shift and go to state 65
+
+state 42
+
+    (57) capture_group -> LPARENTHESIS EXCEPTLOOKAHEADNEG . expr RPARENTHESIS
+    (49) expr -> . expr alternative miniexpr expropt
+    (50) expr -> . expr alternative miniexpr
+    (51) expr -> . expr miniexpr expropt
+    (52) expr -> . expr miniexpr
+    (53) expr -> .
+
+    RPARENTHESIS    reduce using rule 53 (expr -> .)
+    OR              reduce using rule 53 (expr -> .)
+    NULORONE        reduce using rule 53 (expr -> .)
+    LPARENTHESIS    reduce using rule 53 (expr -> .)
+    ONEORMANY       reduce using rule 53 (expr -> .)
+    NULORMANY       reduce using rule 53 (expr -> .)
+    LCURLY          reduce using rule 53 (expr -> .)
+    WILDCARD        reduce using rule 53 (expr -> .)
+    BARSS           reduce using rule 53 (expr -> .)
+    BARLS           reduce using rule 53 (expr -> .)
+    BARSW           reduce using rule 53 (expr -> .)
+    BARLW           reduce using rule 53 (expr -> .)
+    BARSD           reduce using rule 53 (expr -> .)
+    BARLD           reduce using rule 53 (expr -> .)
+    BARN            reduce using rule 53 (expr -> .)
+    BART            reduce using rule 53 (expr -> .)
+    SPACE           reduce using rule 53 (expr -> .)
+    CHAR            reduce using rule 53 (expr -> .)
+    LITERALBAR      reduce using rule 53 (expr -> .)
+    MINUS           reduce using rule 53 (expr -> .)
+    LBRACKET        reduce using rule 53 (expr -> .)
+    EXCEPTOPTS      reduce using rule 53 (expr -> .)
+
+    expr                           shift and go to state 66
+
+state 43
+
+    (58) capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDPOS . expr RPARENTHESIS
+    (49) expr -> . expr alternative miniexpr expropt
+    (50) expr -> . expr alternative miniexpr
+    (51) expr -> . expr miniexpr expropt
+    (52) expr -> . expr miniexpr
+    (53) expr -> .
+
+    RPARENTHESIS    reduce using rule 53 (expr -> .)
+    OR              reduce using rule 53 (expr -> .)
+    NULORONE        reduce using rule 53 (expr -> .)
+    LPARENTHESIS    reduce using rule 53 (expr -> .)
+    ONEORMANY       reduce using rule 53 (expr -> .)
+    NULORMANY       reduce using rule 53 (expr -> .)
+    LCURLY          reduce using rule 53 (expr -> .)
+    WILDCARD        reduce using rule 53 (expr -> .)
+    BARSS           reduce using rule 53 (expr -> .)
+    BARLS           reduce using rule 53 (expr -> .)
+    BARSW           reduce using rule 53 (expr -> .)
+    BARLW           reduce using rule 53 (expr -> .)
+    BARSD           reduce using rule 53 (expr -> .)
+    BARLD           reduce using rule 53 (expr -> .)
+    BARN            reduce using rule 53 (expr -> .)
+    BART            reduce using rule 53 (expr -> .)
+    SPACE           reduce using rule 53 (expr -> .)
+    CHAR            reduce using rule 53 (expr -> .)
+    LITERALBAR      reduce using rule 53 (expr -> .)
+    MINUS           reduce using rule 53 (expr -> .)
+    LBRACKET        reduce using rule 53 (expr -> .)
+    EXCEPTOPTS      reduce using rule 53 (expr -> .)
+
+    expr                           shift and go to state 67
+
+state 44
+
+    (59) capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDNEG . expr RPARENTHESIS
+    (49) expr -> . expr alternative miniexpr expropt
+    (50) expr -> . expr alternative miniexpr
+    (51) expr -> . expr miniexpr expropt
+    (52) expr -> . expr miniexpr
+    (53) expr -> .
+
+    RPARENTHESIS    reduce using rule 53 (expr -> .)
+    OR              reduce using rule 53 (expr -> .)
+    NULORONE        reduce using rule 53 (expr -> .)
+    LPARENTHESIS    reduce using rule 53 (expr -> .)
+    ONEORMANY       reduce using rule 53 (expr -> .)
+    NULORMANY       reduce using rule 53 (expr -> .)
+    LCURLY          reduce using rule 53 (expr -> .)
+    WILDCARD        reduce using rule 53 (expr -> .)
+    BARSS           reduce using rule 53 (expr -> .)
+    BARLS           reduce using rule 53 (expr -> .)
+    BARSW           reduce using rule 53 (expr -> .)
+    BARLW           reduce using rule 53 (expr -> .)
+    BARSD           reduce using rule 53 (expr -> .)
+    BARLD           reduce using rule 53 (expr -> .)
+    BARN            reduce using rule 53 (expr -> .)
+    BART            reduce using rule 53 (expr -> .)
+    SPACE           reduce using rule 53 (expr -> .)
+    CHAR            reduce using rule 53 (expr -> .)
+    LITERALBAR      reduce using rule 53 (expr -> .)
+    MINUS           reduce using rule 53 (expr -> .)
+    LBRACKET        reduce using rule 53 (expr -> .)
+    EXCEPTOPTS      reduce using rule 53 (expr -> .)
+
+    expr                           shift and go to state 68
+
+state 45
+
+    (11) quantifier -> LCURLY BARSD . RCURLY
+    (12) quantifier -> LCURLY BARSD . COMMA RCURLY
+    (14) quantifier -> LCURLY BARSD . COMMA BARSD RCURLY
+
+    RCURLY          shift and go to state 69
+    COMMA           shift and go to state 70
+
+
+state 46
+
+    (13) quantifier -> LCURLY COMMA . BARSD RCURLY
+
+    BARSD           shift and go to state 71
+
+
+state 47
+
+    (34) state -> LITERALBAR LITERALBAR .
+
+    ONEORMANY       reduce using rule 34 (state -> LITERALBAR LITERALBAR .)
+    NULORMANY       reduce using rule 34 (state -> LITERALBAR LITERALBAR .)
+    LCURLY          reduce using rule 34 (state -> LITERALBAR LITERALBAR .)
+    NULORONE        reduce using rule 34 (state -> LITERALBAR LITERALBAR .)
+    LPARENTHESIS    reduce using rule 34 (state -> LITERALBAR LITERALBAR .)
+    WILDCARD        reduce using rule 34 (state -> LITERALBAR LITERALBAR .)
+    BARSS           reduce using rule 34 (state -> LITERALBAR LITERALBAR .)
+    BARLS           reduce using rule 34 (state -> LITERALBAR LITERALBAR .)
+    BARSW           reduce using rule 34 (state -> LITERALBAR LITERALBAR .)
+    BARLW           reduce using rule 34 (state -> LITERALBAR LITERALBAR .)
+    BARSD           reduce using rule 34 (state -> LITERALBAR LITERALBAR .)
+    BARLD           reduce using rule 34 (state -> LITERALBAR LITERALBAR .)
+    BARN            reduce using rule 34 (state -> LITERALBAR LITERALBAR .)
+    BART            reduce using rule 34 (state -> LITERALBAR LITERALBAR .)
+    SPACE           reduce using rule 34 (state -> LITERALBAR LITERALBAR .)
+    CHAR            reduce using rule 34 (state -> LITERALBAR LITERALBAR .)
+    LITERALBAR      reduce using rule 34 (state -> LITERALBAR LITERALBAR .)
+    MINUS           reduce using rule 34 (state -> LITERALBAR LITERALBAR .)
+    LBRACKET        reduce using rule 34 (state -> LITERALBAR LITERALBAR .)
+    EXCEPTOPTS      reduce using rule 34 (state -> LITERALBAR LITERALBAR .)
+    END             reduce using rule 34 (state -> LITERALBAR LITERALBAR .)
+    OR              reduce using rule 34 (state -> LITERALBAR LITERALBAR .)
+    $end            reduce using rule 34 (state -> LITERALBAR LITERALBAR .)
+    RPARENTHESIS    reduce using rule 34 (state -> LITERALBAR LITERALBAR .)
+
+
+state 48
+
+    (32) state -> LITERALBAR END .
+
+    ONEORMANY       reduce using rule 32 (state -> LITERALBAR END .)
+    NULORMANY       reduce using rule 32 (state -> LITERALBAR END .)
+    LCURLY          reduce using rule 32 (state -> LITERALBAR END .)
+    NULORONE        reduce using rule 32 (state -> LITERALBAR END .)
+    LPARENTHESIS    reduce using rule 32 (state -> LITERALBAR END .)
+    WILDCARD        reduce using rule 32 (state -> LITERALBAR END .)
+    BARSS           reduce using rule 32 (state -> LITERALBAR END .)
+    BARLS           reduce using rule 32 (state -> LITERALBAR END .)
+    BARSW           reduce using rule 32 (state -> LITERALBAR END .)
+    BARLW           reduce using rule 32 (state -> LITERALBAR END .)
+    BARSD           reduce using rule 32 (state -> LITERALBAR END .)
+    BARLD           reduce using rule 32 (state -> LITERALBAR END .)
+    BARN            reduce using rule 32 (state -> LITERALBAR END .)
+    BART            reduce using rule 32 (state -> LITERALBAR END .)
+    SPACE           reduce using rule 32 (state -> LITERALBAR END .)
+    CHAR            reduce using rule 32 (state -> LITERALBAR END .)
+    LITERALBAR      reduce using rule 32 (state -> LITERALBAR END .)
+    MINUS           reduce using rule 32 (state -> LITERALBAR END .)
+    LBRACKET        reduce using rule 32 (state -> LITERALBAR END .)
+    EXCEPTOPTS      reduce using rule 32 (state -> LITERALBAR END .)
+    END             reduce using rule 32 (state -> LITERALBAR END .)
+    OR              reduce using rule 32 (state -> LITERALBAR END .)
+    $end            reduce using rule 32 (state -> LITERALBAR END .)
+    RPARENTHESIS    reduce using rule 32 (state -> LITERALBAR END .)
+
+
+state 49
+
+    (33) state -> LITERALBAR START .
+
+    ONEORMANY       reduce using rule 33 (state -> LITERALBAR START .)
+    NULORMANY       reduce using rule 33 (state -> LITERALBAR START .)
+    LCURLY          reduce using rule 33 (state -> LITERALBAR START .)
+    NULORONE        reduce using rule 33 (state -> LITERALBAR START .)
+    LPARENTHESIS    reduce using rule 33 (state -> LITERALBAR START .)
+    WILDCARD        reduce using rule 33 (state -> LITERALBAR START .)
+    BARSS           reduce using rule 33 (state -> LITERALBAR START .)
+    BARLS           reduce using rule 33 (state -> LITERALBAR START .)
+    BARSW           reduce using rule 33 (state -> LITERALBAR START .)
+    BARLW           reduce using rule 33 (state -> LITERALBAR START .)
+    BARSD           reduce using rule 33 (state -> LITERALBAR START .)
+    BARLD           reduce using rule 33 (state -> LITERALBAR START .)
+    BARN            reduce using rule 33 (state -> LITERALBAR START .)
+    BART            reduce using rule 33 (state -> LITERALBAR START .)
+    SPACE           reduce using rule 33 (state -> LITERALBAR START .)
+    CHAR            reduce using rule 33 (state -> LITERALBAR START .)
+    LITERALBAR      reduce using rule 33 (state -> LITERALBAR START .)
+    MINUS           reduce using rule 33 (state -> LITERALBAR START .)
+    LBRACKET        reduce using rule 33 (state -> LITERALBAR START .)
+    EXCEPTOPTS      reduce using rule 33 (state -> LITERALBAR START .)
+    END             reduce using rule 33 (state -> LITERALBAR START .)
+    OR              reduce using rule 33 (state -> LITERALBAR START .)
+    $end            reduce using rule 33 (state -> LITERALBAR START .)
+    RPARENTHESIS    reduce using rule 33 (state -> LITERALBAR START .)
+
+
+state 50
+
+    (35) state -> LITERALBAR ONEORMANY .
+
+    ONEORMANY       reduce using rule 35 (state -> LITERALBAR ONEORMANY .)
+    NULORMANY       reduce using rule 35 (state -> LITERALBAR ONEORMANY .)
+    LCURLY          reduce using rule 35 (state -> LITERALBAR ONEORMANY .)
+    NULORONE        reduce using rule 35 (state -> LITERALBAR ONEORMANY .)
+    LPARENTHESIS    reduce using rule 35 (state -> LITERALBAR ONEORMANY .)
+    WILDCARD        reduce using rule 35 (state -> LITERALBAR ONEORMANY .)
+    BARSS           reduce using rule 35 (state -> LITERALBAR ONEORMANY .)
+    BARLS           reduce using rule 35 (state -> LITERALBAR ONEORMANY .)
+    BARSW           reduce using rule 35 (state -> LITERALBAR ONEORMANY .)
+    BARLW           reduce using rule 35 (state -> LITERALBAR ONEORMANY .)
+    BARSD           reduce using rule 35 (state -> LITERALBAR ONEORMANY .)
+    BARLD           reduce using rule 35 (state -> LITERALBAR ONEORMANY .)
+    BARN            reduce using rule 35 (state -> LITERALBAR ONEORMANY .)
+    BART            reduce using rule 35 (state -> LITERALBAR ONEORMANY .)
+    SPACE           reduce using rule 35 (state -> LITERALBAR ONEORMANY .)
+    CHAR            reduce using rule 35 (state -> LITERALBAR ONEORMANY .)
+    LITERALBAR      reduce using rule 35 (state -> LITERALBAR ONEORMANY .)
+    MINUS           reduce using rule 35 (state -> LITERALBAR ONEORMANY .)
+    LBRACKET        reduce using rule 35 (state -> LITERALBAR ONEORMANY .)
+    EXCEPTOPTS      reduce using rule 35 (state -> LITERALBAR ONEORMANY .)
+    END             reduce using rule 35 (state -> LITERALBAR ONEORMANY .)
+    OR              reduce using rule 35 (state -> LITERALBAR ONEORMANY .)
+    $end            reduce using rule 35 (state -> LITERALBAR ONEORMANY .)
+    RPARENTHESIS    reduce using rule 35 (state -> LITERALBAR ONEORMANY .)
+
+
+state 51
+
+    (36) state -> LITERALBAR NULORMANY .
+
+    ONEORMANY       reduce using rule 36 (state -> LITERALBAR NULORMANY .)
+    NULORMANY       reduce using rule 36 (state -> LITERALBAR NULORMANY .)
+    LCURLY          reduce using rule 36 (state -> LITERALBAR NULORMANY .)
+    NULORONE        reduce using rule 36 (state -> LITERALBAR NULORMANY .)
+    LPARENTHESIS    reduce using rule 36 (state -> LITERALBAR NULORMANY .)
+    WILDCARD        reduce using rule 36 (state -> LITERALBAR NULORMANY .)
+    BARSS           reduce using rule 36 (state -> LITERALBAR NULORMANY .)
+    BARLS           reduce using rule 36 (state -> LITERALBAR NULORMANY .)
+    BARSW           reduce using rule 36 (state -> LITERALBAR NULORMANY .)
+    BARLW           reduce using rule 36 (state -> LITERALBAR NULORMANY .)
+    BARSD           reduce using rule 36 (state -> LITERALBAR NULORMANY .)
+    BARLD           reduce using rule 36 (state -> LITERALBAR NULORMANY .)
+    BARN            reduce using rule 36 (state -> LITERALBAR NULORMANY .)
+    BART            reduce using rule 36 (state -> LITERALBAR NULORMANY .)
+    SPACE           reduce using rule 36 (state -> LITERALBAR NULORMANY .)
+    CHAR            reduce using rule 36 (state -> LITERALBAR NULORMANY .)
+    LITERALBAR      reduce using rule 36 (state -> LITERALBAR NULORMANY .)
+    MINUS           reduce using rule 36 (state -> LITERALBAR NULORMANY .)
+    LBRACKET        reduce using rule 36 (state -> LITERALBAR NULORMANY .)
+    EXCEPTOPTS      reduce using rule 36 (state -> LITERALBAR NULORMANY .)
+    END             reduce using rule 36 (state -> LITERALBAR NULORMANY .)
+    OR              reduce using rule 36 (state -> LITERALBAR NULORMANY .)
+    $end            reduce using rule 36 (state -> LITERALBAR NULORMANY .)
+    RPARENTHESIS    reduce using rule 36 (state -> LITERALBAR NULORMANY .)
+
+
+state 52
+
+    (37) state -> LITERALBAR OR .
+
+    ONEORMANY       reduce using rule 37 (state -> LITERALBAR OR .)
+    NULORMANY       reduce using rule 37 (state -> LITERALBAR OR .)
+    LCURLY          reduce using rule 37 (state -> LITERALBAR OR .)
+    NULORONE        reduce using rule 37 (state -> LITERALBAR OR .)
+    LPARENTHESIS    reduce using rule 37 (state -> LITERALBAR OR .)
+    WILDCARD        reduce using rule 37 (state -> LITERALBAR OR .)
+    BARSS           reduce using rule 37 (state -> LITERALBAR OR .)
+    BARLS           reduce using rule 37 (state -> LITERALBAR OR .)
+    BARSW           reduce using rule 37 (state -> LITERALBAR OR .)
+    BARLW           reduce using rule 37 (state -> LITERALBAR OR .)
+    BARSD           reduce using rule 37 (state -> LITERALBAR OR .)
+    BARLD           reduce using rule 37 (state -> LITERALBAR OR .)
+    BARN            reduce using rule 37 (state -> LITERALBAR OR .)
+    BART            reduce using rule 37 (state -> LITERALBAR OR .)
+    SPACE           reduce using rule 37 (state -> LITERALBAR OR .)
+    CHAR            reduce using rule 37 (state -> LITERALBAR OR .)
+    LITERALBAR      reduce using rule 37 (state -> LITERALBAR OR .)
+    MINUS           reduce using rule 37 (state -> LITERALBAR OR .)
+    LBRACKET        reduce using rule 37 (state -> LITERALBAR OR .)
+    EXCEPTOPTS      reduce using rule 37 (state -> LITERALBAR OR .)
+    END             reduce using rule 37 (state -> LITERALBAR OR .)
+    OR              reduce using rule 37 (state -> LITERALBAR OR .)
+    $end            reduce using rule 37 (state -> LITERALBAR OR .)
+    RPARENTHESIS    reduce using rule 37 (state -> LITERALBAR OR .)
+
+
+state 53
+
+    (38) state -> LITERALBAR LBRACKET .
+
+    ONEORMANY       reduce using rule 38 (state -> LITERALBAR LBRACKET .)
+    NULORMANY       reduce using rule 38 (state -> LITERALBAR LBRACKET .)
+    LCURLY          reduce using rule 38 (state -> LITERALBAR LBRACKET .)
+    NULORONE        reduce using rule 38 (state -> LITERALBAR LBRACKET .)
+    LPARENTHESIS    reduce using rule 38 (state -> LITERALBAR LBRACKET .)
+    WILDCARD        reduce using rule 38 (state -> LITERALBAR LBRACKET .)
+    BARSS           reduce using rule 38 (state -> LITERALBAR LBRACKET .)
+    BARLS           reduce using rule 38 (state -> LITERALBAR LBRACKET .)
+    BARSW           reduce using rule 38 (state -> LITERALBAR LBRACKET .)
+    BARLW           reduce using rule 38 (state -> LITERALBAR LBRACKET .)
+    BARSD           reduce using rule 38 (state -> LITERALBAR LBRACKET .)
+    BARLD           reduce using rule 38 (state -> LITERALBAR LBRACKET .)
+    BARN            reduce using rule 38 (state -> LITERALBAR LBRACKET .)
+    BART            reduce using rule 38 (state -> LITERALBAR LBRACKET .)
+    SPACE           reduce using rule 38 (state -> LITERALBAR LBRACKET .)
+    CHAR            reduce using rule 38 (state -> LITERALBAR LBRACKET .)
+    LITERALBAR      reduce using rule 38 (state -> LITERALBAR LBRACKET .)
+    MINUS           reduce using rule 38 (state -> LITERALBAR LBRACKET .)
+    LBRACKET        reduce using rule 38 (state -> LITERALBAR LBRACKET .)
+    EXCEPTOPTS      reduce using rule 38 (state -> LITERALBAR LBRACKET .)
+    END             reduce using rule 38 (state -> LITERALBAR LBRACKET .)
+    OR              reduce using rule 38 (state -> LITERALBAR LBRACKET .)
+    $end            reduce using rule 38 (state -> LITERALBAR LBRACKET .)
+    RPARENTHESIS    reduce using rule 38 (state -> LITERALBAR LBRACKET .)
+
+
+state 54
+
+    (39) state -> LITERALBAR RBRACKET .
+
+    ONEORMANY       reduce using rule 39 (state -> LITERALBAR RBRACKET .)
+    NULORMANY       reduce using rule 39 (state -> LITERALBAR RBRACKET .)
+    LCURLY          reduce using rule 39 (state -> LITERALBAR RBRACKET .)
+    NULORONE        reduce using rule 39 (state -> LITERALBAR RBRACKET .)
+    LPARENTHESIS    reduce using rule 39 (state -> LITERALBAR RBRACKET .)
+    WILDCARD        reduce using rule 39 (state -> LITERALBAR RBRACKET .)
+    BARSS           reduce using rule 39 (state -> LITERALBAR RBRACKET .)
+    BARLS           reduce using rule 39 (state -> LITERALBAR RBRACKET .)
+    BARSW           reduce using rule 39 (state -> LITERALBAR RBRACKET .)
+    BARLW           reduce using rule 39 (state -> LITERALBAR RBRACKET .)
+    BARSD           reduce using rule 39 (state -> LITERALBAR RBRACKET .)
+    BARLD           reduce using rule 39 (state -> LITERALBAR RBRACKET .)
+    BARN            reduce using rule 39 (state -> LITERALBAR RBRACKET .)
+    BART            reduce using rule 39 (state -> LITERALBAR RBRACKET .)
+    SPACE           reduce using rule 39 (state -> LITERALBAR RBRACKET .)
+    CHAR            reduce using rule 39 (state -> LITERALBAR RBRACKET .)
+    LITERALBAR      reduce using rule 39 (state -> LITERALBAR RBRACKET .)
+    MINUS           reduce using rule 39 (state -> LITERALBAR RBRACKET .)
+    LBRACKET        reduce using rule 39 (state -> LITERALBAR RBRACKET .)
+    EXCEPTOPTS      reduce using rule 39 (state -> LITERALBAR RBRACKET .)
+    END             reduce using rule 39 (state -> LITERALBAR RBRACKET .)
+    OR              reduce using rule 39 (state -> LITERALBAR RBRACKET .)
+    $end            reduce using rule 39 (state -> LITERALBAR RBRACKET .)
+    RPARENTHESIS    reduce using rule 39 (state -> LITERALBAR RBRACKET .)
+
+
+state 55
+
+    (41) state -> LITERALBAR LCURLY .
+
+    ONEORMANY       reduce using rule 41 (state -> LITERALBAR LCURLY .)
+    NULORMANY       reduce using rule 41 (state -> LITERALBAR LCURLY .)
+    LCURLY          reduce using rule 41 (state -> LITERALBAR LCURLY .)
+    NULORONE        reduce using rule 41 (state -> LITERALBAR LCURLY .)
+    LPARENTHESIS    reduce using rule 41 (state -> LITERALBAR LCURLY .)
+    WILDCARD        reduce using rule 41 (state -> LITERALBAR LCURLY .)
+    BARSS           reduce using rule 41 (state -> LITERALBAR LCURLY .)
+    BARLS           reduce using rule 41 (state -> LITERALBAR LCURLY .)
+    BARSW           reduce using rule 41 (state -> LITERALBAR LCURLY .)
+    BARLW           reduce using rule 41 (state -> LITERALBAR LCURLY .)
+    BARSD           reduce using rule 41 (state -> LITERALBAR LCURLY .)
+    BARLD           reduce using rule 41 (state -> LITERALBAR LCURLY .)
+    BARN            reduce using rule 41 (state -> LITERALBAR LCURLY .)
+    BART            reduce using rule 41 (state -> LITERALBAR LCURLY .)
+    SPACE           reduce using rule 41 (state -> LITERALBAR LCURLY .)
+    CHAR            reduce using rule 41 (state -> LITERALBAR LCURLY .)
+    LITERALBAR      reduce using rule 41 (state -> LITERALBAR LCURLY .)
+    MINUS           reduce using rule 41 (state -> LITERALBAR LCURLY .)
+    LBRACKET        reduce using rule 41 (state -> LITERALBAR LCURLY .)
+    EXCEPTOPTS      reduce using rule 41 (state -> LITERALBAR LCURLY .)
+    END             reduce using rule 41 (state -> LITERALBAR LCURLY .)
+    OR              reduce using rule 41 (state -> LITERALBAR LCURLY .)
+    $end            reduce using rule 41 (state -> LITERALBAR LCURLY .)
+    RPARENTHESIS    reduce using rule 41 (state -> LITERALBAR LCURLY .)
+
+
+state 56
+
+    (42) state -> LITERALBAR RCURLY .
+
+    ONEORMANY       reduce using rule 42 (state -> LITERALBAR RCURLY .)
+    NULORMANY       reduce using rule 42 (state -> LITERALBAR RCURLY .)
+    LCURLY          reduce using rule 42 (state -> LITERALBAR RCURLY .)
+    NULORONE        reduce using rule 42 (state -> LITERALBAR RCURLY .)
+    LPARENTHESIS    reduce using rule 42 (state -> LITERALBAR RCURLY .)
+    WILDCARD        reduce using rule 42 (state -> LITERALBAR RCURLY .)
+    BARSS           reduce using rule 42 (state -> LITERALBAR RCURLY .)
+    BARLS           reduce using rule 42 (state -> LITERALBAR RCURLY .)
+    BARSW           reduce using rule 42 (state -> LITERALBAR RCURLY .)
+    BARLW           reduce using rule 42 (state -> LITERALBAR RCURLY .)
+    BARSD           reduce using rule 42 (state -> LITERALBAR RCURLY .)
+    BARLD           reduce using rule 42 (state -> LITERALBAR RCURLY .)
+    BARN            reduce using rule 42 (state -> LITERALBAR RCURLY .)
+    BART            reduce using rule 42 (state -> LITERALBAR RCURLY .)
+    SPACE           reduce using rule 42 (state -> LITERALBAR RCURLY .)
+    CHAR            reduce using rule 42 (state -> LITERALBAR RCURLY .)
+    LITERALBAR      reduce using rule 42 (state -> LITERALBAR RCURLY .)
+    MINUS           reduce using rule 42 (state -> LITERALBAR RCURLY .)
+    LBRACKET        reduce using rule 42 (state -> LITERALBAR RCURLY .)
+    EXCEPTOPTS      reduce using rule 42 (state -> LITERALBAR RCURLY .)
+    END             reduce using rule 42 (state -> LITERALBAR RCURLY .)
+    OR              reduce using rule 42 (state -> LITERALBAR RCURLY .)
+    $end            reduce using rule 42 (state -> LITERALBAR RCURLY .)
+    RPARENTHESIS    reduce using rule 42 (state -> LITERALBAR RCURLY .)
+
+
+state 57
+
+    (43) state -> LITERALBAR NULORONE .
+
+    ONEORMANY       reduce using rule 43 (state -> LITERALBAR NULORONE .)
+    NULORMANY       reduce using rule 43 (state -> LITERALBAR NULORONE .)
+    LCURLY          reduce using rule 43 (state -> LITERALBAR NULORONE .)
+    NULORONE        reduce using rule 43 (state -> LITERALBAR NULORONE .)
+    LPARENTHESIS    reduce using rule 43 (state -> LITERALBAR NULORONE .)
+    WILDCARD        reduce using rule 43 (state -> LITERALBAR NULORONE .)
+    BARSS           reduce using rule 43 (state -> LITERALBAR NULORONE .)
+    BARLS           reduce using rule 43 (state -> LITERALBAR NULORONE .)
+    BARSW           reduce using rule 43 (state -> LITERALBAR NULORONE .)
+    BARLW           reduce using rule 43 (state -> LITERALBAR NULORONE .)
+    BARSD           reduce using rule 43 (state -> LITERALBAR NULORONE .)
+    BARLD           reduce using rule 43 (state -> LITERALBAR NULORONE .)
+    BARN            reduce using rule 43 (state -> LITERALBAR NULORONE .)
+    BART            reduce using rule 43 (state -> LITERALBAR NULORONE .)
+    SPACE           reduce using rule 43 (state -> LITERALBAR NULORONE .)
+    CHAR            reduce using rule 43 (state -> LITERALBAR NULORONE .)
+    LITERALBAR      reduce using rule 43 (state -> LITERALBAR NULORONE .)
+    MINUS           reduce using rule 43 (state -> LITERALBAR NULORONE .)
+    LBRACKET        reduce using rule 43 (state -> LITERALBAR NULORONE .)
+    EXCEPTOPTS      reduce using rule 43 (state -> LITERALBAR NULORONE .)
+    END             reduce using rule 43 (state -> LITERALBAR NULORONE .)
+    OR              reduce using rule 43 (state -> LITERALBAR NULORONE .)
+    $end            reduce using rule 43 (state -> LITERALBAR NULORONE .)
+    RPARENTHESIS    reduce using rule 43 (state -> LITERALBAR NULORONE .)
+
+
+state 58
+
+    (44) state -> LITERALBAR COLON .
+
+    ONEORMANY       reduce using rule 44 (state -> LITERALBAR COLON .)
+    NULORMANY       reduce using rule 44 (state -> LITERALBAR COLON .)
+    LCURLY          reduce using rule 44 (state -> LITERALBAR COLON .)
+    NULORONE        reduce using rule 44 (state -> LITERALBAR COLON .)
+    LPARENTHESIS    reduce using rule 44 (state -> LITERALBAR COLON .)
+    WILDCARD        reduce using rule 44 (state -> LITERALBAR COLON .)
+    BARSS           reduce using rule 44 (state -> LITERALBAR COLON .)
+    BARLS           reduce using rule 44 (state -> LITERALBAR COLON .)
+    BARSW           reduce using rule 44 (state -> LITERALBAR COLON .)
+    BARLW           reduce using rule 44 (state -> LITERALBAR COLON .)
+    BARSD           reduce using rule 44 (state -> LITERALBAR COLON .)
+    BARLD           reduce using rule 44 (state -> LITERALBAR COLON .)
+    BARN            reduce using rule 44 (state -> LITERALBAR COLON .)
+    BART            reduce using rule 44 (state -> LITERALBAR COLON .)
+    SPACE           reduce using rule 44 (state -> LITERALBAR COLON .)
+    CHAR            reduce using rule 44 (state -> LITERALBAR COLON .)
+    LITERALBAR      reduce using rule 44 (state -> LITERALBAR COLON .)
+    MINUS           reduce using rule 44 (state -> LITERALBAR COLON .)
+    LBRACKET        reduce using rule 44 (state -> LITERALBAR COLON .)
+    EXCEPTOPTS      reduce using rule 44 (state -> LITERALBAR COLON .)
+    END             reduce using rule 44 (state -> LITERALBAR COLON .)
+    OR              reduce using rule 44 (state -> LITERALBAR COLON .)
+    $end            reduce using rule 44 (state -> LITERALBAR COLON .)
+    RPARENTHESIS    reduce using rule 44 (state -> LITERALBAR COLON .)
+
+
+state 59
+
+    (45) state -> LITERALBAR LPARENTHESIS .
+
+    ONEORMANY       reduce using rule 45 (state -> LITERALBAR LPARENTHESIS .)
+    NULORMANY       reduce using rule 45 (state -> LITERALBAR LPARENTHESIS .)
+    LCURLY          reduce using rule 45 (state -> LITERALBAR LPARENTHESIS .)
+    NULORONE        reduce using rule 45 (state -> LITERALBAR LPARENTHESIS .)
+    LPARENTHESIS    reduce using rule 45 (state -> LITERALBAR LPARENTHESIS .)
+    WILDCARD        reduce using rule 45 (state -> LITERALBAR LPARENTHESIS .)
+    BARSS           reduce using rule 45 (state -> LITERALBAR LPARENTHESIS .)
+    BARLS           reduce using rule 45 (state -> LITERALBAR LPARENTHESIS .)
+    BARSW           reduce using rule 45 (state -> LITERALBAR LPARENTHESIS .)
+    BARLW           reduce using rule 45 (state -> LITERALBAR LPARENTHESIS .)
+    BARSD           reduce using rule 45 (state -> LITERALBAR LPARENTHESIS .)
+    BARLD           reduce using rule 45 (state -> LITERALBAR LPARENTHESIS .)
+    BARN            reduce using rule 45 (state -> LITERALBAR LPARENTHESIS .)
+    BART            reduce using rule 45 (state -> LITERALBAR LPARENTHESIS .)
+    SPACE           reduce using rule 45 (state -> LITERALBAR LPARENTHESIS .)
+    CHAR            reduce using rule 45 (state -> LITERALBAR LPARENTHESIS .)
+    LITERALBAR      reduce using rule 45 (state -> LITERALBAR LPARENTHESIS .)
+    MINUS           reduce using rule 45 (state -> LITERALBAR LPARENTHESIS .)
+    LBRACKET        reduce using rule 45 (state -> LITERALBAR LPARENTHESIS .)
+    EXCEPTOPTS      reduce using rule 45 (state -> LITERALBAR LPARENTHESIS .)
+    END             reduce using rule 45 (state -> LITERALBAR LPARENTHESIS .)
+    OR              reduce using rule 45 (state -> LITERALBAR LPARENTHESIS .)
+    $end            reduce using rule 45 (state -> LITERALBAR LPARENTHESIS .)
+    RPARENTHESIS    reduce using rule 45 (state -> LITERALBAR LPARENTHESIS .)
+
+
+state 60
+
+    (46) state -> LITERALBAR RPARENTHESIS .
+
+    ONEORMANY       reduce using rule 46 (state -> LITERALBAR RPARENTHESIS .)
+    NULORMANY       reduce using rule 46 (state -> LITERALBAR RPARENTHESIS .)
+    LCURLY          reduce using rule 46 (state -> LITERALBAR RPARENTHESIS .)
+    NULORONE        reduce using rule 46 (state -> LITERALBAR RPARENTHESIS .)
+    LPARENTHESIS    reduce using rule 46 (state -> LITERALBAR RPARENTHESIS .)
+    WILDCARD        reduce using rule 46 (state -> LITERALBAR RPARENTHESIS .)
+    BARSS           reduce using rule 46 (state -> LITERALBAR RPARENTHESIS .)
+    BARLS           reduce using rule 46 (state -> LITERALBAR RPARENTHESIS .)
+    BARSW           reduce using rule 46 (state -> LITERALBAR RPARENTHESIS .)
+    BARLW           reduce using rule 46 (state -> LITERALBAR RPARENTHESIS .)
+    BARSD           reduce using rule 46 (state -> LITERALBAR RPARENTHESIS .)
+    BARLD           reduce using rule 46 (state -> LITERALBAR RPARENTHESIS .)
+    BARN            reduce using rule 46 (state -> LITERALBAR RPARENTHESIS .)
+    BART            reduce using rule 46 (state -> LITERALBAR RPARENTHESIS .)
+    SPACE           reduce using rule 46 (state -> LITERALBAR RPARENTHESIS .)
+    CHAR            reduce using rule 46 (state -> LITERALBAR RPARENTHESIS .)
+    LITERALBAR      reduce using rule 46 (state -> LITERALBAR RPARENTHESIS .)
+    MINUS           reduce using rule 46 (state -> LITERALBAR RPARENTHESIS .)
+    LBRACKET        reduce using rule 46 (state -> LITERALBAR RPARENTHESIS .)
+    EXCEPTOPTS      reduce using rule 46 (state -> LITERALBAR RPARENTHESIS .)
+    END             reduce using rule 46 (state -> LITERALBAR RPARENTHESIS .)
+    OR              reduce using rule 46 (state -> LITERALBAR RPARENTHESIS .)
+    $end            reduce using rule 46 (state -> LITERALBAR RPARENTHESIS .)
+    RPARENTHESIS    reduce using rule 46 (state -> LITERALBAR RPARENTHESIS .)
+
+
+state 61
+
+    (16) charclass -> LBRACKET charlist . CHAR RBRACKET
+    (1) charlist -> charlist . CHAR
+    (2) charlist -> charlist . CHAR MINUS CHAR
+
+    CHAR            shift and go to state 72
+
+
+state 62
+
+    (19) charclass -> EXCEPTOPTS charlist . CHAR RBRACKET
+    (1) charlist -> charlist . CHAR
+    (2) charlist -> charlist . CHAR MINUS CHAR
+
+    CHAR            shift and go to state 73
+
+
+state 63
+
+    (54) capture_group -> LPARENTHESIS expr RPARENTHESIS .
+
+    ONEORMANY       reduce using rule 54 (capture_group -> LPARENTHESIS expr RPARENTHESIS .)
+    NULORMANY       reduce using rule 54 (capture_group -> LPARENTHESIS expr RPARENTHESIS .)
+    LCURLY          reduce using rule 54 (capture_group -> LPARENTHESIS expr RPARENTHESIS .)
+    NULORONE        reduce using rule 54 (capture_group -> LPARENTHESIS expr RPARENTHESIS .)
+    LPARENTHESIS    reduce using rule 54 (capture_group -> LPARENTHESIS expr RPARENTHESIS .)
+    WILDCARD        reduce using rule 54 (capture_group -> LPARENTHESIS expr RPARENTHESIS .)
+    BARSS           reduce using rule 54 (capture_group -> LPARENTHESIS expr RPARENTHESIS .)
+    BARLS           reduce using rule 54 (capture_group -> LPARENTHESIS expr RPARENTHESIS .)
+    BARSW           reduce using rule 54 (capture_group -> LPARENTHESIS expr RPARENTHESIS .)
+    BARLW           reduce using rule 54 (capture_group -> LPARENTHESIS expr RPARENTHESIS .)
+    BARSD           reduce using rule 54 (capture_group -> LPARENTHESIS expr RPARENTHESIS .)
+    BARLD           reduce using rule 54 (capture_group -> LPARENTHESIS expr RPARENTHESIS .)
+    BARN            reduce using rule 54 (capture_group -> LPARENTHESIS expr RPARENTHESIS .)
+    BART            reduce using rule 54 (capture_group -> LPARENTHESIS expr RPARENTHESIS .)
+    SPACE           reduce using rule 54 (capture_group -> LPARENTHESIS expr RPARENTHESIS .)
+    CHAR            reduce using rule 54 (capture_group -> LPARENTHESIS expr RPARENTHESIS .)
+    LITERALBAR      reduce using rule 54 (capture_group -> LPARENTHESIS expr RPARENTHESIS .)
+    MINUS           reduce using rule 54 (capture_group -> LPARENTHESIS expr RPARENTHESIS .)
+    LBRACKET        reduce using rule 54 (capture_group -> LPARENTHESIS expr RPARENTHESIS .)
+    EXCEPTOPTS      reduce using rule 54 (capture_group -> LPARENTHESIS expr RPARENTHESIS .)
+    END             reduce using rule 54 (capture_group -> LPARENTHESIS expr RPARENTHESIS .)
+    OR              reduce using rule 54 (capture_group -> LPARENTHESIS expr RPARENTHESIS .)
+    $end            reduce using rule 54 (capture_group -> LPARENTHESIS expr RPARENTHESIS .)
+    RPARENTHESIS    reduce using rule 54 (capture_group -> LPARENTHESIS expr RPARENTHESIS .)
+
+
+state 64
+
+    (55) capture_group -> LPARENTHESIS EXCEPTCAPTURE expr . RPARENTHESIS
+    (49) expr -> expr . alternative miniexpr expropt
+    (50) expr -> expr . alternative miniexpr
+    (51) expr -> expr . miniexpr expropt
+    (52) expr -> expr . miniexpr
+    (60) alternative -> . OR
+    (61) alternative -> .
+    (65) miniexpr -> . miniexpr wtfamidoinghere quantifier
+    (66) miniexpr -> .
+
+  ! shift/reduce conflict for RPARENTHESIS resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! reduce/reduce conflict for NULORONE resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for LPARENTHESIS resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for ONEORMANY resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for NULORMANY resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for LCURLY resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for WILDCARD resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARSS resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARLS resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARSW resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARLW resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARSD resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARLD resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARN resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BART resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for SPACE resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for CHAR resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for LITERALBAR resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for MINUS resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for LBRACKET resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for EXCEPTOPTS resolved using rule 61 (alternative -> .)
+  ! shift/reduce conflict for RPARENTHESIS resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    RPARENTHESIS    shift and go to state 74
+    OR              shift and go to state 9
+    NULORONE        reduce using rule 61 (alternative -> .)
+    LPARENTHESIS    reduce using rule 61 (alternative -> .)
+    ONEORMANY       reduce using rule 61 (alternative -> .)
+    NULORMANY       reduce using rule 61 (alternative -> .)
+    LCURLY          reduce using rule 61 (alternative -> .)
+    WILDCARD        reduce using rule 61 (alternative -> .)
+    BARSS           reduce using rule 61 (alternative -> .)
+    BARLS           reduce using rule 61 (alternative -> .)
+    BARSW           reduce using rule 61 (alternative -> .)
+    BARLW           reduce using rule 61 (alternative -> .)
+    BARSD           reduce using rule 61 (alternative -> .)
+    BARLD           reduce using rule 61 (alternative -> .)
+    BARN            reduce using rule 61 (alternative -> .)
+    BART            reduce using rule 61 (alternative -> .)
+    SPACE           reduce using rule 61 (alternative -> .)
+    CHAR            reduce using rule 61 (alternative -> .)
+    LITERALBAR      reduce using rule 61 (alternative -> .)
+    MINUS           reduce using rule 61 (alternative -> .)
+    LBRACKET        reduce using rule 61 (alternative -> .)
+    EXCEPTOPTS      reduce using rule 61 (alternative -> .)
+
+  ! RPARENTHESIS    [ reduce using rule 61 (alternative -> .) ]
+  ! OR              [ reduce using rule 61 (alternative -> .) ]
+  ! NULORONE        [ reduce using rule 66 (miniexpr -> .) ]
+  ! LPARENTHESIS    [ reduce using rule 66 (miniexpr -> .) ]
+  ! ONEORMANY       [ reduce using rule 66 (miniexpr -> .) ]
+  ! NULORMANY       [ reduce using rule 66 (miniexpr -> .) ]
+  ! LCURLY          [ reduce using rule 66 (miniexpr -> .) ]
+  ! WILDCARD        [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARSS           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARLS           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARSW           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARLW           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARSD           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARLD           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARN            [ reduce using rule 66 (miniexpr -> .) ]
+  ! BART            [ reduce using rule 66 (miniexpr -> .) ]
+  ! SPACE           [ reduce using rule 66 (miniexpr -> .) ]
+  ! CHAR            [ reduce using rule 66 (miniexpr -> .) ]
+  ! LITERALBAR      [ reduce using rule 66 (miniexpr -> .) ]
+  ! MINUS           [ reduce using rule 66 (miniexpr -> .) ]
+  ! LBRACKET        [ reduce using rule 66 (miniexpr -> .) ]
+  ! EXCEPTOPTS      [ reduce using rule 66 (miniexpr -> .) ]
+  ! RPARENTHESIS    [ reduce using rule 66 (miniexpr -> .) ]
+  ! OR              [ reduce using rule 66 (miniexpr -> .) ]
+
+    alternative                    shift and go to state 6
+    miniexpr                       shift and go to state 7
+
+state 65
+
+    (56) capture_group -> LPARENTHESIS EXCEPTLOOKAHEADPOS expr . RPARENTHESIS
+    (49) expr -> expr . alternative miniexpr expropt
+    (50) expr -> expr . alternative miniexpr
+    (51) expr -> expr . miniexpr expropt
+    (52) expr -> expr . miniexpr
+    (60) alternative -> . OR
+    (61) alternative -> .
+    (65) miniexpr -> . miniexpr wtfamidoinghere quantifier
+    (66) miniexpr -> .
+
+  ! shift/reduce conflict for RPARENTHESIS resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! reduce/reduce conflict for NULORONE resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for LPARENTHESIS resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for ONEORMANY resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for NULORMANY resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for LCURLY resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for WILDCARD resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARSS resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARLS resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARSW resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARLW resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARSD resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARLD resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARN resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BART resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for SPACE resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for CHAR resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for LITERALBAR resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for MINUS resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for LBRACKET resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for EXCEPTOPTS resolved using rule 61 (alternative -> .)
+  ! shift/reduce conflict for RPARENTHESIS resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    RPARENTHESIS    shift and go to state 75
+    OR              shift and go to state 9
+    NULORONE        reduce using rule 61 (alternative -> .)
+    LPARENTHESIS    reduce using rule 61 (alternative -> .)
+    ONEORMANY       reduce using rule 61 (alternative -> .)
+    NULORMANY       reduce using rule 61 (alternative -> .)
+    LCURLY          reduce using rule 61 (alternative -> .)
+    WILDCARD        reduce using rule 61 (alternative -> .)
+    BARSS           reduce using rule 61 (alternative -> .)
+    BARLS           reduce using rule 61 (alternative -> .)
+    BARSW           reduce using rule 61 (alternative -> .)
+    BARLW           reduce using rule 61 (alternative -> .)
+    BARSD           reduce using rule 61 (alternative -> .)
+    BARLD           reduce using rule 61 (alternative -> .)
+    BARN            reduce using rule 61 (alternative -> .)
+    BART            reduce using rule 61 (alternative -> .)
+    SPACE           reduce using rule 61 (alternative -> .)
+    CHAR            reduce using rule 61 (alternative -> .)
+    LITERALBAR      reduce using rule 61 (alternative -> .)
+    MINUS           reduce using rule 61 (alternative -> .)
+    LBRACKET        reduce using rule 61 (alternative -> .)
+    EXCEPTOPTS      reduce using rule 61 (alternative -> .)
+
+  ! RPARENTHESIS    [ reduce using rule 61 (alternative -> .) ]
+  ! OR              [ reduce using rule 61 (alternative -> .) ]
+  ! NULORONE        [ reduce using rule 66 (miniexpr -> .) ]
+  ! LPARENTHESIS    [ reduce using rule 66 (miniexpr -> .) ]
+  ! ONEORMANY       [ reduce using rule 66 (miniexpr -> .) ]
+  ! NULORMANY       [ reduce using rule 66 (miniexpr -> .) ]
+  ! LCURLY          [ reduce using rule 66 (miniexpr -> .) ]
+  ! WILDCARD        [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARSS           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARLS           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARSW           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARLW           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARSD           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARLD           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARN            [ reduce using rule 66 (miniexpr -> .) ]
+  ! BART            [ reduce using rule 66 (miniexpr -> .) ]
+  ! SPACE           [ reduce using rule 66 (miniexpr -> .) ]
+  ! CHAR            [ reduce using rule 66 (miniexpr -> .) ]
+  ! LITERALBAR      [ reduce using rule 66 (miniexpr -> .) ]
+  ! MINUS           [ reduce using rule 66 (miniexpr -> .) ]
+  ! LBRACKET        [ reduce using rule 66 (miniexpr -> .) ]
+  ! EXCEPTOPTS      [ reduce using rule 66 (miniexpr -> .) ]
+  ! RPARENTHESIS    [ reduce using rule 66 (miniexpr -> .) ]
+  ! OR              [ reduce using rule 66 (miniexpr -> .) ]
+
+    alternative                    shift and go to state 6
+    miniexpr                       shift and go to state 7
+
+state 66
+
+    (57) capture_group -> LPARENTHESIS EXCEPTLOOKAHEADNEG expr . RPARENTHESIS
+    (49) expr -> expr . alternative miniexpr expropt
+    (50) expr -> expr . alternative miniexpr
+    (51) expr -> expr . miniexpr expropt
+    (52) expr -> expr . miniexpr
+    (60) alternative -> . OR
+    (61) alternative -> .
+    (65) miniexpr -> . miniexpr wtfamidoinghere quantifier
+    (66) miniexpr -> .
+
+  ! shift/reduce conflict for RPARENTHESIS resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! reduce/reduce conflict for NULORONE resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for LPARENTHESIS resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for ONEORMANY resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for NULORMANY resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for LCURLY resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for WILDCARD resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARSS resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARLS resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARSW resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARLW resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARSD resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARLD resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARN resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BART resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for SPACE resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for CHAR resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for LITERALBAR resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for MINUS resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for LBRACKET resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for EXCEPTOPTS resolved using rule 61 (alternative -> .)
+  ! shift/reduce conflict for RPARENTHESIS resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    RPARENTHESIS    shift and go to state 76
+    OR              shift and go to state 9
+    NULORONE        reduce using rule 61 (alternative -> .)
+    LPARENTHESIS    reduce using rule 61 (alternative -> .)
+    ONEORMANY       reduce using rule 61 (alternative -> .)
+    NULORMANY       reduce using rule 61 (alternative -> .)
+    LCURLY          reduce using rule 61 (alternative -> .)
+    WILDCARD        reduce using rule 61 (alternative -> .)
+    BARSS           reduce using rule 61 (alternative -> .)
+    BARLS           reduce using rule 61 (alternative -> .)
+    BARSW           reduce using rule 61 (alternative -> .)
+    BARLW           reduce using rule 61 (alternative -> .)
+    BARSD           reduce using rule 61 (alternative -> .)
+    BARLD           reduce using rule 61 (alternative -> .)
+    BARN            reduce using rule 61 (alternative -> .)
+    BART            reduce using rule 61 (alternative -> .)
+    SPACE           reduce using rule 61 (alternative -> .)
+    CHAR            reduce using rule 61 (alternative -> .)
+    LITERALBAR      reduce using rule 61 (alternative -> .)
+    MINUS           reduce using rule 61 (alternative -> .)
+    LBRACKET        reduce using rule 61 (alternative -> .)
+    EXCEPTOPTS      reduce using rule 61 (alternative -> .)
+
+  ! RPARENTHESIS    [ reduce using rule 61 (alternative -> .) ]
+  ! OR              [ reduce using rule 61 (alternative -> .) ]
+  ! NULORONE        [ reduce using rule 66 (miniexpr -> .) ]
+  ! LPARENTHESIS    [ reduce using rule 66 (miniexpr -> .) ]
+  ! ONEORMANY       [ reduce using rule 66 (miniexpr -> .) ]
+  ! NULORMANY       [ reduce using rule 66 (miniexpr -> .) ]
+  ! LCURLY          [ reduce using rule 66 (miniexpr -> .) ]
+  ! WILDCARD        [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARSS           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARLS           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARSW           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARLW           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARSD           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARLD           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARN            [ reduce using rule 66 (miniexpr -> .) ]
+  ! BART            [ reduce using rule 66 (miniexpr -> .) ]
+  ! SPACE           [ reduce using rule 66 (miniexpr -> .) ]
+  ! CHAR            [ reduce using rule 66 (miniexpr -> .) ]
+  ! LITERALBAR      [ reduce using rule 66 (miniexpr -> .) ]
+  ! MINUS           [ reduce using rule 66 (miniexpr -> .) ]
+  ! LBRACKET        [ reduce using rule 66 (miniexpr -> .) ]
+  ! EXCEPTOPTS      [ reduce using rule 66 (miniexpr -> .) ]
+  ! RPARENTHESIS    [ reduce using rule 66 (miniexpr -> .) ]
+  ! OR              [ reduce using rule 66 (miniexpr -> .) ]
+
+    alternative                    shift and go to state 6
+    miniexpr                       shift and go to state 7
+
+state 67
+
+    (58) capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDPOS expr . RPARENTHESIS
+    (49) expr -> expr . alternative miniexpr expropt
+    (50) expr -> expr . alternative miniexpr
+    (51) expr -> expr . miniexpr expropt
+    (52) expr -> expr . miniexpr
+    (60) alternative -> . OR
+    (61) alternative -> .
+    (65) miniexpr -> . miniexpr wtfamidoinghere quantifier
+    (66) miniexpr -> .
+
+  ! shift/reduce conflict for RPARENTHESIS resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! reduce/reduce conflict for NULORONE resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for LPARENTHESIS resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for ONEORMANY resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for NULORMANY resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for LCURLY resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for WILDCARD resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARSS resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARLS resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARSW resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARLW resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARSD resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARLD resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARN resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BART resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for SPACE resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for CHAR resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for LITERALBAR resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for MINUS resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for LBRACKET resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for EXCEPTOPTS resolved using rule 61 (alternative -> .)
+  ! shift/reduce conflict for RPARENTHESIS resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    RPARENTHESIS    shift and go to state 77
+    OR              shift and go to state 9
+    NULORONE        reduce using rule 61 (alternative -> .)
+    LPARENTHESIS    reduce using rule 61 (alternative -> .)
+    ONEORMANY       reduce using rule 61 (alternative -> .)
+    NULORMANY       reduce using rule 61 (alternative -> .)
+    LCURLY          reduce using rule 61 (alternative -> .)
+    WILDCARD        reduce using rule 61 (alternative -> .)
+    BARSS           reduce using rule 61 (alternative -> .)
+    BARLS           reduce using rule 61 (alternative -> .)
+    BARSW           reduce using rule 61 (alternative -> .)
+    BARLW           reduce using rule 61 (alternative -> .)
+    BARSD           reduce using rule 61 (alternative -> .)
+    BARLD           reduce using rule 61 (alternative -> .)
+    BARN            reduce using rule 61 (alternative -> .)
+    BART            reduce using rule 61 (alternative -> .)
+    SPACE           reduce using rule 61 (alternative -> .)
+    CHAR            reduce using rule 61 (alternative -> .)
+    LITERALBAR      reduce using rule 61 (alternative -> .)
+    MINUS           reduce using rule 61 (alternative -> .)
+    LBRACKET        reduce using rule 61 (alternative -> .)
+    EXCEPTOPTS      reduce using rule 61 (alternative -> .)
+
+  ! RPARENTHESIS    [ reduce using rule 61 (alternative -> .) ]
+  ! OR              [ reduce using rule 61 (alternative -> .) ]
+  ! NULORONE        [ reduce using rule 66 (miniexpr -> .) ]
+  ! LPARENTHESIS    [ reduce using rule 66 (miniexpr -> .) ]
+  ! ONEORMANY       [ reduce using rule 66 (miniexpr -> .) ]
+  ! NULORMANY       [ reduce using rule 66 (miniexpr -> .) ]
+  ! LCURLY          [ reduce using rule 66 (miniexpr -> .) ]
+  ! WILDCARD        [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARSS           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARLS           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARSW           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARLW           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARSD           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARLD           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARN            [ reduce using rule 66 (miniexpr -> .) ]
+  ! BART            [ reduce using rule 66 (miniexpr -> .) ]
+  ! SPACE           [ reduce using rule 66 (miniexpr -> .) ]
+  ! CHAR            [ reduce using rule 66 (miniexpr -> .) ]
+  ! LITERALBAR      [ reduce using rule 66 (miniexpr -> .) ]
+  ! MINUS           [ reduce using rule 66 (miniexpr -> .) ]
+  ! LBRACKET        [ reduce using rule 66 (miniexpr -> .) ]
+  ! EXCEPTOPTS      [ reduce using rule 66 (miniexpr -> .) ]
+  ! RPARENTHESIS    [ reduce using rule 66 (miniexpr -> .) ]
+  ! OR              [ reduce using rule 66 (miniexpr -> .) ]
+
+    alternative                    shift and go to state 6
+    miniexpr                       shift and go to state 7
+
+state 68
+
+    (59) capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDNEG expr . RPARENTHESIS
+    (49) expr -> expr . alternative miniexpr expropt
+    (50) expr -> expr . alternative miniexpr
+    (51) expr -> expr . miniexpr expropt
+    (52) expr -> expr . miniexpr
+    (60) alternative -> . OR
+    (61) alternative -> .
+    (65) miniexpr -> . miniexpr wtfamidoinghere quantifier
+    (66) miniexpr -> .
+
+  ! shift/reduce conflict for RPARENTHESIS resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! reduce/reduce conflict for NULORONE resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for LPARENTHESIS resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for ONEORMANY resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for NULORMANY resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for LCURLY resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for WILDCARD resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARSS resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARLS resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARSW resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARLW resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARSD resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARLD resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BARN resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for BART resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for SPACE resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for CHAR resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for LITERALBAR resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for MINUS resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for LBRACKET resolved using rule 61 (alternative -> .)
+  ! reduce/reduce conflict for EXCEPTOPTS resolved using rule 61 (alternative -> .)
+  ! shift/reduce conflict for RPARENTHESIS resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    RPARENTHESIS    shift and go to state 78
+    OR              shift and go to state 9
+    NULORONE        reduce using rule 61 (alternative -> .)
+    LPARENTHESIS    reduce using rule 61 (alternative -> .)
+    ONEORMANY       reduce using rule 61 (alternative -> .)
+    NULORMANY       reduce using rule 61 (alternative -> .)
+    LCURLY          reduce using rule 61 (alternative -> .)
+    WILDCARD        reduce using rule 61 (alternative -> .)
+    BARSS           reduce using rule 61 (alternative -> .)
+    BARLS           reduce using rule 61 (alternative -> .)
+    BARSW           reduce using rule 61 (alternative -> .)
+    BARLW           reduce using rule 61 (alternative -> .)
+    BARSD           reduce using rule 61 (alternative -> .)
+    BARLD           reduce using rule 61 (alternative -> .)
+    BARN            reduce using rule 61 (alternative -> .)
+    BART            reduce using rule 61 (alternative -> .)
+    SPACE           reduce using rule 61 (alternative -> .)
+    CHAR            reduce using rule 61 (alternative -> .)
+    LITERALBAR      reduce using rule 61 (alternative -> .)
+    MINUS           reduce using rule 61 (alternative -> .)
+    LBRACKET        reduce using rule 61 (alternative -> .)
+    EXCEPTOPTS      reduce using rule 61 (alternative -> .)
+
+  ! RPARENTHESIS    [ reduce using rule 61 (alternative -> .) ]
+  ! OR              [ reduce using rule 61 (alternative -> .) ]
+  ! NULORONE        [ reduce using rule 66 (miniexpr -> .) ]
+  ! LPARENTHESIS    [ reduce using rule 66 (miniexpr -> .) ]
+  ! ONEORMANY       [ reduce using rule 66 (miniexpr -> .) ]
+  ! NULORMANY       [ reduce using rule 66 (miniexpr -> .) ]
+  ! LCURLY          [ reduce using rule 66 (miniexpr -> .) ]
+  ! WILDCARD        [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARSS           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARLS           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARSW           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARLW           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARSD           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARLD           [ reduce using rule 66 (miniexpr -> .) ]
+  ! BARN            [ reduce using rule 66 (miniexpr -> .) ]
+  ! BART            [ reduce using rule 66 (miniexpr -> .) ]
+  ! SPACE           [ reduce using rule 66 (miniexpr -> .) ]
+  ! CHAR            [ reduce using rule 66 (miniexpr -> .) ]
+  ! LITERALBAR      [ reduce using rule 66 (miniexpr -> .) ]
+  ! MINUS           [ reduce using rule 66 (miniexpr -> .) ]
+  ! LBRACKET        [ reduce using rule 66 (miniexpr -> .) ]
+  ! EXCEPTOPTS      [ reduce using rule 66 (miniexpr -> .) ]
+  ! RPARENTHESIS    [ reduce using rule 66 (miniexpr -> .) ]
+  ! OR              [ reduce using rule 66 (miniexpr -> .) ]
+
+    alternative                    shift and go to state 6
+    miniexpr                       shift and go to state 7
+
+state 69
+
+    (11) quantifier -> LCURLY BARSD RCURLY .
+
+    NULORONE        reduce using rule 11 (quantifier -> LCURLY BARSD RCURLY .)
+    LPARENTHESIS    reduce using rule 11 (quantifier -> LCURLY BARSD RCURLY .)
+    ONEORMANY       reduce using rule 11 (quantifier -> LCURLY BARSD RCURLY .)
+    NULORMANY       reduce using rule 11 (quantifier -> LCURLY BARSD RCURLY .)
+    LCURLY          reduce using rule 11 (quantifier -> LCURLY BARSD RCURLY .)
+    WILDCARD        reduce using rule 11 (quantifier -> LCURLY BARSD RCURLY .)
+    BARSS           reduce using rule 11 (quantifier -> LCURLY BARSD RCURLY .)
+    BARLS           reduce using rule 11 (quantifier -> LCURLY BARSD RCURLY .)
+    BARSW           reduce using rule 11 (quantifier -> LCURLY BARSD RCURLY .)
+    BARLW           reduce using rule 11 (quantifier -> LCURLY BARSD RCURLY .)
+    BARSD           reduce using rule 11 (quantifier -> LCURLY BARSD RCURLY .)
+    BARLD           reduce using rule 11 (quantifier -> LCURLY BARSD RCURLY .)
+    BARN            reduce using rule 11 (quantifier -> LCURLY BARSD RCURLY .)
+    BART            reduce using rule 11 (quantifier -> LCURLY BARSD RCURLY .)
+    SPACE           reduce using rule 11 (quantifier -> LCURLY BARSD RCURLY .)
+    CHAR            reduce using rule 11 (quantifier -> LCURLY BARSD RCURLY .)
+    LITERALBAR      reduce using rule 11 (quantifier -> LCURLY BARSD RCURLY .)
+    MINUS           reduce using rule 11 (quantifier -> LCURLY BARSD RCURLY .)
+    LBRACKET        reduce using rule 11 (quantifier -> LCURLY BARSD RCURLY .)
+    EXCEPTOPTS      reduce using rule 11 (quantifier -> LCURLY BARSD RCURLY .)
+    END             reduce using rule 11 (quantifier -> LCURLY BARSD RCURLY .)
+    OR              reduce using rule 11 (quantifier -> LCURLY BARSD RCURLY .)
+    $end            reduce using rule 11 (quantifier -> LCURLY BARSD RCURLY .)
+    RPARENTHESIS    reduce using rule 11 (quantifier -> LCURLY BARSD RCURLY .)
+
+
+state 70
+
+    (12) quantifier -> LCURLY BARSD COMMA . RCURLY
+    (14) quantifier -> LCURLY BARSD COMMA . BARSD RCURLY
+
+    RCURLY          shift and go to state 80
+    BARSD           shift and go to state 79
+
+
+state 71
+
+    (13) quantifier -> LCURLY COMMA BARSD . RCURLY
+
+    RCURLY          shift and go to state 81
+
+
+state 72
+
+    (16) charclass -> LBRACKET charlist CHAR . RBRACKET
+    (1) charlist -> charlist CHAR .
+    (2) charlist -> charlist CHAR . MINUS CHAR
+
+    RBRACKET        shift and go to state 82
+    CHAR            reduce using rule 1 (charlist -> charlist CHAR .)
+    MINUS           shift and go to state 83
+
+
+state 73
+
+    (19) charclass -> EXCEPTOPTS charlist CHAR . RBRACKET
+    (1) charlist -> charlist CHAR .
+    (2) charlist -> charlist CHAR . MINUS CHAR
+
+    RBRACKET        shift and go to state 84
+    CHAR            reduce using rule 1 (charlist -> charlist CHAR .)
+    MINUS           shift and go to state 83
+
+
+state 74
+
+    (55) capture_group -> LPARENTHESIS EXCEPTCAPTURE expr RPARENTHESIS .
+
+    ONEORMANY       reduce using rule 55 (capture_group -> LPARENTHESIS EXCEPTCAPTURE expr RPARENTHESIS .)
+    NULORMANY       reduce using rule 55 (capture_group -> LPARENTHESIS EXCEPTCAPTURE expr RPARENTHESIS .)
+    LCURLY          reduce using rule 55 (capture_group -> LPARENTHESIS EXCEPTCAPTURE expr RPARENTHESIS .)
+    NULORONE        reduce using rule 55 (capture_group -> LPARENTHESIS EXCEPTCAPTURE expr RPARENTHESIS .)
+    LPARENTHESIS    reduce using rule 55 (capture_group -> LPARENTHESIS EXCEPTCAPTURE expr RPARENTHESIS .)
+    WILDCARD        reduce using rule 55 (capture_group -> LPARENTHESIS EXCEPTCAPTURE expr RPARENTHESIS .)
+    BARSS           reduce using rule 55 (capture_group -> LPARENTHESIS EXCEPTCAPTURE expr RPARENTHESIS .)
+    BARLS           reduce using rule 55 (capture_group -> LPARENTHESIS EXCEPTCAPTURE expr RPARENTHESIS .)
+    BARSW           reduce using rule 55 (capture_group -> LPARENTHESIS EXCEPTCAPTURE expr RPARENTHESIS .)
+    BARLW           reduce using rule 55 (capture_group -> LPARENTHESIS EXCEPTCAPTURE expr RPARENTHESIS .)
+    BARSD           reduce using rule 55 (capture_group -> LPARENTHESIS EXCEPTCAPTURE expr RPARENTHESIS .)
+    BARLD           reduce using rule 55 (capture_group -> LPARENTHESIS EXCEPTCAPTURE expr RPARENTHESIS .)
+    BARN            reduce using rule 55 (capture_group -> LPARENTHESIS EXCEPTCAPTURE expr RPARENTHESIS .)
+    BART            reduce using rule 55 (capture_group -> LPARENTHESIS EXCEPTCAPTURE expr RPARENTHESIS .)
+    SPACE           reduce using rule 55 (capture_group -> LPARENTHESIS EXCEPTCAPTURE expr RPARENTHESIS .)
+    CHAR            reduce using rule 55 (capture_group -> LPARENTHESIS EXCEPTCAPTURE expr RPARENTHESIS .)
+    LITERALBAR      reduce using rule 55 (capture_group -> LPARENTHESIS EXCEPTCAPTURE expr RPARENTHESIS .)
+    MINUS           reduce using rule 55 (capture_group -> LPARENTHESIS EXCEPTCAPTURE expr RPARENTHESIS .)
+    LBRACKET        reduce using rule 55 (capture_group -> LPARENTHESIS EXCEPTCAPTURE expr RPARENTHESIS .)
+    EXCEPTOPTS      reduce using rule 55 (capture_group -> LPARENTHESIS EXCEPTCAPTURE expr RPARENTHESIS .)
+    END             reduce using rule 55 (capture_group -> LPARENTHESIS EXCEPTCAPTURE expr RPARENTHESIS .)
+    OR              reduce using rule 55 (capture_group -> LPARENTHESIS EXCEPTCAPTURE expr RPARENTHESIS .)
+    $end            reduce using rule 55 (capture_group -> LPARENTHESIS EXCEPTCAPTURE expr RPARENTHESIS .)
+    RPARENTHESIS    reduce using rule 55 (capture_group -> LPARENTHESIS EXCEPTCAPTURE expr RPARENTHESIS .)
+
+
+state 75
+
+    (56) capture_group -> LPARENTHESIS EXCEPTLOOKAHEADPOS expr RPARENTHESIS .
+
+    ONEORMANY       reduce using rule 56 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADPOS expr RPARENTHESIS .)
+    NULORMANY       reduce using rule 56 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADPOS expr RPARENTHESIS .)
+    LCURLY          reduce using rule 56 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADPOS expr RPARENTHESIS .)
+    NULORONE        reduce using rule 56 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADPOS expr RPARENTHESIS .)
+    LPARENTHESIS    reduce using rule 56 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADPOS expr RPARENTHESIS .)
+    WILDCARD        reduce using rule 56 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADPOS expr RPARENTHESIS .)
+    BARSS           reduce using rule 56 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADPOS expr RPARENTHESIS .)
+    BARLS           reduce using rule 56 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADPOS expr RPARENTHESIS .)
+    BARSW           reduce using rule 56 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADPOS expr RPARENTHESIS .)
+    BARLW           reduce using rule 56 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADPOS expr RPARENTHESIS .)
+    BARSD           reduce using rule 56 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADPOS expr RPARENTHESIS .)
+    BARLD           reduce using rule 56 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADPOS expr RPARENTHESIS .)
+    BARN            reduce using rule 56 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADPOS expr RPARENTHESIS .)
+    BART            reduce using rule 56 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADPOS expr RPARENTHESIS .)
+    SPACE           reduce using rule 56 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADPOS expr RPARENTHESIS .)
+    CHAR            reduce using rule 56 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADPOS expr RPARENTHESIS .)
+    LITERALBAR      reduce using rule 56 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADPOS expr RPARENTHESIS .)
+    MINUS           reduce using rule 56 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADPOS expr RPARENTHESIS .)
+    LBRACKET        reduce using rule 56 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADPOS expr RPARENTHESIS .)
+    EXCEPTOPTS      reduce using rule 56 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADPOS expr RPARENTHESIS .)
+    END             reduce using rule 56 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADPOS expr RPARENTHESIS .)
+    OR              reduce using rule 56 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADPOS expr RPARENTHESIS .)
+    $end            reduce using rule 56 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADPOS expr RPARENTHESIS .)
+    RPARENTHESIS    reduce using rule 56 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADPOS expr RPARENTHESIS .)
+
+
+state 76
+
+    (57) capture_group -> LPARENTHESIS EXCEPTLOOKAHEADNEG expr RPARENTHESIS .
+
+    ONEORMANY       reduce using rule 57 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADNEG expr RPARENTHESIS .)
+    NULORMANY       reduce using rule 57 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADNEG expr RPARENTHESIS .)
+    LCURLY          reduce using rule 57 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADNEG expr RPARENTHESIS .)
+    NULORONE        reduce using rule 57 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADNEG expr RPARENTHESIS .)
+    LPARENTHESIS    reduce using rule 57 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADNEG expr RPARENTHESIS .)
+    WILDCARD        reduce using rule 57 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADNEG expr RPARENTHESIS .)
+    BARSS           reduce using rule 57 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADNEG expr RPARENTHESIS .)
+    BARLS           reduce using rule 57 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADNEG expr RPARENTHESIS .)
+    BARSW           reduce using rule 57 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADNEG expr RPARENTHESIS .)
+    BARLW           reduce using rule 57 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADNEG expr RPARENTHESIS .)
+    BARSD           reduce using rule 57 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADNEG expr RPARENTHESIS .)
+    BARLD           reduce using rule 57 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADNEG expr RPARENTHESIS .)
+    BARN            reduce using rule 57 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADNEG expr RPARENTHESIS .)
+    BART            reduce using rule 57 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADNEG expr RPARENTHESIS .)
+    SPACE           reduce using rule 57 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADNEG expr RPARENTHESIS .)
+    CHAR            reduce using rule 57 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADNEG expr RPARENTHESIS .)
+    LITERALBAR      reduce using rule 57 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADNEG expr RPARENTHESIS .)
+    MINUS           reduce using rule 57 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADNEG expr RPARENTHESIS .)
+    LBRACKET        reduce using rule 57 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADNEG expr RPARENTHESIS .)
+    EXCEPTOPTS      reduce using rule 57 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADNEG expr RPARENTHESIS .)
+    END             reduce using rule 57 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADNEG expr RPARENTHESIS .)
+    OR              reduce using rule 57 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADNEG expr RPARENTHESIS .)
+    $end            reduce using rule 57 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADNEG expr RPARENTHESIS .)
+    RPARENTHESIS    reduce using rule 57 (capture_group -> LPARENTHESIS EXCEPTLOOKAHEADNEG expr RPARENTHESIS .)
+
+
+state 77
+
+    (58) capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDPOS expr RPARENTHESIS .
+
+    ONEORMANY       reduce using rule 58 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDPOS expr RPARENTHESIS .)
+    NULORMANY       reduce using rule 58 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDPOS expr RPARENTHESIS .)
+    LCURLY          reduce using rule 58 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDPOS expr RPARENTHESIS .)
+    NULORONE        reduce using rule 58 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDPOS expr RPARENTHESIS .)
+    LPARENTHESIS    reduce using rule 58 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDPOS expr RPARENTHESIS .)
+    WILDCARD        reduce using rule 58 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDPOS expr RPARENTHESIS .)
+    BARSS           reduce using rule 58 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDPOS expr RPARENTHESIS .)
+    BARLS           reduce using rule 58 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDPOS expr RPARENTHESIS .)
+    BARSW           reduce using rule 58 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDPOS expr RPARENTHESIS .)
+    BARLW           reduce using rule 58 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDPOS expr RPARENTHESIS .)
+    BARSD           reduce using rule 58 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDPOS expr RPARENTHESIS .)
+    BARLD           reduce using rule 58 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDPOS expr RPARENTHESIS .)
+    BARN            reduce using rule 58 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDPOS expr RPARENTHESIS .)
+    BART            reduce using rule 58 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDPOS expr RPARENTHESIS .)
+    SPACE           reduce using rule 58 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDPOS expr RPARENTHESIS .)
+    CHAR            reduce using rule 58 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDPOS expr RPARENTHESIS .)
+    LITERALBAR      reduce using rule 58 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDPOS expr RPARENTHESIS .)
+    MINUS           reduce using rule 58 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDPOS expr RPARENTHESIS .)
+    LBRACKET        reduce using rule 58 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDPOS expr RPARENTHESIS .)
+    EXCEPTOPTS      reduce using rule 58 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDPOS expr RPARENTHESIS .)
+    END             reduce using rule 58 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDPOS expr RPARENTHESIS .)
+    OR              reduce using rule 58 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDPOS expr RPARENTHESIS .)
+    $end            reduce using rule 58 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDPOS expr RPARENTHESIS .)
+    RPARENTHESIS    reduce using rule 58 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDPOS expr RPARENTHESIS .)
+
+
+state 78
+
+    (59) capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDNEG expr RPARENTHESIS .
+
+    ONEORMANY       reduce using rule 59 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDNEG expr RPARENTHESIS .)
+    NULORMANY       reduce using rule 59 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDNEG expr RPARENTHESIS .)
+    LCURLY          reduce using rule 59 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDNEG expr RPARENTHESIS .)
+    NULORONE        reduce using rule 59 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDNEG expr RPARENTHESIS .)
+    LPARENTHESIS    reduce using rule 59 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDNEG expr RPARENTHESIS .)
+    WILDCARD        reduce using rule 59 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDNEG expr RPARENTHESIS .)
+    BARSS           reduce using rule 59 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDNEG expr RPARENTHESIS .)
+    BARLS           reduce using rule 59 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDNEG expr RPARENTHESIS .)
+    BARSW           reduce using rule 59 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDNEG expr RPARENTHESIS .)
+    BARLW           reduce using rule 59 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDNEG expr RPARENTHESIS .)
+    BARSD           reduce using rule 59 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDNEG expr RPARENTHESIS .)
+    BARLD           reduce using rule 59 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDNEG expr RPARENTHESIS .)
+    BARN            reduce using rule 59 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDNEG expr RPARENTHESIS .)
+    BART            reduce using rule 59 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDNEG expr RPARENTHESIS .)
+    SPACE           reduce using rule 59 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDNEG expr RPARENTHESIS .)
+    CHAR            reduce using rule 59 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDNEG expr RPARENTHESIS .)
+    LITERALBAR      reduce using rule 59 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDNEG expr RPARENTHESIS .)
+    MINUS           reduce using rule 59 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDNEG expr RPARENTHESIS .)
+    LBRACKET        reduce using rule 59 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDNEG expr RPARENTHESIS .)
+    EXCEPTOPTS      reduce using rule 59 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDNEG expr RPARENTHESIS .)
+    END             reduce using rule 59 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDNEG expr RPARENTHESIS .)
+    OR              reduce using rule 59 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDNEG expr RPARENTHESIS .)
+    $end            reduce using rule 59 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDNEG expr RPARENTHESIS .)
+    RPARENTHESIS    reduce using rule 59 (capture_group -> LPARENTHESIS EXCEPTLOOKBEHINDNEG expr RPARENTHESIS .)
+
+
+state 79
+
+    (14) quantifier -> LCURLY BARSD COMMA BARSD . RCURLY
+
+    RCURLY          shift and go to state 85
+
+
+state 80
+
+    (12) quantifier -> LCURLY BARSD COMMA RCURLY .
+
+    NULORONE        reduce using rule 12 (quantifier -> LCURLY BARSD COMMA RCURLY .)
+    LPARENTHESIS    reduce using rule 12 (quantifier -> LCURLY BARSD COMMA RCURLY .)
+    ONEORMANY       reduce using rule 12 (quantifier -> LCURLY BARSD COMMA RCURLY .)
+    NULORMANY       reduce using rule 12 (quantifier -> LCURLY BARSD COMMA RCURLY .)
+    LCURLY          reduce using rule 12 (quantifier -> LCURLY BARSD COMMA RCURLY .)
+    WILDCARD        reduce using rule 12 (quantifier -> LCURLY BARSD COMMA RCURLY .)
+    BARSS           reduce using rule 12 (quantifier -> LCURLY BARSD COMMA RCURLY .)
+    BARLS           reduce using rule 12 (quantifier -> LCURLY BARSD COMMA RCURLY .)
+    BARSW           reduce using rule 12 (quantifier -> LCURLY BARSD COMMA RCURLY .)
+    BARLW           reduce using rule 12 (quantifier -> LCURLY BARSD COMMA RCURLY .)
+    BARSD           reduce using rule 12 (quantifier -> LCURLY BARSD COMMA RCURLY .)
+    BARLD           reduce using rule 12 (quantifier -> LCURLY BARSD COMMA RCURLY .)
+    BARN            reduce using rule 12 (quantifier -> LCURLY BARSD COMMA RCURLY .)
+    BART            reduce using rule 12 (quantifier -> LCURLY BARSD COMMA RCURLY .)
+    SPACE           reduce using rule 12 (quantifier -> LCURLY BARSD COMMA RCURLY .)
+    CHAR            reduce using rule 12 (quantifier -> LCURLY BARSD COMMA RCURLY .)
+    LITERALBAR      reduce using rule 12 (quantifier -> LCURLY BARSD COMMA RCURLY .)
+    MINUS           reduce using rule 12 (quantifier -> LCURLY BARSD COMMA RCURLY .)
+    LBRACKET        reduce using rule 12 (quantifier -> LCURLY BARSD COMMA RCURLY .)
+    EXCEPTOPTS      reduce using rule 12 (quantifier -> LCURLY BARSD COMMA RCURLY .)
+    END             reduce using rule 12 (quantifier -> LCURLY BARSD COMMA RCURLY .)
+    OR              reduce using rule 12 (quantifier -> LCURLY BARSD COMMA RCURLY .)
+    $end            reduce using rule 12 (quantifier -> LCURLY BARSD COMMA RCURLY .)
+    RPARENTHESIS    reduce using rule 12 (quantifier -> LCURLY BARSD COMMA RCURLY .)
+
+
+state 81
+
+    (13) quantifier -> LCURLY COMMA BARSD RCURLY .
+
+    NULORONE        reduce using rule 13 (quantifier -> LCURLY COMMA BARSD RCURLY .)
+    LPARENTHESIS    reduce using rule 13 (quantifier -> LCURLY COMMA BARSD RCURLY .)
+    ONEORMANY       reduce using rule 13 (quantifier -> LCURLY COMMA BARSD RCURLY .)
+    NULORMANY       reduce using rule 13 (quantifier -> LCURLY COMMA BARSD RCURLY .)
+    LCURLY          reduce using rule 13 (quantifier -> LCURLY COMMA BARSD RCURLY .)
+    WILDCARD        reduce using rule 13 (quantifier -> LCURLY COMMA BARSD RCURLY .)
+    BARSS           reduce using rule 13 (quantifier -> LCURLY COMMA BARSD RCURLY .)
+    BARLS           reduce using rule 13 (quantifier -> LCURLY COMMA BARSD RCURLY .)
+    BARSW           reduce using rule 13 (quantifier -> LCURLY COMMA BARSD RCURLY .)
+    BARLW           reduce using rule 13 (quantifier -> LCURLY COMMA BARSD RCURLY .)
+    BARSD           reduce using rule 13 (quantifier -> LCURLY COMMA BARSD RCURLY .)
+    BARLD           reduce using rule 13 (quantifier -> LCURLY COMMA BARSD RCURLY .)
+    BARN            reduce using rule 13 (quantifier -> LCURLY COMMA BARSD RCURLY .)
+    BART            reduce using rule 13 (quantifier -> LCURLY COMMA BARSD RCURLY .)
+    SPACE           reduce using rule 13 (quantifier -> LCURLY COMMA BARSD RCURLY .)
+    CHAR            reduce using rule 13 (quantifier -> LCURLY COMMA BARSD RCURLY .)
+    LITERALBAR      reduce using rule 13 (quantifier -> LCURLY COMMA BARSD RCURLY .)
+    MINUS           reduce using rule 13 (quantifier -> LCURLY COMMA BARSD RCURLY .)
+    LBRACKET        reduce using rule 13 (quantifier -> LCURLY COMMA BARSD RCURLY .)
+    EXCEPTOPTS      reduce using rule 13 (quantifier -> LCURLY COMMA BARSD RCURLY .)
+    END             reduce using rule 13 (quantifier -> LCURLY COMMA BARSD RCURLY .)
+    OR              reduce using rule 13 (quantifier -> LCURLY COMMA BARSD RCURLY .)
+    $end            reduce using rule 13 (quantifier -> LCURLY COMMA BARSD RCURLY .)
+    RPARENTHESIS    reduce using rule 13 (quantifier -> LCURLY COMMA BARSD RCURLY .)
+
+
+state 82
+
+    (16) charclass -> LBRACKET charlist CHAR RBRACKET .
+
+    ONEORMANY       reduce using rule 16 (charclass -> LBRACKET charlist CHAR RBRACKET .)
+    NULORMANY       reduce using rule 16 (charclass -> LBRACKET charlist CHAR RBRACKET .)
+    LCURLY          reduce using rule 16 (charclass -> LBRACKET charlist CHAR RBRACKET .)
+    NULORONE        reduce using rule 16 (charclass -> LBRACKET charlist CHAR RBRACKET .)
+    LPARENTHESIS    reduce using rule 16 (charclass -> LBRACKET charlist CHAR RBRACKET .)
+    WILDCARD        reduce using rule 16 (charclass -> LBRACKET charlist CHAR RBRACKET .)
+    BARSS           reduce using rule 16 (charclass -> LBRACKET charlist CHAR RBRACKET .)
+    BARLS           reduce using rule 16 (charclass -> LBRACKET charlist CHAR RBRACKET .)
+    BARSW           reduce using rule 16 (charclass -> LBRACKET charlist CHAR RBRACKET .)
+    BARLW           reduce using rule 16 (charclass -> LBRACKET charlist CHAR RBRACKET .)
+    BARSD           reduce using rule 16 (charclass -> LBRACKET charlist CHAR RBRACKET .)
+    BARLD           reduce using rule 16 (charclass -> LBRACKET charlist CHAR RBRACKET .)
+    BARN            reduce using rule 16 (charclass -> LBRACKET charlist CHAR RBRACKET .)
+    BART            reduce using rule 16 (charclass -> LBRACKET charlist CHAR RBRACKET .)
+    SPACE           reduce using rule 16 (charclass -> LBRACKET charlist CHAR RBRACKET .)
+    CHAR            reduce using rule 16 (charclass -> LBRACKET charlist CHAR RBRACKET .)
+    LITERALBAR      reduce using rule 16 (charclass -> LBRACKET charlist CHAR RBRACKET .)
+    MINUS           reduce using rule 16 (charclass -> LBRACKET charlist CHAR RBRACKET .)
+    LBRACKET        reduce using rule 16 (charclass -> LBRACKET charlist CHAR RBRACKET .)
+    EXCEPTOPTS      reduce using rule 16 (charclass -> LBRACKET charlist CHAR RBRACKET .)
+    END             reduce using rule 16 (charclass -> LBRACKET charlist CHAR RBRACKET .)
+    OR              reduce using rule 16 (charclass -> LBRACKET charlist CHAR RBRACKET .)
+    $end            reduce using rule 16 (charclass -> LBRACKET charlist CHAR RBRACKET .)
+    RPARENTHESIS    reduce using rule 16 (charclass -> LBRACKET charlist CHAR RBRACKET .)
+
+
+state 83
+
+    (2) charlist -> charlist CHAR MINUS . CHAR
+
+    CHAR            shift and go to state 86
+
+
+state 84
+
+    (19) charclass -> EXCEPTOPTS charlist CHAR RBRACKET .
+
+    ONEORMANY       reduce using rule 19 (charclass -> EXCEPTOPTS charlist CHAR RBRACKET .)
+    NULORMANY       reduce using rule 19 (charclass -> EXCEPTOPTS charlist CHAR RBRACKET .)
+    LCURLY          reduce using rule 19 (charclass -> EXCEPTOPTS charlist CHAR RBRACKET .)
+    NULORONE        reduce using rule 19 (charclass -> EXCEPTOPTS charlist CHAR RBRACKET .)
+    LPARENTHESIS    reduce using rule 19 (charclass -> EXCEPTOPTS charlist CHAR RBRACKET .)
+    WILDCARD        reduce using rule 19 (charclass -> EXCEPTOPTS charlist CHAR RBRACKET .)
+    BARSS           reduce using rule 19 (charclass -> EXCEPTOPTS charlist CHAR RBRACKET .)
+    BARLS           reduce using rule 19 (charclass -> EXCEPTOPTS charlist CHAR RBRACKET .)
+    BARSW           reduce using rule 19 (charclass -> EXCEPTOPTS charlist CHAR RBRACKET .)
+    BARLW           reduce using rule 19 (charclass -> EXCEPTOPTS charlist CHAR RBRACKET .)
+    BARSD           reduce using rule 19 (charclass -> EXCEPTOPTS charlist CHAR RBRACKET .)
+    BARLD           reduce using rule 19 (charclass -> EXCEPTOPTS charlist CHAR RBRACKET .)
+    BARN            reduce using rule 19 (charclass -> EXCEPTOPTS charlist CHAR RBRACKET .)
+    BART            reduce using rule 19 (charclass -> EXCEPTOPTS charlist CHAR RBRACKET .)
+    SPACE           reduce using rule 19 (charclass -> EXCEPTOPTS charlist CHAR RBRACKET .)
+    CHAR            reduce using rule 19 (charclass -> EXCEPTOPTS charlist CHAR RBRACKET .)
+    LITERALBAR      reduce using rule 19 (charclass -> EXCEPTOPTS charlist CHAR RBRACKET .)
+    MINUS           reduce using rule 19 (charclass -> EXCEPTOPTS charlist CHAR RBRACKET .)
+    LBRACKET        reduce using rule 19 (charclass -> EXCEPTOPTS charlist CHAR RBRACKET .)
+    EXCEPTOPTS      reduce using rule 19 (charclass -> EXCEPTOPTS charlist CHAR RBRACKET .)
+    END             reduce using rule 19 (charclass -> EXCEPTOPTS charlist CHAR RBRACKET .)
+    OR              reduce using rule 19 (charclass -> EXCEPTOPTS charlist CHAR RBRACKET .)
+    $end            reduce using rule 19 (charclass -> EXCEPTOPTS charlist CHAR RBRACKET .)
+    RPARENTHESIS    reduce using rule 19 (charclass -> EXCEPTOPTS charlist CHAR RBRACKET .)
+
+
+state 85
+
+    (14) quantifier -> LCURLY BARSD COMMA BARSD RCURLY .
+
+    NULORONE        reduce using rule 14 (quantifier -> LCURLY BARSD COMMA BARSD RCURLY .)
+    LPARENTHESIS    reduce using rule 14 (quantifier -> LCURLY BARSD COMMA BARSD RCURLY .)
+    ONEORMANY       reduce using rule 14 (quantifier -> LCURLY BARSD COMMA BARSD RCURLY .)
+    NULORMANY       reduce using rule 14 (quantifier -> LCURLY BARSD COMMA BARSD RCURLY .)
+    LCURLY          reduce using rule 14 (quantifier -> LCURLY BARSD COMMA BARSD RCURLY .)
+    WILDCARD        reduce using rule 14 (quantifier -> LCURLY BARSD COMMA BARSD RCURLY .)
+    BARSS           reduce using rule 14 (quantifier -> LCURLY BARSD COMMA BARSD RCURLY .)
+    BARLS           reduce using rule 14 (quantifier -> LCURLY BARSD COMMA BARSD RCURLY .)
+    BARSW           reduce using rule 14 (quantifier -> LCURLY BARSD COMMA BARSD RCURLY .)
+    BARLW           reduce using rule 14 (quantifier -> LCURLY BARSD COMMA BARSD RCURLY .)
+    BARSD           reduce using rule 14 (quantifier -> LCURLY BARSD COMMA BARSD RCURLY .)
+    BARLD           reduce using rule 14 (quantifier -> LCURLY BARSD COMMA BARSD RCURLY .)
+    BARN            reduce using rule 14 (quantifier -> LCURLY BARSD COMMA BARSD RCURLY .)
+    BART            reduce using rule 14 (quantifier -> LCURLY BARSD COMMA BARSD RCURLY .)
+    SPACE           reduce using rule 14 (quantifier -> LCURLY BARSD COMMA BARSD RCURLY .)
+    CHAR            reduce using rule 14 (quantifier -> LCURLY BARSD COMMA BARSD RCURLY .)
+    LITERALBAR      reduce using rule 14 (quantifier -> LCURLY BARSD COMMA BARSD RCURLY .)
+    MINUS           reduce using rule 14 (quantifier -> LCURLY BARSD COMMA BARSD RCURLY .)
+    LBRACKET        reduce using rule 14 (quantifier -> LCURLY BARSD COMMA BARSD RCURLY .)
+    EXCEPTOPTS      reduce using rule 14 (quantifier -> LCURLY BARSD COMMA BARSD RCURLY .)
+    END             reduce using rule 14 (quantifier -> LCURLY BARSD COMMA BARSD RCURLY .)
+    OR              reduce using rule 14 (quantifier -> LCURLY BARSD COMMA BARSD RCURLY .)
+    $end            reduce using rule 14 (quantifier -> LCURLY BARSD COMMA BARSD RCURLY .)
+    RPARENTHESIS    reduce using rule 14 (quantifier -> LCURLY BARSD COMMA BARSD RCURLY .)
+
+
+state 86
+
+    (2) charlist -> charlist CHAR MINUS CHAR .
+
+    CHAR            reduce using rule 2 (charlist -> charlist CHAR MINUS CHAR .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for END in state 4 resolved as shift
+WARNING: shift/reduce conflict for OR in state 4 resolved as shift
+WARNING: shift/reduce conflict for END in state 4 resolved as shift
+WARNING: shift/reduce conflict for OR in state 4 resolved as shift
+WARNING: shift/reduce conflict for NULORONE in state 7 resolved as shift
+WARNING: shift/reduce conflict for NULORONE in state 7 resolved as shift
+WARNING: shift/reduce conflict for NULORONE in state 7 resolved as shift
+WARNING: shift/reduce conflict for LPARENTHESIS in state 7 resolved as shift
+WARNING: shift/reduce conflict for NULORONE in state 10 resolved as shift
+WARNING: shift/reduce conflict for NULORONE in state 10 resolved as shift
+WARNING: shift/reduce conflict for NULORONE in state 10 resolved as shift
+WARNING: shift/reduce conflict for LPARENTHESIS in state 10 resolved as shift
+WARNING: shift/reduce conflict for ONEORMANY in state 12 resolved as shift
+WARNING: shift/reduce conflict for NULORMANY in state 12 resolved as shift
+WARNING: shift/reduce conflict for LCURLY in state 12 resolved as shift
+WARNING: shift/reduce conflict for RPARENTHESIS in state 39 resolved as shift
+WARNING: shift/reduce conflict for OR in state 39 resolved as shift
+WARNING: shift/reduce conflict for RPARENTHESIS in state 39 resolved as shift
+WARNING: shift/reduce conflict for OR in state 39 resolved as shift
+WARNING: shift/reduce conflict for RPARENTHESIS in state 64 resolved as shift
+WARNING: shift/reduce conflict for OR in state 64 resolved as shift
+WARNING: shift/reduce conflict for RPARENTHESIS in state 64 resolved as shift
+WARNING: shift/reduce conflict for OR in state 64 resolved as shift
+WARNING: shift/reduce conflict for RPARENTHESIS in state 65 resolved as shift
+WARNING: shift/reduce conflict for OR in state 65 resolved as shift
+WARNING: shift/reduce conflict for RPARENTHESIS in state 65 resolved as shift
+WARNING: shift/reduce conflict for OR in state 65 resolved as shift
+WARNING: shift/reduce conflict for RPARENTHESIS in state 66 resolved as shift
+WARNING: shift/reduce conflict for OR in state 66 resolved as shift
+WARNING: shift/reduce conflict for RPARENTHESIS in state 66 resolved as shift
+WARNING: shift/reduce conflict for OR in state 66 resolved as shift
+WARNING: shift/reduce conflict for RPARENTHESIS in state 67 resolved as shift
+WARNING: shift/reduce conflict for OR in state 67 resolved as shift
+WARNING: shift/reduce conflict for RPARENTHESIS in state 67 resolved as shift
+WARNING: shift/reduce conflict for OR in state 67 resolved as shift
+WARNING: shift/reduce conflict for RPARENTHESIS in state 68 resolved as shift
+WARNING: shift/reduce conflict for OR in state 68 resolved as shift
+WARNING: shift/reduce conflict for RPARENTHESIS in state 68 resolved as shift
+WARNING: shift/reduce conflict for OR in state 68 resolved as shift
+WARNING: reduce/reduce conflict in state 4 resolved using rule (end -> <empty>)
+WARNING: rejected rule (alternative -> <empty>) in state 4
+WARNING: reduce/reduce conflict in state 4 resolved using rule (alternative -> <empty>)
+WARNING: rejected rule (miniexpr -> <empty>) in state 4
+WARNING: reduce/reduce conflict in state 4 resolved using rule (end -> <empty>)
+WARNING: rejected rule (miniexpr -> <empty>) in state 4
+WARNING: reduce/reduce conflict in state 7 resolved using rule (expropt -> <empty>)
+WARNING: rejected rule (expr -> expr miniexpr) in state 7
+WARNING: reduce/reduce conflict in state 7 resolved using rule (expropt -> <empty>)
+WARNING: rejected rule (wtfamidoinghere -> <empty>) in state 7
+WARNING: reduce/reduce conflict in state 7 resolved using rule (phrase -> <empty>)
+WARNING: rejected rule (expropt -> <empty>) in state 7
+WARNING: reduce/reduce conflict in state 10 resolved using rule (expropt -> <empty>)
+WARNING: rejected rule (expr -> expr alternative miniexpr) in state 10
+WARNING: reduce/reduce conflict in state 10 resolved using rule (expropt -> <empty>)
+WARNING: rejected rule (wtfamidoinghere -> <empty>) in state 10
+WARNING: reduce/reduce conflict in state 10 resolved using rule (phrase -> <empty>)
+WARNING: rejected rule (expropt -> <empty>) in state 10
+WARNING: reduce/reduce conflict in state 22 resolved using rule (phrase -> phrase state)
+WARNING: rejected rule (wtfamidoinghere -> phrase state) in state 22
+WARNING: reduce/reduce conflict in state 39 resolved using rule (alternative -> <empty>)
+WARNING: rejected rule (miniexpr -> <empty>) in state 39
+WARNING: reduce/reduce conflict in state 64 resolved using rule (alternative -> <empty>)
+WARNING: rejected rule (miniexpr -> <empty>) in state 64
+WARNING: reduce/reduce conflict in state 65 resolved using rule (alternative -> <empty>)
+WARNING: rejected rule (miniexpr -> <empty>) in state 65
+WARNING: reduce/reduce conflict in state 66 resolved using rule (alternative -> <empty>)
+WARNING: rejected rule (miniexpr -> <empty>) in state 66
+WARNING: reduce/reduce conflict in state 67 resolved using rule (alternative -> <empty>)
+WARNING: rejected rule (miniexpr -> <empty>) in state 67
+WARNING: reduce/reduce conflict in state 68 resolved using rule (alternative -> <empty>)
+WARNING: rejected rule (miniexpr -> <empty>) in state 68
+WARNING: Rule (expr -> expr miniexpr) is never reduced
+WARNING: Rule (wtfamidoinghere -> <empty>) is never reduced
+WARNING: Rule (expr -> expr alternative miniexpr) is never reduced
