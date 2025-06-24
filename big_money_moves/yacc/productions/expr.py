@@ -4,23 +4,27 @@ from yacc.productions.state import *
 def p_phrase(p):
     """ 
         phrase : phrase state
+               | state
                | 
     """
-    if len(p) > 1:
-        p[0] = Node("PHRASE_BUFFER", p[2])
+    if len(p) == 3:
+        p[0] = Node("BUFFER", p[1], p[2])
+    elif len(p) == 2:
+        p[0] = Node("BUFFER", p[1])
+    else:
+        p[0] = Node("ϵ")
 
 
 def p_quantifier(p):
     """ 
         quantifier : ONEORMANY
                    | NULORMANY
-                   | LCURLY BARSD RCURLY
-                   | LCURLY BARSD COMMA RCURLY
-                   | LCURLY COMMA BARSD RCURLY
-                   | LCURLY BARSD COMMA BARSD RCURLY
+                   | LCURLY NUMBER RCURLY
+                   | LCURLY NUMBER COMMA RCURLY
+                   | LCURLY COMMA NUMBER RCURLY
+                   | LCURLY NUMBER COMMA NUMBER RCURLY
                    | 
     """
-
     match len(p):
         case 2:
             p[0] = Node("QUANTIFIER_BASIC", p[1])
@@ -75,7 +79,7 @@ def p_expr_only_mini(p):
 
 def p_expr_nul(p):
     """
-        expr : empty
+        expr :
     """
 
 
@@ -108,12 +112,11 @@ def p_alternative(p):
 
 def p_wtfamidoinghere(p):
     """ 
-        wtfamidoinghere : phrase state
+        wtfamidoinghere : phrase
                         | capture_group
-                        | 
     """
     if len(p) > 2:
-        p[0] = Node("PHRASE_BUFFER", p[2])
+        p[0] = Node("PHRASE", p[1],p[2])
 
     elif len(p) == 2:
         p[0] = Node("CAPTURE_GROUP", p[1])
@@ -125,4 +128,4 @@ def p_miniexpr(p):
                  | 
     """
     if len(p) > 1:
-        p[0] = Node("MINIEXPR",Node("TRUESTATE", p[2]), Node("QUANTIFIER", p[3]))
+        p[0] = Node("MINIEXPR",p[1],p[2], Node("QUANTIFIER", p[3]))
