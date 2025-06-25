@@ -25,19 +25,20 @@ def p_quantifier(p):
                    | LCURLY NUMBER COMMA NUMBER RCURLY
                    | 
     """
-    match len(p):
-        case 2:
-            p[0] = Node("QUANTIFIER_BASIC", p[1])
+    p[0] = Node("Empty")
+#    match len(p):
+#        case 2:
+#            p[0] = Node("QUANTIFIER_BASIC", p[1])
 
-        case 4:
-            p[0] = Node("QUANTIFIER_EXACT_AMOUNT", p[2])
+#        case 4:
+#            p[0] = Node("QUANTIFIER_EXACT_AMOUNT", p[2])
 
-        case 5:
-            if p[2] == ',': p[0] = Node("QUANTIFIER_LESS_THAN", p[3])
-            else:           p[0] = Node("QUANTIFIER_MORE_THAN", p[2])
+#        case 5:
+#            if p[2] == ',': p[0] = Node("QUANTIFIER_LESS_THAN", p[3])
+#            else:           p[0] = Node("QUANTIFIER_MORE_THAN", p[2])
 
-        case 6:
-            p[0] = Node("QUANTIFIER_RANGE", Node("MIN", p[3]), Node("MAX", p[5]))
+#        case 6:
+#            p[0] = Node("QUANTIFIER_RANGE", Node("MIN", p[3]), Node("MAX", p[5]))
         
 
 

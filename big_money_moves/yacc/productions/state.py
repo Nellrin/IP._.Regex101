@@ -48,7 +48,29 @@ def p_charclass_exc(p):
     charclass : EXCEPTOPTS charlist RBRACKET
     """
 
-    p[0] = Node("EXCEPTION",''.join(p[2] + p[3]))
+    x = ''.join(str(c) for c in p[2])
+    y = len(x)
+    z = [x[0]]
+    i = 1
+    if y >= 3:
+        while i < y - 1:
+            if x[i] == '-':
+                z.extend([chr(c) for c in range(ord(x[i-1])+1, ord(x[i+1]) + 1)])
+                i += 1
+                i += 1
+            
+            else:
+                z.append(x[i])
+
+            i += 1
+
+    if y > i:
+        z.append(x[y-1])
+
+
+    z = ''.join(z)
+    print(z)
+    p[0] = Node("EXCEPTION",z)
 
 
 def p_state(p):
