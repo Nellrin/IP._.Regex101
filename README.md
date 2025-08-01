@@ -165,7 +165,7 @@ Este documento tem como propósito orientar quem não tenha muita experiência c
       # result2 = ['XY']
       # result3 = ['b','e','g']
       # result4 = ['a','a','a','a','a']
-      # result5 = ['a','a']
+      # result5 = ['a']
 
       # a(?=.)  ==  a
     ```
