@@ -167,7 +167,8 @@ Este documento tem como propósito orientar quem não tenha muita experiência c
       # result4 = ['a','a','a','a','a']
       # result5 = ['a']
 
-      # a(?=.)  ==  a
+      # a.(?=.)  ==  a
+      # a(?=.)   ==  ∅
     ```
 
 
